@@ -1,0 +1,18 @@
+/* CSS para colocar el logo en la parte central */
+.content{
+    display: flex;
+    justify-content: center;    
+}
+
+
+/* CSS para colocar la imagen de waves en la parte inferior de la pantalla */
+.footer{
+    width: 100vw;
+}
+.homewaves{
+    max-width: 100%;
+    max-height: 100%;
+    position:absolute;
+    bottom: 0px;
+    right: 0px;
+}

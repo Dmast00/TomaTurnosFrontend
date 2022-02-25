@@ -1,0 +1,24 @@
+.wavecontainer{
+    position: static;
+}
+.footer{
+    width: 100vw;
+    
+}
+.tramiteswaves{
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 0px;
+    
+    right: 0px;
+}
+
+.col-md-4{
+    background-color: var(--main-color);
+    margin: 5px;
+    height: 10vh; 
+}
+a{
+    color: white;
+    text-decoration: none;
+}

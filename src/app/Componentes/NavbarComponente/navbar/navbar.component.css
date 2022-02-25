@@ -1,0 +1,17 @@
+/* Colocar el color del texto a las etiquetas "a" del navbar */
+a{
+    color: var(--text-color);
+    font-family: var(--main-fontFamily);
+}
+/* Se coloca el hover de las etiquetas el navbar con color main */
+a:hover{
+    color: var(--main-color);
+}
+/* Se agrego margen al item de iniciar sesion para colocarlo a la derecha de la pantalla */
+.nav-item{
+    margin-left: 45vw;
+}
+/* Se colocan los items al principio del navbar */
+.navbar>.container{
+    justify-content: flex-start;
+}
