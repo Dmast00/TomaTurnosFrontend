@@ -8,13 +8,17 @@ import { TramitesComponent } from './Componentes/TramitesComponente/tramites/tra
 import { HomeComponent } from './Componentes/HomeComponente/home/home.component';
 import { NavbarComponent } from './Componentes/NavbarComponente/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './Componentes/Login/login/login.component';
+import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TramitesComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    RegistrarComponent
   ],
   imports: [
     BrowserModule,
