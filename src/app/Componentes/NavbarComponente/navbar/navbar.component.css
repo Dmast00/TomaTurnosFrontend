@@ -9,7 +9,7 @@ a:hover{
 }
 /* Se agrego margen al item de iniciar sesion para colocarlo a la derecha de la pantalla */
 .nav-item{
-    margin-left: 45vw;
+    margin-left: 40vw;
 }
 /* Se colocan los items al principio del navbar */
 .navbar>.container{

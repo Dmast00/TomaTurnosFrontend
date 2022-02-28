@@ -11,11 +11,13 @@
 
     /* Colores base y hover de los colores base, y los colores complementarios. */
     --main-color : hsl(var(--hsl-main-color),55%,34%);
-    --scnd-color : hsl(var(--hsl-scnd-color),79%,29%);
     --main-hover-color :hsl(var(--hsl-main-color),56%,43%);
+    --scnd-color : hsl(var(--hsl-scnd-color),79%,29%);
     --scnd-hover-color : hsl(var(--hsl-scnd-color),68%,46%);
     --thrd-color : hsl(var(--hsl-trd-color),37%,55%);
+    --thrd-hover-color : hsl(var(--hsl-trd-color),37%,64%);
     --frth-color : hsl(var(--hsl-frth-color),78%,44%);
+    --frth-hover-color : hsl(var(--hsl-frth-color),79%,35%);
     --bg-color : hsl(var(--hsl-bg-color),0% , 95%);
     --text-color : hsl(var(--hsl-text-color),0%,0%);
 

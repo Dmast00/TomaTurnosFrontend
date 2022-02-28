@@ -10,6 +10,8 @@ import { NavbarComponent } from './Componentes/NavbarComponente/navbar/navbar.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './Componentes/Login/login/login.component';
 import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.component';
+import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
+import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    TurnosComponent,
+    CajerosComponent
   ],
   imports: [
     BrowserModule,

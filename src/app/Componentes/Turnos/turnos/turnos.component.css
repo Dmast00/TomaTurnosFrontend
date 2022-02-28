@@ -1,0 +1,33 @@
+.backarrow:hover{
+    color: var(--main-hover-color);
+}
+.backarrow{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.col-md-4{
+    border: black;
+    overflow-y: scroll;
+    height: 50vh;
+}
+.turno{
+    padding: 10px;
+    margin-left: 163px;
+}
+
+
+.wavescontainer{
+    min-height: 100%;
+    
+}
+.turnoswaves{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;   
+}

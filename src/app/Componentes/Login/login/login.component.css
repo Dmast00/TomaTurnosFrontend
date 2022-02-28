@@ -53,3 +53,9 @@ a:hover{
 ::placeholder{
     color: white;
 }
+textarea{
+    color: white;
+}
+textarea:focus,input:focus{
+    color: white;
+}

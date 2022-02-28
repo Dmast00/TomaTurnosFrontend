@@ -1,0 +1,39 @@
+.row{
+    justify-content: flex-end;
+    
+}
+h2{
+    margin-left: 100px;
+}
+h3{
+    margin-left: 140px ;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn{
+    background-color: var(--main-color);
+    color: white;
+    position: absolute;
+    height: 50px;
+    width: 125px;
+    border-radius: 10px;
+    margin-left: 260px;
+    top: 470px;
+}
+
+.btn:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+.wavescontainer{
+    min-height: 100%;
+}
+.cajeroswaves{
+    position:absolute;
+    width: 100%;
+    bottom: 0px;
+}
