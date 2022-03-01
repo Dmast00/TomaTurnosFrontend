@@ -12,6 +12,7 @@ import { LoginComponent } from './Componentes/Login/login/login.component';
 import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.component';
 import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
 import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
+import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.componen
     LoginComponent,
     RegistrarComponent,
     TurnosComponent,
-    CajerosComponent
+    CajerosComponent,
+    ImprimirComponent
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,22 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 btnprint">
-           Imprmir
+        <div class="col-md-3 btnprint" *ngFor="let turno of turnosList" (click)="printTurno()">
+           Imprimir Turno
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4"> 
-            <a href="#">Predial</a>
-        </div>
-        <div class="col-md-4">
-            <a href="#">Predial Descuento</a>
-        </div>
-        <div class="col-md-4">
-            <a href="#">Estados de Cuenta</a>
-        </div>
-             
+    <div class="row" >
+        <div class="col-md-4" *ngFor="let tramite of tramiteList" > 
+            <a (click)="genTurno(tramite.idTramite)">{{tramite.nombreTramite}}</a>
+        </div>      
     </div>
 </div>
 <div class="footer">
     <img class="tramiteswaves" src="/assets/TramitesWavesmorado.png" alt="" loading="lazy">
 </div>
 
-
+<app-imprimir>
+    
+</app-imprimir>
 
 
