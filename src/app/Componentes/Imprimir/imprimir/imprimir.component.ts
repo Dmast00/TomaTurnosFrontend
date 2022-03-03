@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-imprimir',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./imprimir.component.css']
 })
 export class ImprimirComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -21,4 +21,9 @@ export class BackendService {
     console.log(this.apiPath+'Turnos/GenTurno/'+id)
     return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
   }
+
+  getTurnos():Observable<any[]>{
+    return this.http.get<any>(this.apiPath+'Turnos');
+  }
+
 }

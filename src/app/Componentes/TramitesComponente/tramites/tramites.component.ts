@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Input } from '@angular/core';
 import { BackendService } from 'src/app/Servicios/backend.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { BackendService } from 'src/app/Servicios/backend.service';
   styleUrls: ['./tramites.component.css']
 })
 export class TramitesComponent implements OnInit {
+  
   //Creamos una lista de tipo array en donde guardaremos los tramites solicitados desde el service
   tramiteList : any = [];
   turnosList : any = [];

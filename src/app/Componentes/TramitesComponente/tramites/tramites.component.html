@@ -14,9 +14,20 @@
 <div class="footer">
     <img class="tramiteswaves" src="/assets/TramitesWavesmorado.png" alt="" loading="lazy">
 </div>
-
-<app-imprimir>
-    
-</app-imprimir>
-
+<div class="reynosa">
+    <div class="row datos">
+        <div class="col">
+            <img class="logoimg" src="/assets/LogoTicket.png" alt="" loading="lazy">
+        </div>
+        <div class="col">
+            R. Ayuntamiento de Reynosa
+        </div>
+        <div class="col" *ngFor="let turno of turnosList">
+            Turno : <b>{{turno.turno}}</b>
+        </div>
+        <div class="col">
+            Gracias por su visita
+        </div>
+    </div>
+</div>
 

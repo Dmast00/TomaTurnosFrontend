@@ -13,13 +13,36 @@
 }
 .col-md-4{
     border: black;
-    overflow-y: scroll;
+    overflow-y:scroll;
     height: 50vh;
 }
 .turno{
     padding: 10px;
     margin-left: 163px;
+    
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--main-color); 
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--main-hover-color); 
+  }
+
+
 
 
 .wavescontainer{

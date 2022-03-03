@@ -97,12 +97,29 @@ a:hover{
     position: absolute;
     top: 333px;
 }
-app-imprimir{
+
+.reynosa{
     display: none;
 }
-
 @media print{
-    app-imprimir{
+    .container,.footer,app-navbar{
+        display: none;
+    }
+    .reynosa{
         display: block;
+    }
+    .datos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .col{
+        padding: 1px;
+        margin-left: 15px;
+    }
+    .logoimg{
+        height: 50px;
+        min-width: 50%;
     }
 }

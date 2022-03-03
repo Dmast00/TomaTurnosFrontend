@@ -6,8 +6,8 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <div class="turno">
-                <h3>PD361</h3>
+            <div class="turno" *ngFor="let turno of turnosList">
+                <h3>{{turno.turno}}</h3>
             </div>
         </div>
         <div class="col-md-8">

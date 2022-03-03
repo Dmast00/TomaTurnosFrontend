@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { interval, Observable,Subscription } from 'rxjs';
+import { BackendService } from 'src/app/Servicios/backend.service';
 
 @Component({
   selector: 'app-turnos',
@@ -7,7 +9,10 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class TurnosComponent implements OnInit {
 
-  constructor({nativeElement}: ElementRef<HTMLElement>) {
+  turnosList : any = [];
+  private updateSubscription : Subscription;
+  
+  constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService) {
     const supports = 'loading' in HTMLImageElement.prototype;
     if(supports){
       nativeElement.setAttribute('loading','lazy');
@@ -15,6 +20,15 @@ export class TurnosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getTurnos()
+    this.updateSubscription = interval(3000).subscribe(
+      (val) => {this.getTurnos()}
+    );
   }
 
+  getTurnos(){
+    this.service.getTurnos().subscribe(data =>{
+      this.turnosList = data
+    })
+  }
 }
