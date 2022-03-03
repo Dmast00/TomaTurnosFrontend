@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 250px;
+    margin-top: 125px;
 }
 h2{
     margin-left: 125px;
@@ -51,7 +51,7 @@ a:hover{
     height: 3rem;
 }
 ::placeholder{
-    color: white;
+    color: rgba(233, 233, 233, 0.438);
 }
 textarea{
     color: white;

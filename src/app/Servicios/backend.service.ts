@@ -17,13 +17,25 @@ export class BackendService {
     return this.http.get<any>(this.apiPath+'Tramites')
   }
 
+  //Generamos un turno consultando al api y enviando como paramentro el id del tramite que se selecciono
   genTurno(id : number):Observable<any>{
     console.log(this.apiPath+'Turnos/GenTurno/'+id)
     return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
   }
 
+  //solicitamos la lista de turno que se encuentran en la base de datos
   getTurnos():Observable<any[]>{
     return this.http.get<any>(this.apiPath+'Turnos');
+  }
+
+  //Registramos al usuario nuevo por medio del api, enviando el form que se lleno. 
+  registerUsuario(form : any){
+    return this.http.post(this.apiPath+'Account/Register',form)
+  }
+ 
+  //Peticion al API para iniciar sesion
+  loginUser(form : any){
+    return this.http.post(this.apiPath+'Account/Login',form);
   }
 
 }

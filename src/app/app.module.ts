@@ -13,6 +13,8 @@ import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.
 import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
 import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
 import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.component';
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-loggedin/navbar-loggedin.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,16 @@ import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.comp
     RegistrarComponent,
     TurnosComponent,
     CajerosComponent,
-    ImprimirComponent
+    ImprimirComponent,
+    NavbarLoggedinComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
