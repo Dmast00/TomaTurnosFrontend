@@ -8,31 +8,31 @@
         <h2>Registrar</h2>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Correo electornico" >
+          <input formControlName="email" *ngIf=""  type="email" required class="form-control" id="email" aria-describedby="email" placeholder="Correo electornico" >
         </div>
 
         <div class="form-group">
           <label for="userName">Usuario</label>
-          <input formControlName="userName" type="text" class="form-control" id="userName" aria-describedby="usuario" placeholder="Usuario">
+          <input formControlName="userName" type="text"  required class="form-control" id="userName" aria-describedby="usuario" placeholder="Usuario">
         </div>
 
         <div class="form-group">
           <label for="firstName">Nombre</label>
-          <input formControlName="firstName" type="text" class="form-control" id="firstName" aria-describedby="Nombre" placeholder="Nombe">
+          <input formControlName="firstName" type="text" required class="form-control" id="firstName" aria-describedby="Nombre" placeholder="Nombe">
         </div>
 
         <div class="form-group">
           <label for="lastName">Apellidos</label>
-          <input formControlName="lastName" type="text" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Apellidos">
+          <input formControlName="lastName" type="text" required class="form-control" id="lastName" aria-describedby="lastName" placeholder="Apellidos">
         </div>
 
         <div class="form-group">
           <label for="Password">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="Password" placeholder="Contraseña">
+          <input formControlName="password" type="password" required class="form-control" id="Password" placeholder="Contraseña">
         </div>
         <div class="form-group">
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirmar Contraseña">
+            <input type="password" class="form-control" required id="ConfirmPassword" placeholder="Confirmar Contraseña">
           </div>
         <button type="submit" class="btn">Submit</button>
       </form>

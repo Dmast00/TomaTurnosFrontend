@@ -15,6 +15,9 @@ import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.componen
 import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.component';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-loggedin/navbar-loggedin.component';
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-l
     AppRoutingModule,
     HttpClientModule,
     NgbModule,FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
