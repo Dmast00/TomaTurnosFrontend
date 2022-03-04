@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TramitesComponent } from './Componentes/TramitesComponente/tramites/tramites.component';
 import { HomeComponent } from './Componentes/HomeComponente/home/home.component';
 import { NavbarComponent } from './Componentes/NavbarComponente/navbar/navbar.component';
@@ -17,6 +17,8 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-loggedin/navbar-loggedin.component';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
