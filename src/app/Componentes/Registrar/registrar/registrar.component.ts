@@ -4,7 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BackendService } from 'src/app/Servicios/backend.service';
-import { CustomValidators } from './CustomValidator';
+
+
 
 @Component({
   selector: 'app-registrar',
@@ -20,11 +21,6 @@ export class RegistrarComponent implements OnInit {
         Validators.required,
         Validators.pattern("^[a-zA-Z_ ]*$")
       ]),
-      password : new FormControl('',[
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern("^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")
-      ]),
       userName : new FormControl('',[
         Validators.required,
         Validators.pattern("[a-zA-Z]+")
@@ -37,11 +33,13 @@ export class RegistrarComponent implements OnInit {
         Validators.required,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
       ]),
-      confirmPassword : new FormControl('',[
-      
-      ])
-    }),
-    CustomValidators.mustMatch('password','confirmPassword');
+      password : new FormControl('',[
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern("^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")
+      ]),
+    })
+    
    }
 
   ngOnInit(): void {
@@ -74,7 +72,7 @@ export class RegistrarComponent implements OnInit {
           this.toastr.info('error interno del servidor.')
         }
       };
-      this.router.navigate(['/Home'])
+      this.router.navigate(['/Login'])
       this.toastr.success("Usuario Registrado")
   }
 }

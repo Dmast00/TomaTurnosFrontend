@@ -7,7 +7,7 @@
     <form [formGroup]="form" (ngSubmit)="submitForm()">
         <h2>Registrar</h2>
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Correo Electronico</label>
           <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Correo electronico" [ngClass]="{'is-invalid': submmited && f['email'].errors, 'is-valid': f['email'].valid}" >
           <div *ngIf="f['email'].errors" class="invalid-feedback">
             <div *ngIf="f['email'].errors?.['required']">El correo electronico es obligatorio</div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-          <label for="Password">Password</label>
+          <label for="Password">Contraseña</label>
           <input formControlName="password" type="password" class="form-control" id="Password" placeholder="Contraseña" [ngClass]="{'is-invalid': submmited && f['password'].errors, 'is-valid': f['password'].valid}">
           <div *ngIf="f['password'].errors" class="invalid-feedback">
             <div *ngIf="f['password'].errors?.['minlength']">La contraseña debe de tener un minimo de 6 carcateres</div>
@@ -51,14 +51,14 @@
             <small *ngIf="f['password'].errors?.['pattern']">Se requiere un caracter especial(@#$%^&+=), mayuscula y minuscula.</small>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="ConfirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirmar Contraseña" [ngClass]="{'is-invalid': submmited && f['confirmPassword'].errors, 'is-valid': f['confirmPassword'].valid}">
+            <input formControlName="confirmPassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Confirmar Contraseña" [ngClass]="{'is-invalid': submmited && f['confirmPassword'].errors, 'is-valid': f['confirmPassword'].valid}" >
             <div *ngIf="f['confirmPassword'].errors" class="invalid-feedback">
-              <div *ngIf="f['confirmPassword'].errors?.['mustMatch']">Las contraseñas deben de coincidir</div>
-              <div *ngIf="f['confirmPassword'].errors?.['required']">La contraseña es obligatoria</div>
+              <div *ngIf="f['confirmPassword'].errors['mustmatch']">Las contraseñas deben de coincidir</div>
+              <div *ngIf="f['confirmPassword'].errors?.['required']">Confirmar la contraseña es obligatorio</div>
             </div>
-          </div>
+        </div> -->
         <button type="submit" class="btn">Submit</button>
       </form>
 </div>
