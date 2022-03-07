@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BackendService } from 'src/app/Servicios/backend.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,7 +30,6 @@ export class LoginComponent implements OnInit {
   loginUsuario(){
     this.service.loginUser(this.form.value).subscribe((res) =>{
       console.log(res)
-      
     },
     (err:HttpErrorResponse)=>{
       console.log(err);
@@ -39,15 +39,15 @@ export class LoginComponent implements OnInit {
         this.form.reset();
         this.toastr.error('Contraseña o Usuario incorrecto')
       }
-      else if(err.status == 200){
-        console.log('logged in succesfully')
-        this.router.navigate(['/Home']);
-        this.toastr.success('Inicio de sesion correcto')
-      }
       else if (err.status == 500){
         console.log('Internal error on server')
         this.form.reset();
         this.toastr.info('Error interno del servidor.');
+      }
+      else if(err.status == 200){
+        console.log('logged in succesfully');
+        this.router.navigate(['/Home']);
+        this.toastr.success('Inicio de sesion correcto')
       }
     });
   }
