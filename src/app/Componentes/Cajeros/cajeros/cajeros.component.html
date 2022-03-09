@@ -4,19 +4,19 @@
     <div class="row">
         <div class="col-md-8">
             <h2>Turno Actual</h2>
-            <div class="col">
-                <h3>PD1423</h3>
+            <div class="col" >
+                <h3 *ngFor="let item of last">{{item.turno}}</h3>
             </div>
         </div>
     </div>
     <div class="row btns">
         <div class="col-md-6">
-            <button class="btn btn-vencido">
+            <button  class="btn btn-vencido">
                 Vencido
             </button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-finalizado">
+            <button  class="btn btn-finalizado">
                 Finalizado
             </button>
         </div>
@@ -29,3 +29,21 @@
         <img class="cajeroswaves" src="/assets/CajerosWaves.png" alt="" loading="lazy">
     </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <label for="Tramite">Tramites</label>
+        <input name="Tramite" [(ngModel)]="Tramite" type="text">
+        <label for="NumerodeCaja">Numero de Caja</label>
+        <input name="NumerodeCaja" [(ngModel)]="NumCaja" type="text">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="getLast()">Save</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
