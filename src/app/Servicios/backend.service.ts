@@ -1,15 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+const httpOptionsPlain = {
+  headers: new HttpHeaders({
+    'Accept': 'text/plain',
+    'Content-Type': 'text/plain'
+  }),
+  'responseType': 'text'
+};
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
   //Creamos una variable la cual guardara el path del API
   readonly apiPath = 'https://localhost:44352/api/';
-
-  isLoggedIn = false;
 
   // Injectamos el modulo de HTTPClient para hacer peticiones http al backend
   constructor(private http : HttpClient) { }
@@ -37,9 +42,12 @@ export class BackendService {
  
   //Peticion al API para iniciar sesion
   loginUser(form : any){
-    
-    this.isLoggedIn = true;
     return this.http.post(this.apiPath+'Account/Login',form);
   }
+
+  getStamp(email : any):Observable<any>{
+    return this.http.post(this.apiPath+'Account/GetUser/'+email,email);
+  }
+
 
 }

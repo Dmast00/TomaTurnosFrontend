@@ -17,6 +17,7 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-loggedin/navbar-loggedin.component';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AuthGuard } from "./Guards/auth.guard";
 
 
 
@@ -46,7 +47,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserAnimationsModule
   ],
   providers: [
-    
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

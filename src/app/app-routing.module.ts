@@ -7,10 +7,11 @@ import { RegistrarComponent } from "./Componentes/Registrar/registrar/registrar.
 import { TurnosComponent } from "./Componentes/Turnos/turnos/turnos.component";
 import { CajerosComponent } from "./Componentes/Cajeros/cajeros/cajeros.component";
 import { ImprimirComponent } from "./Componentes/Imprimir/imprimir/imprimir.component";
+import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
   {path:'', component : HomeComponent},
-  {path:'Tramites', component:TramitesComponent},
+  {path:'Tramites', component:TramitesComponent,canActivate:[AuthGuard]},
   {path:'Home',component:HomeComponent},
   {path:'Login',component:LoginComponent},
   {path:'Registrar',component:RegistrarComponent},
