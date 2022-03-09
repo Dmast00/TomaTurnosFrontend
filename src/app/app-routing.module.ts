@@ -15,9 +15,9 @@ const routes: Routes = [
   {path:'Home',component:HomeComponent},
   {path:'Login',component:LoginComponent},
   {path:'Registrar',component:RegistrarComponent},
-  {path:'Turnos',component:TurnosComponent},
-  {path:'Cajeros',component:CajerosComponent},
-  {path:'Imprimir',component:ImprimirComponent}
+  {path:'Turnos',component:TurnosComponent,canActivate:[AuthGuard]},
+  {path:'Cajeros',component:CajerosComponent,canActivate:[AuthGuard]},
+  {path:'Imprimir',component:ImprimirComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

@@ -30,5 +30,6 @@ export class TurnosComponent implements OnInit {
     this.service.getTurnos().subscribe(data =>{
       this.turnosList = data
     })
+    console.log(this.turnosList)
   }
 }
