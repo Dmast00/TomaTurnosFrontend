@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+
 const httpOptionsPlain = {
   headers: new HttpHeaders({
     'Accept': 'text/plain',
@@ -45,9 +46,27 @@ export class BackendService {
     return this.http.post(this.apiPath+'Account/Login',form);
   }
 
+  //Solicitamos al Web API el security Stamp del usuario para crear una variable de sesion
+  //y poder mantener el inicio de sesion del usuario a lo largo de la navegacion por la pagina
   getStamp(email : any):Observable<any>{
     return this.http.post(this.apiPath+'Account/GetUser/'+email,email);
   }
 
+  //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
+  //en proceso de pasar a ventanilla
+  turnoProceso(id : number){
+    return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id,id);
+  }
 
+  //Solicitamos al Web API cambial el estatus del turno a vencido debido a que el turno no se 
+  //presento en ventanilla o excedio el limite de tiempo de espera.
+  turnoVencido(id : number){
+    return this.http.put(this.apiPath+'Turnos/TurnoVencido/'+id,id)
+  }
+
+  //Solicitamos al Web API modificar el status del turno que fue finalizado a turno finalizado
+  //para que asi no aparesca en la lista de turnos pendientes
+  turnoFinalizado( id : number){
+    return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/',id+id)
+  }
 }

@@ -11,12 +11,12 @@
     </div>
     <div class="row btns">
         <div class="col-md-6">
-            <button  class="btn btn-vencido">
+            <button *ngFor="let item of last" (click)="turnoVencido(item.idTurno)" class="btn btn-vencido">
                 Vencido
             </button>
         </div>
         <div class="col-md-6">
-            <button  class="btn btn-finalizado">
+            <button *ngFor="let item of last" (click)="turnoFinalizado(item.idTurno)" class="btn btn-finalizado">
                 Finalizado
             </button>
         </div>
