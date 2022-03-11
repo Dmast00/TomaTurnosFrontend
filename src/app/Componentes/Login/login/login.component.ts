@@ -28,10 +28,19 @@ export class LoginComponent implements OnInit {
     })
    }
   
+  
   ngOnInit(): void {
     this.authService.logout();
   }
 
+  //Se establece una funcion para iniiar sesion, se envia al servicio del backend
+  //el formulario que el usuario lleno, asi mismo, se utiliza el Http Error Response,
+  //para verificar la respuesta del servidor, en caso que el servidor regrese un codigo 400
+  //se mostrara un mensaje acerca de las credenciales del usuario. Si retorna un mensaje de 
+  //error 500  se muestra un mensaje sobre un error en el servidor. Y, si se muestra un
+  //codigo de error 200, guardamos el token del usuario para poder tener una 
+  //control de la sesion de usuaro, asi mismo, se muestra un mensaje de exito, y se redirecciona
+  //al usuario a la pagina principal.
   loginUsuario(){
     this.service.loginUser(this.form.value).subscribe(res =>{
       console.log(res)

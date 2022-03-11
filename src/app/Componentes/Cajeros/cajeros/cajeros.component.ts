@@ -60,7 +60,6 @@ export class CajerosComponent implements OnInit {
     })
     this.last.push(temp)
     this.turnoService.saveTurnoData(temp).subscribe(data => {
-      
     });
     
   }

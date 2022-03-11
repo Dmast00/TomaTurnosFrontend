@@ -57,8 +57,6 @@
     min-width: 100%;
     
 }
-
-
 .back-arrow{
     display: flex;
     flex-direction: row;
@@ -78,15 +76,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+.turnoinfo{
+    background-color: var(--main-hover-color);
+    margin: 5px;
+    color: var(--bg-color);
+    border-radius: 10px;
+    font-family: var(--scnd-fontFamily);
 }
 .col-md-4{
     border: black;
     overflow-y:scroll;
     height: 50vh;
 }
-.turno{
+.turnos{
     padding: 10px;
     margin-left: 163px;
+    font-family: var(--main-fontFamily);
 }
 ::-webkit-scrollbar {
     width: 10px;
