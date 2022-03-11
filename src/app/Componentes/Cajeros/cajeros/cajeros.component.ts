@@ -4,6 +4,7 @@ import { BackendService } from 'src/app/Servicios/backend.service';
 import { Cajeros } from '../../Cajeros/cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Turnos } from '../../Turnos/turnos.model';
+import { TurnosService } from 'src/app/Servicios/turnos.service';
 
 @Component({
   selector: 'app-cajeros',
@@ -31,7 +32,7 @@ export class CajerosComponent implements OnInit {
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
-  constructor(private service : BackendService,private modalService : NgbModal) { }
+  constructor(private service : BackendService,private modalService : NgbModal,private turnoService : TurnosService) { }
 
   ngOnInit(): void {
     //Inicializamos la variable susbscription para actualizar la lista de turnos 
@@ -55,9 +56,13 @@ export class CajerosComponent implements OnInit {
   getLast(){
     this.last=[]
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
-    this.service.turnoProceso(temp.idTurno).subscribe(data =>{
+    this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
     })
     this.last.push(temp)
+    this.turnoService.saveTurnoData(temp).subscribe(data => {
+      
+    });
+    
   }
 
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna

@@ -1,17 +1,50 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col" >
             <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" >
             <div class="turno" *ngFor="let turno of turnosList">
                 <h3>{{turno.turno}}</h3>
             </div>
         </div>
+        
         <div class="col-md-8">
-            
+            <div class="proceso" *ngFor="let item of Proceso" >
+                <h3 >{{item.turno}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wavescontainer">
+    <div class="footer">
+        <img class="turnoswaves" src="/assets/TurnosWaves.png" alt="" loading="lazy">
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row back-arrow">
+        <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container">
+                <div class="turnos" *ngFor="let item of Turnos">
+                    <h2>{{item.turno}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <ng-container>
+                <div class="container">            
+                    <div class="proceso" *ngFor="let proceso of Proceso">
+                        <h3>{{proceso.turno}}</h3>
+                        <h3>Caja: {{proceso.caja}}</h3>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>

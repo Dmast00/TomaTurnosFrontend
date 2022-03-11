@@ -2,5 +2,6 @@ export interface Turnos {
     idTurno:number,
     turno:string,
     idStatus:number,
-    idTramite:number
+    idTramite:number,
+    caja : number
 }

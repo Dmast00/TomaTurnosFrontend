@@ -54,8 +54,9 @@ export class BackendService {
 
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
   //en proceso de pasar a ventanilla
-  turnoProceso(id : number){
-    return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id,id);
+  turnoProceso(id : number,numCaja : number){
+    var json  ={id: id, numeroCaja :numCaja}
+    return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id+'/'+numCaja,id);
   }
 
   //Solicitamos al Web API cambial el estatus del turno a vencido debido a que el turno no se 
@@ -67,6 +68,6 @@ export class BackendService {
   //Solicitamos al Web API modificar el status del turno que fue finalizado a turno finalizado
   //para que asi no aparesca en la lista de turnos pendientes
   turnoFinalizado( id : number){
-    return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/',id+id)
+    return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/'+id,id)
   }
 }
