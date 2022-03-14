@@ -15,3 +15,12 @@ a:hover{
 .navbar>.container{
     justify-content: flex-start;
 }
+
+.leftside{
+    display: flex;
+    flex-direction: row;
+    margin-left: 38vw;
+}
+.loggedin{
+    margin-left: 10px;
+}

@@ -84,6 +84,9 @@
     color: var(--bg-color);
     border-radius: 10px;
     font-family: var(--scnd-fontFamily);
+    display: flex;
+    flex-direction: column;
+
 }
 .col-md-4{
     border: black;

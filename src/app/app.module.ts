@@ -14,7 +14,7 @@ import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
 import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
 import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.component';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
-import { NavbarLoggedinComponent } from './Componentes/NavbarComponente/navbar-loggedin/navbar-loggedin.component';
+
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthGuard } from "./Guards/auth.guard";
@@ -34,7 +34,7 @@ import { AuthGuard } from "./Guards/auth.guard";
     TurnosComponent,
     CajerosComponent,
     ImprimirComponent,
-    NavbarLoggedinComponent,
+
     
   ],
   imports: [

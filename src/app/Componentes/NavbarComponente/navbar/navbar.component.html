@@ -5,7 +5,10 @@
     <a class="nav-link" routerLinkActive="active" routerLink="/Tramites" href="#">Tramites</a>
     <a class="nav-link" routerLinkActive="active"  href="/Turnos">Turnos</a>
     <a class="nav-link" routerLinkActive="active"  href="/Cajeros">Cajeros</a>
-    <a class="nav-item nav-link px-3" href="#" (click)="logOut()">Cerrar Sesion</a>
+    <div class="leftside">
+      <a class="nav-item nav-link px-3 loggedin" >{{userName}}</a>
+      <a class="nav-item nav-link px-3 loggedin" href="#" (click)="logOut()">Cerrar Sesion</a>
+    </div>
     <!-- <a class="nav-item nav-link px-3" routerLinkActive="active" routerLink="/Login">Iniciar Sesion</a> -->
   </div>
 </nav>

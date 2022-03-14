@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   form : FormGroup;
   login : Login 
   
-  constructor(private service : BackendService, private router : Router, public fb : FormBuilder, private toastr : ToastrService,private authService : AuthService) {
+  constructor(private service : BackendService, private router : Router, public fb : FormBuilder, private toastr : ToastrService,
+    private authService : AuthService) {
     this.form = this.fb.group({
       email : new FormControl,
       password : new FormControl
@@ -59,9 +60,9 @@ export class LoginComponent implements OnInit {
       }
       else if(err.status == 200){  
         this.service.getStamp(this.form.controls['email'].value).subscribe(data =>{
-          console.log(data);
           localStorage.setItem('isLoggedIn','true');
           localStorage.setItem('token',data['securityStamp'])
+          localStorage.setItem('userName',data['userName'])
           this.router.navigate(['/Home']);
           this.toastr.success('Inicio de sesion correcto')
         })

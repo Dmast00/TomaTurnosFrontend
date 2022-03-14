@@ -45,7 +45,6 @@ export class TurnosComponent implements OnInit {
     this.getTurnosStatus()
   }
 
-
   //-------------------> Aqui hay un error <-------------------
   //-       Hay que cambiar como almacenamos los turnos       -
   //-       que tienen el IdStatus 4, debido a que            -
@@ -61,8 +60,9 @@ export class TurnosComponent implements OnInit {
   getTurnosStatus(){
     this.service.getTurnos().subscribe(data =>{
       this.Proceso = []
-      var temp = this.turnosList = data.filter(x => x.idStatus == 4).slice(0,2)
+      var temp = this.turnosList = data.filter(x => x.idStatus == 4).slice(0,10)
       this.Proceso = temp
     })
+    console.log(this.Proceso)
   }
 }
