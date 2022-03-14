@@ -8,12 +8,19 @@
         <h2>Inciar sesion</h2>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electornico">
+          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electornico" [ngClass]="{'is-invalid':submmited && f['email'].errors , 'is-valid': f['email'].valid}">
+          <div *ngIf="f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors?.['required']">El correo electronico es obligatorio</div>
+            <div *ngIf="f['email'].errors?.['pattern']">Ingrese un correo electronico valido</div>
+          </div>
         </div>
         <a href=""><small>Olvide mi contraseña</small></a>
         <div class="form-group">
           <label for="password">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña">
+          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" [ngClass]="{'is-invalid':submmited && f['password'].errors , 'is-valid': f['password'].valid}">
+          <div  *ngIf="f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors?.['required']">La contraseña es obligatoria</div>
+          </div>
           <small>
               <a routerLinkActive="active" routerLink="/Registrar" href="#">No tienes cuenta?</a>
           </small>

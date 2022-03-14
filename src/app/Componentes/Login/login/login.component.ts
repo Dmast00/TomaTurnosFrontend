@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -19,19 +19,29 @@ import { Login } from '../login.model';
 export class LoginComponent implements OnInit {
   
   form : FormGroup;
-  login : Login 
+  login : Login
+  submmited = false; 
   
-  constructor(private service : BackendService, private router : Router, public fb : FormBuilder, private toastr : ToastrService,
-    private authService : AuthService) {
+  constructor(private service : BackendService, private router : Router, 
+    public fb : FormBuilder, private toastr : ToastrService, private authService : AuthService) {
     this.form = this.fb.group({
-      email : new FormControl,
-      password : new FormControl
+      email : new FormControl('',[
+        Validators.required,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+      ]),
+      password : new FormControl('',[
+        Validators.required
+      ])
     })
    }
   
   
   ngOnInit(): void {
     this.authService.logout();
+  }
+
+  get f(){
+    return this.form.controls
   }
 
   //Se establece una funcion para iniiar sesion, se envia al servicio del backend
@@ -43,6 +53,10 @@ export class LoginComponent implements OnInit {
   //control de la sesion de usuaro, asi mismo, se muestra un mensaje de exito, y se redirecciona
   //al usuario a la pagina principal.
   loginUsuario(){
+    this.submmited = true;
+    if(this.form.invalid){
+      return;
+    }
     this.service.loginUser(this.form.value).subscribe(res =>{
       console.log(res)
     },
