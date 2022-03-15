@@ -39,7 +39,7 @@
             <div class="dropdown-container">
                 <label for="tramite" class="dropdown-label">Tramite</label>
 				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite">
-					<option selected  *ngFor="let item of tramitesList" ngDefaultControl  [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
+					<option selected  *ngFor="let item of tramitesList"   [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
 				</select>
             </div>
 

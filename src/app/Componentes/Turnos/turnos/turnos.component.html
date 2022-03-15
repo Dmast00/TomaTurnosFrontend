@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row back-arrow">
         <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
     </div>
@@ -21,6 +21,35 @@
                     </div>
                 </div>
             </ng-container>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="arrow-container">
+            <div class="row back-arrow">
+                <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-md-4 turnos">
+                <div class="turno-container" *ngFor="let item of Turnos">
+                    <div class="turno">
+                        <h5>{{item.turno}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="proceso-container" >
+                <div class="col-md-3 turno-activo" *ngFor="let item  of Proceso">
+                    <h5>{{item.turno}}</h5>
+                    <h5>Caja: {{item.caja}}</h5>
+                </div>
+            </div>
         </div>
     </div>
 </div>
