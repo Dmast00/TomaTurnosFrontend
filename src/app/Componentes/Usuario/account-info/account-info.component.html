@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="form-header">
+        <h2>Informacion personal</h2>
+    </div>
+    <div class="form-container">
+        <form >
+            <div class="form-control-container" *ngFor="let item of userInfo">
+                <div class="nombre-group">
+                    <div class="col-md-6">
+                        <div class="form-group info">
+                            <label for="prueba">Nombre</label>
+                            <input type="text" id="prueba" [ngModel]="item.userName" [ngModelOptions]="{standalone:true}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group info">
+                            <label for="prueba">Apellidos</label>
+                            <input type="text" id="prueba" [ngModel]="" [ngModelOptions]="{standalone:true}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="user-phone">
+                    <div class="col-md-6">
+                        <div class="form-group info">
+                            <label for="username">Usuario</label>
+                            <input type="text" id="username" [ngModel]="item.userName" [ngModelOptions]="{standalone:true}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group info">
+                            <label for="phone">Telefono</label>
+                            <input type="text" id="phone" [ngModel]="item.phoneNumber" [ngModelOptions]="{standalone:true}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="correo-group">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="correo">Correo Eletronico</label>
+                            <input type="text" id="correo" [ngModel]="item.email" [ngModelOptions]="{standalone:true}" class="form-control" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

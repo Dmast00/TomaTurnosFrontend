@@ -5,6 +5,7 @@ import { Cajeros } from '../../Cajeros/cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Turnos } from '../../Turnos/turnos.model';
 import { TurnosService } from 'src/app/Servicios/turnos.service';
+import { Tramites } from '../../TramitesComponente/tramites.model';
 
 @Component({
   selector: 'app-cajeros',
@@ -29,10 +30,13 @@ export class CajerosComponent implements OnInit {
   //ultimo turno de acuerdo al tramite del cajero
   last : any[] = [];
 
+  tramitesList : Tramites[] = []
+
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
-  constructor(private service : BackendService,private modalService : NgbModal,private turnoService : TurnosService) { }
+  constructor(private service : BackendService,private turnoService : TurnosService,
+    private modalService : NgbModal ) { }
 
   ngOnInit(): void {
     //Inicializamos la variable susbscription para actualizar la lista de turnos 
@@ -40,6 +44,7 @@ export class CajerosComponent implements OnInit {
     this.updateSubscription = interval(1500).subscribe(
       (val) => {this.getTurno()}
     )
+    this.getTramites()
   }
 
   //Creamos un metodo el cual llama al servicio de backend pidiendo los turnos que se 
@@ -55,7 +60,9 @@ export class CajerosComponent implements OnInit {
   //al array last
   getLast(){
     this.last=[]
+    console.log(this.Tramite,this.NumCaja)
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
+    console.log(temp)
     this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
     })
     this.last.push(temp)
@@ -83,7 +90,12 @@ export class CajerosComponent implements OnInit {
     });
   }
   
-  //Metodo para abrir el modal que se encuentra en el HTML
+  getTramites(){
+    this.service.getTramites().subscribe(data =>{
+      this.tramitesList = data
+    })
+  }
+  // //Metodo para abrir el modal que se encuentra en el HTML
   open(content:any) {
     this.modalService.open(content);
   }

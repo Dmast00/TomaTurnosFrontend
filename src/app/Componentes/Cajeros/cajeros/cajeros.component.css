@@ -37,3 +37,29 @@ h3{
     width: 100%;
     bottom: 0px;
 }
+.btn-modal{
+    width: 9vw;
+}
+.configuracion{
+    display: flex;
+    flex-direction: column;
+
+}
+.dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown-label{
+    margin-right: 5px;
+}
+.btn-dropdown{
+    position: initial;
+    width: 15vw;
+    
+}
+
+.btn-modal-save{
+    position: inherit;
+}
+

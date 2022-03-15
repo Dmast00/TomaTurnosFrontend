@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
 
 const httpOptionsPlain = {
@@ -69,5 +69,10 @@ export class BackendService {
   //para que asi no aparesca en la lista de turnos pendientes
   turnoFinalizado( id : number){
     return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/'+id,id)
+  }
+
+  getUserinfo(username : any): Observable<any>{
+    return this.http.get<any>(`${this.apiPath}Account/${username}`)
+    
   }
 }

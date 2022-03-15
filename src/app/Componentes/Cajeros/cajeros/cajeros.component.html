@@ -31,18 +31,27 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <h4 class="modal-title" id="modal-basic-title">Configuracion de caja</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
     </div>
-    <div class="modal-body">
-        <label for="Tramite">Tramites</label>
-        <input name="Tramite" [(ngModel)]="Tramite" type="text">
-        <label for="NumerodeCaja">Numero de Caja</label>
-        <input name="NumerodeCaja" [(ngModel)]="NumCaja" type="text">
+    <div class="modal-body configuracion">
+        <div class="config-container">
+            <div class="dropdown-container">
+                <label for="tramite" class="dropdown-label">Tramite</label>
+				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite">
+					<option selected  *ngFor="let item of tramitesList" ngDefaultControl  [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
+				</select>
+            </div>
+
+            <div class="col-md-12">
+                <label for="NumerodeCaja">Numero de Caja</label>
+                <input name="NumerodeCaja" [(ngModel)]="NumCaja" type="text" class="form-control">
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="getLast()">Save</button>
+      <button type="button" class="btn btn-outline-dark btn-modal-save" (click)="c('Save click')" (click)="getLast()">Guardar</button>
     </div>
-  </ng-template>
+</ng-template>
   
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+<button class="btn btn-lg btn-outline-primary btn-modal" (click)="open(content)">Configurar Caja</button>

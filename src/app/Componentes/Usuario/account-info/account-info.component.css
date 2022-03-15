@@ -1,0 +1,53 @@
+label{
+    font-weight: bold;
+}
+
+.container{
+    background-color: whitesmoke;
+    width: 75vw;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    
+}
+.form-header{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nombre-group{
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+}
+
+.info{
+    width: 18vw;    
+}
+.user-phone{
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+}
+
+
+.correo-group{
+    display: flex;
+    flex-direction: column;
+    width: 38vw;
+    justify-content: center;
+}
+
+
