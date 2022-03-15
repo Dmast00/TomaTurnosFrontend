@@ -69,12 +69,19 @@
 .proceso-container{
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
     gap: 15px 15px; 
     grid-template-areas: 
-    ". . . . ."
-    ". . . . ."; 
+      ". . . . ."
+      ". . . . ."
+      ". . . . ."; 
 }
+.procesos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .turno-activo{
     background-color: var(--main-color);
     color: var(--bg-color);
@@ -83,59 +90,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 15px;
 
-    width: 5vw;
+    width: 8vw;
+    height: 13vh;
     border-radius: 10px;
 }
 
-/* .container{
-    display: flex;
-    flex-direction: column;
-    min-width: 100%;
-    
-}
-.back-arrow{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-}
-.backarrow{
-    text-decoration: none;
-    color: var(--main-color);
-    margin-top: 75px;
-}
-.backarrow:hover{
-    color: var(--main-hover-color);
-}
-
-.proceso{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-.turnoinfo{
-    background-color: var(--main-hover-color);
-    margin: 5px;
-    color: var(--bg-color);
-    border-radius: 10px;
-    font-family: var(--scnd-fontFamily);
-    display: flex;
-    flex-direction: column;
-
-}
-.col-md-4{
-    border: black;
-    overflow-y:scroll;
-    height: 50vh;
-}
-.turnos{
-    padding: 10px;
-    margin-left: 163px;
-    font-family: var(--main-fontFamily);
-}
-
-h3{
-    font-size: 80px;
-} */
