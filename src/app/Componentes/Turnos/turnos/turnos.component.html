@@ -1,30 +1,3 @@
-<!-- <div class="container">
-    <div class="row back-arrow">
-        <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="container">
-                <div class="turnos" *ngFor="let item of Turnos">
-                    <h2>{{item.turno}}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <ng-container>
-                <div class="container">            
-                    <div class="col-md-4 proceso" *ngFor="let proceso of Proceso">
-                        <div class="turnoinfo">
-                            <h3>{{proceso.turno}}</h3>
-                            <h3>Caja: {{proceso.caja}}</h3>
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-    </div>
-</div> -->
-
 <div class="container">
     <div class="row">
         <div class="arrow-container">
@@ -45,7 +18,20 @@
         </div>
         <div class="col-md-9 procesos">
             <div class="proceso-container" >
-                <div class="col-md-3 turno-activo" *ngFor="let item  of Proceso">
+                <div class="col-md-3 turno-activo" *ngFor="let item  of turnoActivo">
+                    <h1>{{item.turno}}</h1>
+                    <h4>Caja: {{item.caja}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="turno-abajo-title">
+        <div class="title-turnos">
+            <h3>Turnos en Ventanilla</h3>
+        </div>
+        <div class="container turnos-abajo">
+            <div class="turno-abajo-container">
+                <div class="turno-abajo" *ngFor="let item of turnoAbajo">
                     <h2>{{item.turno}}</h2>
                     <h5>Caja: {{item.caja}}</h5>
                 </div>
@@ -53,8 +39,8 @@
         </div>
     </div>
 </div>
-<div class="wavescontainer">
+<!-- <div class="wavescontainer">
     <div class="footer">
         <img class="turnoswaves" src="/assets/TurnosWaves.png" alt="" loading="lazy">
     </div>
-</div>
+</div> -->

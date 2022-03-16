@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+
 import { interval, Observable,Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { TurnosService } from 'src/app/Servicios/turnos.service';
@@ -10,10 +11,13 @@ import { Turnos } from '../turnos.model';
   styleUrls: ['./turnos.component.css']
 })
 export class TurnosComponent implements OnInit {
-
-  turnosList : Turnos[] = [];
+  //Turnos Array es para mostrar los turnos con idStatus 1 al lado izquierdo de la pantalla
   Turnos : Turnos[] = [];
+
+  
   Proceso : Turnos[] = [];
+  turnoAbajo : Turnos[] = [];
+  turnoActivo : Turnos[] = [];
   private updateSubscription : Subscription;
   
   constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService,private turnoService : TurnosService) {
@@ -60,8 +64,27 @@ export class TurnosComponent implements OnInit {
   getTurnosStatus(){
     this.service.getTurnos().subscribe(data =>{
       this.Proceso = []
-      var temp = this.turnosList = data.filter(x => x.idStatus == 4).slice(0,10)
-      this.Proceso = temp
+      this.Proceso =  data.filter(x => x.idStatus == 4)
     })
+    if(this.Proceso.length > 1){
+      this.turnoActivo = []
+
+      var popped = this.Proceso.pop()
+
+      this.turnoAbajo = this.Proceso
+      
+      if(this.turnoAbajo.length > 12){
+       var shiffted = this.turnoAbajo.shift()
+        
+      }
+      this.turnoActivo.push(popped!)
+      
+    }
+    else{
+      console.log('esperando turno extra')
+    }
+    
+    
+    return this.Proceso,this.turnoAbajo
   }
 }
