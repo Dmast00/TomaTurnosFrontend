@@ -1,6 +1,35 @@
 <app-navbar></app-navbar>
 
 <div class="container">
+    <div class="container-options">
+        <div class="row turno-row">
+            <div class="col-md-12">
+                <div class="turno-actual" >
+                    <h3>Turno Actual</h3>
+                    <h4 *ngFor="let item of last" >{{item.turno}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row config-row">
+            <div class="options-container">
+                    <div class="col-md-4 btn-container">
+                        <div class="btn-vencido">
+                           <button class="btn ">Vencido</button>
+                        </div>
+                        <div class="btn-detener">
+                            <button class="btn">Detener</button>
+                        </div>
+                        <div class="btn-finalizado">
+                            <button class="btn">Finalizado</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2>Turno Actual</h2>
@@ -27,7 +56,7 @@
     <div class="footer">
         <img class="cajeroswaves" src="/assets/CajerosWaves.png" alt="" loading="lazy">
     </div>
-</div>
+</div> -->
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
@@ -54,4 +83,4 @@
     </div>
 </ng-template>
   
-<button class="btn btn-lg btn-outline-primary btn-modal" (click)="open(content)">Configurar Caja</button>
+<button class="btn btn-lg  btn-modal" (click)="open(content)">Configurar Caja</button>

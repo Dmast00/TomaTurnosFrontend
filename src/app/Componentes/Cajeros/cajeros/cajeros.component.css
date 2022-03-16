@@ -1,4 +1,4 @@
-.row{
+/* .row{
     justify-content: flex-end;
     
 }
@@ -61,5 +61,51 @@ h3{
 
 .btn-modal-save{
     position: inherit;
-}
+} */
 
+.turno-actual{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-options{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50vh;
+    
+}
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 68vw;
+
+}
+.btn{
+    background-color: var(--main-color);
+    color: white; 
+    border-radius: 10px;
+}
+/* .btn-detener{
+    background-color: var(--main-color);
+    
+    border-radius: 10px;
+}
+.btn-finalizado {
+    background-color: var(--main-color);
+    
+    border-radius: 10px;
+} */
+.btn:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+.btn-modal{
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    border-radius: 0px;
+}

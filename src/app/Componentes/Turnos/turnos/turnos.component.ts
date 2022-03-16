@@ -13,8 +13,8 @@ import { Turnos } from '../turnos.model';
 export class TurnosComponent implements OnInit {
   //Turnos Array es para mostrar los turnos con idStatus 1 al lado izquierdo de la pantalla
   Turnos : Turnos[] = [];
-
   
+  //Arrays para facilitar el movimiento de los turnos 
   Proceso : Turnos[] = [];
   turnoAbajo : Turnos[] = [];
   turnoActivo : Turnos[] = [];
@@ -49,14 +49,6 @@ export class TurnosComponent implements OnInit {
     this.getTurnosStatus()
   }
 
-  //-------------------> Aqui hay un error <-------------------
-  //-       Hay que cambiar como almacenamos los turnos       -
-  //-       que tienen el IdStatus 4, debido a que            -
-  //-       estamos asignando a turnosList y despues          -
-  //-       Se los asignamos a una variable temporal          -
-  //-       Lo correct seria asignarlo directamente           -
-  //-       a la variable temporal                            -
-  //---------------------------><------------------------------
   //Se solicita al servidor la lista de turnos y la filtramos por los turnos
   //que tengan como idStatus 4 y agregamos solamente los primeros 2 elementos
   //del array y lo guardamos en el array procesos que posteriormente
@@ -66,19 +58,33 @@ export class TurnosComponent implements OnInit {
       this.Proceso = []
       this.Proceso =  data.filter(x => x.idStatus == 4)
     })
+    //Se verifica e length de la lista de proceso, si la cantidad de turnos en e array
+    //es mayor a 1 se vacia el array TurnoActivo y se toma el ultimo elemento del array
+    //para que ese turno sea el que aparesca en el div grande. 
+    //Asi mismo, se abre otro condicion, donde se verifica el length del array de 
+    //TurnoAbajo sea mayor a 12, se elimina el primer elemento del array para que el siguiente 
+    //turno aparesca en grande y el turno anterior se agrege a la parte de abajo.
+    //caso de que no se encuentre turno en la lista de array se imprime en la consola, 
+    //queda pendiente que hacer cuando entre al else,
+    //se retornan las dos listas. 
     if(this.Proceso.length > 1){
       this.turnoActivo = []
 
+      //toma el ultimo item del array
       var popped = this.Proceso.pop()
 
+      //se asigna el array original al array de turnos abajo
       this.turnoAbajo = this.Proceso
-      
-      if(this.turnoAbajo.length > 12){
-        console.log('cuenta de turnos abajo'+this.turnoAbajo.length)
-       var shiffted = this.turnoAbajo.shift()
-        
-      }
+
+      //Se asigna el ultimo elemento del array original al array turnoActivo  
       this.turnoActivo.push(popped!) 
+    }
+    if(this.turnoAbajo.length >= 11){
+      
+      console.log(this.turnoAbajo)
+      var shiffted = this.turnoAbajo.shift()
+      console.log(shiffted)
+       
     }
     else{
       console.log('esperando turno extra')

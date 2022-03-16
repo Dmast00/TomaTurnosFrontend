@@ -8,6 +8,7 @@
     <div class="row" >
         <div class="col-md-4" *ngFor="let tramite of tramiteList" > 
             <a (click)="genTurno(tramite)">{{tramite.nombreTramite}}</a>
+            
         </div>      
     </div>
 </div>
@@ -24,6 +25,7 @@
         </div>
         <div class="col" *ngFor="let turno of turnosList">
             Turno : <b>{{turno.turno}}</b>
+            
         </div>
         <div class="col">
             Gracias por su visita
