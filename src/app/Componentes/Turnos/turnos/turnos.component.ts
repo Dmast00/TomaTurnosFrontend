@@ -74,6 +74,7 @@ export class TurnosComponent implements OnInit {
       this.turnoAbajo = this.Proceso
       
       if(this.turnoAbajo.length > 12){
+        console.log('cuenta de turnos abajo'+this.turnoAbajo.length)
        var shiffted = this.turnoAbajo.shift()
         
       }
