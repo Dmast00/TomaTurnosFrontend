@@ -78,14 +78,11 @@ export class TurnosComponent implements OnInit {
        var shiffted = this.turnoAbajo.shift()
         
       }
-      this.turnoActivo.push(popped!)
-      
+      this.turnoActivo.push(popped!) 
     }
     else{
       console.log('esperando turno extra')
     }
-    
-    
     return this.Proceso,this.turnoAbajo
   }
 }
