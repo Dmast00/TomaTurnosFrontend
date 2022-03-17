@@ -18,3 +18,11 @@ export class HomeComponent implements OnInit {
   }
 
 }
+//----------------------><----------------------
+//-                                            -
+//-                 DESAROLLADO                -
+//-                     POR                    -
+//-             OBED HINOJOSA ENRIQUEZ         -
+//-                   03-17-2022               -
+//-                                            -
+//----------------------------------------------

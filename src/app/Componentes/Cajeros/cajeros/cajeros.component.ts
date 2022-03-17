@@ -92,7 +92,7 @@ export class CajerosComponent implements OnInit {
 
   turnoDetenido(id:number){
     this.service.turnoFinalizado(id).subscribe(data =>{
-
+      this.last = []
     });
   }
   

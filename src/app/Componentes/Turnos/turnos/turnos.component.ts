@@ -18,6 +18,7 @@ export class TurnosComponent implements OnInit {
   Proceso : Turnos[] = [];
   turnoAbajo : Turnos[] = [];
   turnoActivo : Turnos[] = [];
+  temp : Turnos[] = [];
   private updateSubscription : Subscription;
   
   constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService,private turnoService : TurnosService) {
@@ -32,7 +33,7 @@ export class TurnosComponent implements OnInit {
    //3000 milisegundos se actualice el array de turnos
   ngOnInit(): void {
     this.getTurnos()
-    this.updateSubscription = interval(3000).subscribe(
+    this.updateSubscription = interval(1000).subscribe(
       (val) => {this.getTurnos()}
     );
     
@@ -67,7 +68,7 @@ export class TurnosComponent implements OnInit {
     //caso de que no se encuentre turno en la lista de array se imprime en la consola, 
     //queda pendiente que hacer cuando entre al else,
     //se retornan las dos listas. 
-    if(this.Proceso.length > 1){
+    if(this.Proceso.length >= 1){
       this.turnoActivo = []
 
       //toma el ultimo item del array
@@ -78,17 +79,30 @@ export class TurnosComponent implements OnInit {
 
       //Se asigna el ultimo elemento del array original al array turnoActivo  
       this.turnoActivo.push(popped!) 
+    }else{
+      this.turnoActivo = []
+      console.log('no hay turnos en proceso')
     }
-    if(this.turnoAbajo.length >= 11){
+    if(this.turnoAbajo.length >= 10){
       
-      console.log(this.turnoAbajo)
-      var shiffted = this.turnoAbajo.shift()
-      console.log(shiffted)
+      this.getTurnosAbajo();
+      // console.log(this.turnoAbajo)
+      // var shiffted = this.turnoAbajo.shift()
+      // console.log(shiffted)
        
     }
     else{
+      
       console.log('esperando turno extra')
     }
     return this.Proceso,this.turnoAbajo
+  }
+
+  getTurnosAbajo(){
+    var slice = this.turnoAbajo.length - 10
+    console.log(slice)
+    this.temp = this.turnoAbajo.slice(slice)
+    console.log(this.temp)
+    return this.turnoAbajo
   }
 }
