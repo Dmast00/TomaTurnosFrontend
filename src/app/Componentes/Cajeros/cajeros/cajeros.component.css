@@ -108,4 +108,27 @@ h3{
     bottom: 0px;
     top: 0px;
     border-radius: 0px;
+    width: 0vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: -9999px;
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    width:0vw;
 }
+.btn-modal:hover{
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    width:10%;
+    white-space:normal;
+    text-indent: 30px;
+}
+
+
+
+
+

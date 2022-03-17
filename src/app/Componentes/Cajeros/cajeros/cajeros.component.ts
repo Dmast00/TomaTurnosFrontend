@@ -89,6 +89,12 @@ export class CajerosComponent implements OnInit {
       this.getLast();
     });
   }
+
+  turnoDetenido(id:number){
+    this.service.turnoFinalizado(id).subscribe(data =>{
+
+    });
+  }
   
   getTramites(){
     this.service.getTramites().subscribe(data =>{

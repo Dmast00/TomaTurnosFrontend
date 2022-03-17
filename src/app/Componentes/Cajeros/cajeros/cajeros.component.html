@@ -14,13 +14,13 @@
             <div class="options-container">
                     <div class="col-md-4 btn-container">
                         <div class="btn-vencido">
-                           <button class="btn ">Vencido</button>
+                           <button class="btn " *ngFor="let item of last" (click)="turnoVencido(item.idTurno)">Vencido</button>
                         </div>
                         <div class="btn-detener">
-                            <button class="btn">Detener</button>
+                            <button class="btn" *ngFor="let item of last" (click)="turnoDetenido(item.idTurno)">Detener</button>
                         </div>
                         <div class="btn-finalizado">
-                            <button class="btn">Finalizado</button>
+                            <button class="btn" *ngFor="let item of last"  (click)="turnoFinalizado(item.idTurno)">Finalizado</button>
                         </div>
                     </div>
             </div>
