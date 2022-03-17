@@ -1,35 +1,73 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 btnprint" *ngFor="let turno of turnosList" (click)="printTurno()">
-           Imprimir Turno
+
+<div class="main-content">
+    <div class="container" >
+        <div class="row tramites-container">
+            <div class="col-md-3 btnprint" *ngFor="let item of turnosList" (click)="printTurno()">
+                <button class="btn">Imprimir turno</button>
+             </div>
+            <div class="tramites">
+                <div class="col-md-4" *ngFor="let item of tramiteList">
+                    <button class=" btn btn-tramite" (click)="genTurno(item)">
+                        {{item.nombreTramite}}
+                    </button>    
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row" >
-        <div class="col-md-4" *ngFor="let tramite of tramiteList" > 
-            <a (click)="genTurno(tramite)">{{tramite.nombreTramite}}</a>
-            
-        </div>      
+    <div class="waves-container">
+        <div class="footer">
+            <div class="wave-container">
+                <div class="wave">
+                    <img class="tramiteswaves" src="/assets/TramitesWavesmorado.png" alt="" loading="lazy">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="footer">
-    <img class="tramiteswaves" src="/assets/TramitesWavesmorado.png" alt="" loading="lazy">
-</div>
-<div class="reynosa">
-    <div class="row datos">
-        <div class="col">
-            <img class="logoimg" src="/assets/LogoTicket.png" alt="" loading="lazy">
+
+
+<div class="print-container">
+    <div class="turno-info">
+        <div class="row">
+            <div class="col-md-12 row-img">
+                <div class="img-container">
+                    <img class="logo-ticket" src="/assets/LogoTicket.png" alt="logo">
+                </div>
+            </div>
         </div>
-        <div class="col">
-            R. Ayuntamiento de Reynosa
+        <div class="row">
+            <div class="bienvenida-container">
+                <div class="bg-negro">
+                    <h4 class="bienvenida-mensaje">R. Ayuntamiento de Reynosa</h4>
+                </div>
+            </div>
         </div>
-        <div class="col" *ngFor="let turno of turnosList">
-            Turno : <b>{{turno.turno}}</b>
-            
+        <hr class="solid">
+        <div class="row">
+            <div class="mensaje-container">
+                <div class="mensaje">
+                    <h3 class="mensaje-ticket"><span id="primero">Bienvenido</span><span id="segundo">su turno es</span> </h3>
+                </div>
+            </div>
         </div>
-        <div class="col">
-            Gracias por su visita
+        <div class="row">
+            <div class="col-md-6 turno-container">
+                <div class="turno" *ngFor="let item of turnosList">
+                    <h3>Turno: <b>{{item.turno}}</b></h3>
+                </div>
+            </div>
         </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="fecha-container">
+                <div class="fecha">
+                    <h4>Gracias por su visita</h4>
+                    <h3 id="date">{{datetime | date:'medium'}}</h3>
+                </div>
+            </div>
+        </div>
+        <hr class="solid">
     </div>
 </div>
 

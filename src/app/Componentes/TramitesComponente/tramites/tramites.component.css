@@ -1,33 +1,73 @@
-.row{
-    position: initial;
-}
-/* Estilos para el boton de imprimir */
-.btnprint{
-    background-color: var(--main-color);
-    
-    margin: 5px;
-    height: 5vh;
-    width: 10vw;
+.tramites{
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 15px 15px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."; 
 
-    display: flex;
-    justify-content: center;
+    margin-top: 15vh;
+
     align-items: center;
-    position: fixed;
-    
-    color: white;
-    
-    transform: translateX(55em);
-    animation-name: print;
-    animation-duration: 1s;
-    
-    cursor: pointer;
-    border-radius: 10px;
 }
-.btnprint:hover{
+
+.btn-tramite{
+    background-color: var(--main-color);
+    color: white;
+
+    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+}
+
+.btn-tramite:hover{
     background-color: var(--main-hover-color);
     color: black;
 }
-@keyframes print {
+
+.main-content{
+    height: 100%;
+}
+
+.container{
+    min-height: 100%;
+    position: relative;
+}
+
+.waves-container{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.tramiteswaves{
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;   
+}
+
+.btnprint>.btn{
+    background-color: var(--main-color);
+    color: white;
+
+    border-radius: 10px ;
+
+    position: absolute;
+    z-index: 100;
+    width: 8vw;
+    height: 8vh;
+    transform: translateX(54em);
+
+    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+
+    animation-name: print-turno;
+    animation-duration: 0.8s;
+}
+@keyframes print-turno {
     from{
         transform: translateX(0em);
     }
@@ -36,90 +76,77 @@
     }
 }
 
-/* se colocan los estilos a los botones */
-.col-md-4{
-    background-color: var(--main-color);
-    margin: 20px;
-    height: 10vh;
-    width: 350px;
-    
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-
-    position: relative;
-    top: 75px;
-
-    align-items: center;
-    border-radius: 10px;
-    cursor: pointer;
-
-    -webkit-box-shadow: 2px 5px 10px 5px rgba(7,50,59,0.1); 
-    box-shadow: 2px 5px 10px 5px rgba(7,50,59,0.1);
-
-    color:white
-}
-/* Se colocan los estilos para los botones en estado hover */
-.col-md-4:hover{
+.btnprint>.btn:hover{
     background-color: var(--main-hover-color);
-
-    -webkit-box-shadow: 2px 5px 10px 5px rgba(7,50,59,0.51); 
-    box-shadow: 2px 5px 10px 5px rgba(7,50,59,0.51);
-
-    color: black;
-
-}
-
-/* Se le coloca los estilos al texto de los botones */
-a{
-    color: white;
-
-    text-decoration: none;
-    padding: 50px;
-    
-}
-/* Se modifica el color de las etiquetas a para cambiar su color de texto a color negro */
-a:hover{
     color: black;
 }
 
-/* Se coloca el footer de posicion relativa para que los elementos
-    que esta por encima puedan empjar a la imagen hacia abajo */
-.footer{
-    min-height: 100%;
-    position: relative;
-
-}
-/* Se le coloca el width del 100% para que abarque el ancho de la pagina y una posicion absoluta para poder colocarlo
-    en la parte inferior de la pantalla */
-.tramiteswaves{
-    width: 100%;
-    position: absolute;
-    top: 333px;
-}
-
-.reynosa{
+.print-container{
     display: none;
 }
+
 @media print{
-    .container,.footer,app-navbar{
+    .main-content,app-navbar{
         display: none;
     }
-    .reynosa{
+    .print-container{
         display: block;
+        min-width: 100%;
     }
-    .datos{
+    .row-img{
+        width: 75vw;
+    }
+    .logo-ticket{
+        width: 245px;
+    }
+    .bienvenida-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .bienvenida-mensaje{
+        color: black;
+        font-weight: bolder;
+        font-size: 15px;   
+    }
+    hr.solid {
+        border-top: 3px solid black;
+    }
+    .mensaje-container{
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
     }
-    .col{
-        padding: 1px;
-        margin-left: 15px;
+    .mensaje-ticket{
+        font-size: 18px;
     }
-    .logoimg{
-        height: 50px;
-        min-width: 50%;
+
+    #primero::after{
+        content: "\a";
+        white-space: pre;
+    }
+    
+    .turno-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .fecha-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+    }
+    .fecha{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #date{
+        font-size: 10px;
     }
 }

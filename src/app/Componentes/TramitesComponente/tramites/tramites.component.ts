@@ -14,6 +14,8 @@ export class TramitesComponent implements OnInit {
   //Se generaron respectivamnte modelos de cada clase para mejorar las buenas practicas.
   tramiteList : Tramites[] =[];
   turnosList : Turnos[] = [];
+
+  datetime :any
   
 
   constructor({nativeElement}: ElementRef<HTMLImageElement>, private service : BackendService) {
@@ -25,8 +27,12 @@ export class TramitesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTramites();
+    this.getCurrentDate();
   }
 
+  getCurrentDate(){
+    this.datetime = new Date()
+  }
   //Creamos un metodo para realizar una peticion al servicio para listar los tramites.
   getTramites(){
     this.service.getTramites().subscribe(data =>{
