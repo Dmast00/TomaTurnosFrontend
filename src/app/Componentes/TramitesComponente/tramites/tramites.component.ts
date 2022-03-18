@@ -44,6 +44,7 @@ export class TramitesComponent implements OnInit {
   //un turno con la serie del tramite
   genTurno(id : Tramites){
     this.service.genTurno(id.idTramite).subscribe(data =>{
+      console.log(this.datetime)
       this.turnosList.push(data)
     });
     console.log(this.turnosList)

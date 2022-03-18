@@ -1,11 +1,13 @@
 import { Component, OnInit,Input, ComponentFactoryResolver } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { interval, isEmpty, Observable, Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Cajeros } from '../../Cajeros/cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Turnos } from '../../Turnos/turnos.model';
 import { TurnosService } from 'src/app/Servicios/turnos.service';
 import { Tramites } from '../../TramitesComponente/tramites.model';
+import { ToastrService } from 'ngx-toastr';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-cajeros',
@@ -36,7 +38,7 @@ export class CajerosComponent implements OnInit {
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
   constructor(private service : BackendService,private turnoService : TurnosService,
-    private modalService : NgbModal ) { }
+    private modalService : NgbModal,private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     //Inicializamos la variable susbscription para actualizar la lista de turnos 
@@ -62,12 +64,18 @@ export class CajerosComponent implements OnInit {
     this.last=[]
     console.log(this.Tramite,this.NumCaja)
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
-    console.log(temp)
-    this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
-    })
-    this.last.push(temp)
-    this.turnoService.saveTurnoData(temp).subscribe(data => {
-    });
+    if(temp != null){
+      this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
+        
+      },err =>console.log('HTTP Error',err))
+      this.last.push(temp)
+    }
+    else{
+      console.log('es nullo')
+      this.toastr.info(`No se encuentran mas turnos en fila del tramite seleccionado`)
+    }
+    
+    
     
   }
 
@@ -78,6 +86,8 @@ export class CajerosComponent implements OnInit {
     this.service.turnoVencido(id).subscribe(data =>{
       this.getLast();
     })
+    this.toastr.info('Se asigno como turno vencido')
+    
   }
 
 
@@ -88,12 +98,14 @@ export class CajerosComponent implements OnInit {
     this.service.turnoFinalizado(id).subscribe(data =>{
       this.getLast();
     });
+    this.toastr.success('Se finalizo el turno')
   }
 
   turnoDetenido(id:number){
     this.service.turnoFinalizado(id).subscribe(data =>{
       this.last = []
     });
+    this.toastr.info('Se detuvo la asignacion de turnos')
   }
   
   getTramites(){
