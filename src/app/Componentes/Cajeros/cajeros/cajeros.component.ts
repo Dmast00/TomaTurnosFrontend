@@ -3,11 +3,10 @@ import { interval, isEmpty, Observable, Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Cajeros } from '../../Cajeros/cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Turnos } from '../../Turnos/turnos.model';
 import { TurnosService } from 'src/app/Servicios/turnos.service';
 import { Tramites } from '../../TramitesComponente/tramites.model';
 import { ToastrService } from 'ngx-toastr';
-import { isNull } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-cajeros',

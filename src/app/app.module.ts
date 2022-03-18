@@ -12,7 +12,6 @@ import { LoginComponent } from './Componentes/Login/login/login.component';
 import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.component';
 import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
 import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
-import { ImprimirComponent } from './Componentes/Imprimir/imprimir/imprimir.component';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 
@@ -38,7 +37,6 @@ import { AccountInfoComponent } from './Componentes/Usuario/account-info/account
     RegistrarComponent,
     TurnosComponent,
     CajerosComponent,
-    ImprimirComponent,
     UsuarioComponent,
     AccountInfoComponent,
 

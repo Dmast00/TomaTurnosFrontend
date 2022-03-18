@@ -7,6 +7,7 @@ import { BackendService } from 'src/app/Servicios/backend.service';
 
 
 
+
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
@@ -18,7 +19,8 @@ export class RegistrarComponent implements OnInit {
 
   //se Crea un form group el cual funcionara como base para el formulario que se muestra del lado del cliente
   //asi mismo, creamos las validaciones para cada input del formulario
-  constructor( public fb : FormBuilder,private service : BackendService,private router : Router,private toastr : ToastrService) {
+  constructor( public fb : FormBuilder,private service : BackendService,private router : Router,private toastr : ToastrService,
+     ) {
     this.form = new FormGroup({
       lastName : new FormControl('',[
         Validators.required,
@@ -41,10 +43,10 @@ export class RegistrarComponent implements OnInit {
         Validators.minLength(6),
         Validators.pattern("^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")
       ]),
+     
     })
-    
-   }
-
+  }
+  
   ngOnInit(): void {
   }
 
