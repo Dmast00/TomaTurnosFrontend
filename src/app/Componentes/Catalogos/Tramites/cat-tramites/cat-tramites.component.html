@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Serie</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Predial</td>
+                    <td>Predial normal</td>
+                    <td>PI</td>
+                    <td>
+                        <div ngbDropdown>
+                            <button type="button" class="btn btn-secondary" ngbDropdownToggle>
+                              Opciones
+                            </button>
+                            <div ngbDropdownMenu>
+                              <a class="dropdown-item" href="#">opcion 1</a>
+                              <a class="dropdown-item" href="#">opcion 2</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+    </div>
+</div>

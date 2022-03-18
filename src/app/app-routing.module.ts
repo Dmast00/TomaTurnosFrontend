@@ -9,6 +9,8 @@ import { CajerosComponent } from "./Componentes/Cajeros/cajeros/cajeros.componen
 import { AuthGuard } from './Guards/auth.guard';
 import { UsuarioComponent } from "./Componentes/Usuario/usuario/usuario.component";
 import { AccountInfoComponent } from "./Componentes/Usuario/account-info/account-info.component";
+import { CatTramitesComponent } from "./Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component";
+
 
 const routes: Routes = [
   {path:'', component : HomeComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:'Turnos',component:TurnosComponent,canActivate:[AuthGuard]},
   {path:'Cajeros',component:CajerosComponent,canActivate:[AuthGuard]},
   {path:'Usuario',component:UsuarioComponent,canActivate:[AuthGuard]},
-  {path:'Informacion',component:AccountInfoComponent,canActivate:[AuthGuard]}
+  {path:'Informacion',component:AccountInfoComponent,canActivate:[AuthGuard]},
+  {path:'CatTramites',component:CatTramitesComponent}
+  
 
 ];
 
