@@ -70,7 +70,7 @@ export class TurnosComponent implements OnInit {
     //se retornan las dos listas. 
     if(this.Proceso.length >= 1){
       this.turnoActivo = []
-
+      
       //toma el ultimo item del array
       var popped = this.Proceso.pop()
 
@@ -83,7 +83,7 @@ export class TurnosComponent implements OnInit {
       this.turnoActivo = []
       console.log('no hay turnos en proceso')
     }
-    if(this.turnoAbajo.length >= 10){
+    if(this.turnoAbajo.length <= 10){
       
       this.getTurnosAbajo();
       // console.log(this.turnoAbajo)
@@ -100,9 +100,9 @@ export class TurnosComponent implements OnInit {
 
   getTurnosAbajo(){
     var slice = this.turnoAbajo.length - 10
-    console.log(slice)
+    
     this.temp = this.turnoAbajo.slice(slice)
-    console.log(this.temp)
+    
     return this.turnoAbajo
   }
 }

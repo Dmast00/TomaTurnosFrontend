@@ -77,6 +77,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('isLoggedIn','true');
           localStorage.setItem('token',data['securityStamp'])
           localStorage.setItem('userName',data['userName'])
+          this.service.getUserRole(data.id).subscribe(data =>{
+            localStorage.setItem('role',data[0])
+          })
           this.router.navigate(['/Home']);
           this.toastr.success('Inicio de sesion correcto')
         })

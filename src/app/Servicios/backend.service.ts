@@ -75,4 +75,8 @@ export class BackendService {
     return this.http.get<any>(`${this.apiPath}Account/${username}`)
     
   }
+
+  getUserRole(UserId : any):Observable<any>{
+    return this.http.get<any>(this.apiPath+'Role/getUserRole/'+UserId,UserId)
+  }
 }

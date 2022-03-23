@@ -10,6 +10,7 @@ import { AuthGuard } from './Guards/auth.guard';
 import { UsuarioComponent } from "./Componentes/Usuario/usuario/usuario.component";
 import { AccountInfoComponent } from "./Componentes/Usuario/account-info/account-info.component";
 import { CatTramitesComponent } from "./Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component";
+import { RoleGuard } from './Guards/role.guard';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path:'Cajeros',component:CajerosComponent,canActivate:[AuthGuard]},
   {path:'Usuario',component:UsuarioComponent,canActivate:[AuthGuard]},
   {path:'Informacion',component:AccountInfoComponent,canActivate:[AuthGuard]},
-  {path:'CatTramites',component:CatTramitesComponent}
+  {path:'CatTramites',component:CatTramitesComponent,canActivate:[RoleGuard]}
   
 
 ];

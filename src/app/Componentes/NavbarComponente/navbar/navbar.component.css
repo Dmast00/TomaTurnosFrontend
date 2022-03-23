@@ -19,8 +19,12 @@ a:hover{
 .leftside{
     display: flex;
     flex-direction: row;
-    margin-left: 38vw;
+    margin-left: 30vw;
 }
 .loggedin{
     margin-left: 10px;
 }
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
