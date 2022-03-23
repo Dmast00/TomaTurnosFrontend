@@ -12,5 +12,6 @@ export class AuthService {
     localStorage.setItem('isLoggedIn','false');
     localStorage.removeItem('token');
     localStorage.removeItem('userName')
+    localStorage.removeItem('role')
   }
 }

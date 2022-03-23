@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/Servicios/backend.service';
+import { Tramites } from '../tramites.model';
 
 @Component({
   selector: 'app-cat-tramites',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatTramitesComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service : BackendService) { }
+  tramitesList : Tramites[]
   ngOnInit(): void {
+    this.getTramites();
   }
 
+  getTramites(){
+    this.service.getTramites().subscribe(data =>{
+      this.tramitesList = data
+    })
+  }
 }

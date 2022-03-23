@@ -18,7 +18,6 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthGuard } from "./Guards/auth.guard";
-import { UsuarioComponent } from './Componentes/Usuario/usuario/usuario.component';
 import { AccountInfoComponent } from './Componentes/Usuario/account-info/account-info.component';
 import { UsuariosComponent } from './Componentes/Catalogos/Usuarios/usuarios/usuarios.component';
 import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component';
@@ -39,7 +38,6 @@ import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-trami
     RegistrarComponent,
     TurnosComponent,
     CajerosComponent,
-    UsuarioComponent,
     AccountInfoComponent,
     UsuariosComponent,
     CatTramitesComponent,

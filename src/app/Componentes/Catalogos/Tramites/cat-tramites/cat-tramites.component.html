@@ -12,18 +12,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Predial</td>
-                    <td>Predial normal</td>
-                    <td>PI</td>
+                <tr *ngFor="let item of tramitesList">
+                    <td>{{item.nombreTramite}}</td>
+                    <td>{{item.descripcionTramite}}</td>
+                    <td>{{item.serieTramite}}</td>
+                    
                     <td>
                         <div ngbDropdown>
                             <button type="button" class="btn btn-secondary" ngbDropdownToggle>
                               Opciones
                             </button>
                             <div ngbDropdownMenu>
-                              <a class="dropdown-item" href="#">opcion 1</a>
-                              <a class="dropdown-item" href="#">opcion 2</a>
+                                <a class="dropdown-item">Editar</a>
+                              <a class="dropdown-item">Eliminar</a>
                             </div>
                         </div>
                     </td>
