@@ -8,11 +8,12 @@
     <div ngbDropdown class="d-inline-block">
       <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Catalogos</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button routerLinkActive="active" routerLink="/CatTramites" ngbDropdownItem>Catalogo de Tramites</button>
-        <button routerLinkActive="active" routerLink="/Usuarios" ngbDropdownItem>Catalogo de Usuarios</button>
+        <button class="btn-dd" routerLinkActive="active" routerLink="/CatTramites" ngbDropdownItem>Catalogo de Tramites</button>
+        <button class="btn-dd" routerLinkActive="active" routerLink="/Usuarios" ngbDropdownItem>Catalogo de Usuarios</button>
         
       </div>
     </div>
+    <a class="nav-link" routerLinkActive="active" routerLink="/Graficas">Graficas</a>
     <div class="leftside">
       <a class="nav-item nav-link px-3 loggedin" routerLinkActive="active" href="/Informacion">{{userName}}</a>
       <a class="nav-item nav-link px-3 loggedin" href="#" (click)="logOut()">Cerrar Sesion</a>

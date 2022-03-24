@@ -1,0 +1,35 @@
+.container{
+    margin-top: 10vh;
+}
+.msg-options-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn-restablecer{
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-restablecer:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+.title-container{
+    margin: 1vh 0;
+}
+.msg-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-opciones{
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-opciones:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+a{
+    cursor: pointer;
+}

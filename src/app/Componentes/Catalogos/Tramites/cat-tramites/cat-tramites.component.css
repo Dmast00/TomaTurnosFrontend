@@ -1,0 +1,31 @@
+.container{
+    margin-top: 5vh;
+}
+.title-container{
+    margin: 1vh 0;
+}
+.msg-options-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.btn-aggtramite{
+    background-color: var(--main-color);
+    color: white;
+    margin-right: 6vw;
+}
+.btn-aggtramite:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+.btn-opciones{
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-opciones:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+a{
+    cursor: pointer;
+}

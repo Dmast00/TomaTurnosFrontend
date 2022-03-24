@@ -1,21 +1,31 @@
 <app-navbar></app-navbar>
 <div class="container">
+    <div class="row">
+        <div class="msg-options-container">
+            <div class="title-container">
+                <h3>Lista de Usuarios</h3>
+            </div>
+            <div class="pwsd-container">
+                <button class="btn btn-restablecer">Restablecer contraseña</button>                
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
-        <div class="table">
-            <thead>
+        <table class="table">
+            <thead class="headers">
                 <th>Id</th>
                 <th>Usuario</th>
                 <th>Correo Electronico</th>
                 <th>Opciones</th>
             </thead>
-            <tbody>
+            <tbody *ngIf="usuariosList != null">
                 <tr *ngFor="let item of usuariosList">
                     <td>{{item.id}}</td>
                     <td>{{item.userName}}</td>
                     <td>{{item.email}}</td>
                     <td>
                         <div ngbDropdown>
-                            <button type="button" class="btn btn-secondary" ngbDropdownToggle>
+                            <button type="button" class="btn btn-opciones" ngbDropdownToggle>
                             Opciones
                             </button>
                             <div ngbDropdownMenu>
@@ -27,6 +37,11 @@
                     </td>
                 </tr>
             </tbody>
-        </div>
+            <tbody *ngIf="usuariosList == null">
+                <div class="msg-container">
+                    <h3>no se encuentran usuarios registrados</h3>
+                </div>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -1,8 +1,17 @@
 <app-navbar></app-navbar>
-
 <div class="container">
+    <div class="row">
+        <div class="msg-options-container">
+            <div class="title-container">
+                <h3>Lista de Tramites</h3>
+            </div>
+            <div class="pwsd-container">
+                <button class="btn btn-aggtramite">Agregar Tramite</button>                
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
-        <div class="table">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -16,20 +25,19 @@
                     <td>{{item.nombreTramite}}</td>
                     <td>{{item.descripcionTramite}}</td>
                     <td>{{item.serieTramite}}</td>
-                    
                     <td>
                         <div ngbDropdown>
-                            <button type="button" class="btn btn-secondary" ngbDropdownToggle>
+                            <button type="button" class="btn btn-opciones" ngbDropdownToggle>
                               Opciones
                             </button>
                             <div ngbDropdownMenu>
                                 <a class="dropdown-item">Editar</a>
-                              <a class="dropdown-item">Eliminar</a>
+                                <a class="dropdown-item">Eliminar</a>
                             </div>
                         </div>
                     </td>
                 </tr>
             </tbody>
-        </div>
+        </table>
     </div>
 </div>
