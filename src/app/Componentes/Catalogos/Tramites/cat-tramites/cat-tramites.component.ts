@@ -20,4 +20,8 @@ export class CatTramitesComponent implements OnInit {
       this.tramitesList = data
     })
   }
+
+  crearTramite(){
+    console.log('algo')
+  }
 }

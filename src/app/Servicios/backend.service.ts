@@ -20,10 +20,38 @@ export class BackendService {
   // Injectamos el modulo de HTTPClient para hacer peticiones http al backend
   constructor(private http : HttpClient) { }
 
+
+  //*******************************************GET METHODS************************************************ */
+
   // Creamos un metodo el cual observamos cualquier tipo de dato, y retornamos la peticion http de tipo get a la ruta del backend.
   getTramites():Observable<any[]>{
     return this.http.get<any>(this.apiPath+'Tramites')
   }
+
+  //solicitamos la lista de turno que se encuentran en la base de datos
+  getTurnos():Observable<any[]>{
+    return this.http.get<any>(this.apiPath+'Turnos');
+  }
+
+  //Solicitamos al Web API el security Stamp del usuario para crear una variable de sesion
+  //y poder mantener el inicio de sesion del usuario a lo largo de la navegacion por la pagina
+  getStamp(email : any):Observable<any>{
+    return this.http.post(this.apiPath+'Account/GetUser/'+email,email);
+  }
+
+  getUserinfo(username : any): Observable<any>{
+    return this.http.get<any>(`${this.apiPath}Account/${username}`)
+  }
+
+  getUserRole(UserId : any):Observable<any>{
+    return this.http.get<any>(this.apiPath+'Role/getUserRole/'+UserId,UserId)
+  }
+
+  getUsuarios():Observable<any>{
+    return this.http.get<any>(this.apiPath+'Account/GetUsuarios');
+  }
+
+  //***************************************POST METHODS***************************************************** */
 
   //Generamos un turno consultando al api y enviando como paramentro el id del tramite que se selecciono
   genTurno(id : number):Observable<any>{
@@ -31,10 +59,6 @@ export class BackendService {
     return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
   }
 
-  //solicitamos la lista de turno que se encuentran en la base de datos
-  getTurnos():Observable<any[]>{
-    return this.http.get<any>(this.apiPath+'Turnos');
-  }
 
   //Registramos al usuario nuevo por medio del api, enviando el form que se lleno. 
   registerUsuario(form : any){
@@ -45,13 +69,10 @@ export class BackendService {
   loginUser(form : any){
     return this.http.post(this.apiPath+'Account/Login',form);
   }
-
-  //Solicitamos al Web API el security Stamp del usuario para crear una variable de sesion
-  //y poder mantener el inicio de sesion del usuario a lo largo de la navegacion por la pagina
-  getStamp(email : any):Observable<any>{
-    return this.http.post(this.apiPath+'Account/GetUser/'+email,email);
+  createTramite(form : any, id : any){
+    return this.http.post(this.apiPath + 'Tramites/'+id,form);
   }
-
+  //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
   //en proceso de pasar a ventanilla
   turnoProceso(id : number,numCaja : number){
@@ -71,16 +92,5 @@ export class BackendService {
     return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/'+id,id)
   }
 
-  getUserinfo(username : any): Observable<any>{
-    return this.http.get<any>(`${this.apiPath}Account/${username}`)
-    
-  }
 
-  getUserRole(UserId : any):Observable<any>{
-    return this.http.get<any>(this.apiPath+'Role/getUserRole/'+UserId,UserId)
-  }
-
-  getUsuarios():Observable<any>{
-    return this.http.get<any>(this.apiPath+'Account/GetUsuarios');
-  }
 }
