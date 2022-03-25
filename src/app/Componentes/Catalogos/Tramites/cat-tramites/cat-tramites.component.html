@@ -6,7 +6,7 @@
                 <h3>Lista de Tramites</h3>
             </div>
             <div class="pwsd-container">
-                <button class="btn btn-aggtramite">Agregar Tramite</button>                
+                <app-crear-modal #content></app-crear-modal>              
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                               Opciones
                             </button>
                             <div ngbDropdownMenu>
-                                <a class="dropdown-item">Editar</a>
+                                <a class="dropdown-item" ><app-editar-modal [idTramite]="item.idTramite"></app-editar-modal>></a>
                                 <a class="dropdown-item">Eliminar</a>
                             </div>
                         </div>

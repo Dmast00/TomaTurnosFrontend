@@ -59,7 +59,6 @@ export class BackendService {
     return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
   }
 
-
   //Registramos al usuario nuevo por medio del api, enviando el form que se lleno. 
   registerUsuario(form : any){
     return this.http.post(this.apiPath+'Account/Register',form)
@@ -69,8 +68,8 @@ export class BackendService {
   loginUser(form : any){
     return this.http.post(this.apiPath+'Account/Login',form);
   }
-  createTramite(form : any, id : any){
-    return this.http.post(this.apiPath + 'Tramites/'+id,form);
+  createTramite(form : any){
+    return this.http.post(this.apiPath +'Tramites',form);
   }
   //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
@@ -92,5 +91,8 @@ export class BackendService {
     return this.http.put(this.apiPath+'Turnos/TurnoFinalizado/'+id,id)
   }
 
+  editarTramite(id : number,form : any){
+    return this.http.put(this.apiPath+'Tramites'+id,form)
+  }
 
 }

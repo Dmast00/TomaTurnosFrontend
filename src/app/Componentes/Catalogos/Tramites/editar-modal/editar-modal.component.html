@@ -1,0 +1,32 @@
+<ng-template #content let-c="close" let-d="dismiss" class="modal-container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Tramite</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body configuracion">
+        <div class="config-container">
+            <form [formGroup]="form" >
+                <div class="col-md-12 tram-serie-container" >
+                    <div class="col-md-6 form-group">
+                        <label for="nombreTramite">Tramite</label>
+                        <input type="text" class="form-control" formControlName="nombreTramite" >
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="serie">Serie</label>
+                        <input type="text" class="form-control" formControlName="serieTramite">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="descripcionTramite">Descripcion</label>
+                    <input type="text" class="form-control descripcion" formControlName="descripcionTramite">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" >Guardar</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</ng-template>
+
+<button class="btn btn-lg  btn-modal" (click)="open(content)"> Agregar Tramite</button>

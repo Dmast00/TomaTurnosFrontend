@@ -1,0 +1,31 @@
+
+.btn-modal{
+    background-color: var(--main-color);
+    color: white;
+    margin-right: 6vw;
+}
+.btn-modal:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+.btn-modal:focus,.btn-modal:active,.btn-modal:visited{
+    outline: none;
+    border: 0.5px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+}
+.tram-serie-container{
+    display: flex;
+    flex-direction: row;   
+}
+.form-group{
+    margin: 3px;
+    padding: auto;
+}
+.descripcion{
+    height: 70px;
+}
+input:focus,input:active,input:visited{
+    outline: none;
+    border: 0.5px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+}

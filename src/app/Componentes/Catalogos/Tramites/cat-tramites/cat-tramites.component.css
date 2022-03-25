@@ -26,6 +26,11 @@
     background-color: var(--main-hover-color);
     color: black;
 }
+.btn-opciones:focus,.btn-opciones:active,.btn-opciones:visited{
+    outline: none;
+    border: 2px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+}
 a{
     cursor: pointer;
 }

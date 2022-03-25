@@ -30,7 +30,7 @@ export class TurnosComponent implements OnInit {
 
 
    //se crea una suscripcion a la funcion getTurnos() para que cada intervalo de 
-   //3000 milisegundos se actualice el array de turnos
+   //1000 milisegundos se actualice el array de turnos
   ngOnInit(): void {
     this.getTurnos()
     this.updateSubscription = interval(1000).subscribe(
@@ -41,7 +41,7 @@ export class TurnosComponent implements OnInit {
 
   //Se solicita al servidor la lista de turnos creados que contengan el IdStatus 1 que equivale 
   //a turno recien creado, asi mismo, ejecuta la funcion getTurnoStatus() el cual 
-  //solicita al servidor la lista de turnos que contienen el status 4
+  //solicita al servidor la lista de turnos que contienen el status 1
   getTurnos(){
     this.service.getTurnos().subscribe(data =>{
       var temp = data.filter(x => x.idStatus == 1)
@@ -81,19 +81,15 @@ export class TurnosComponent implements OnInit {
       this.turnoActivo.push(popped!) 
     }else{
       this.turnoActivo = []
-      console.log('no hay turnos en proceso')
+      
     }
     if(this.turnoAbajo.length <= 10){
       
       this.getTurnosAbajo();
-      // console.log(this.turnoAbajo)
-      // var shiffted = this.turnoAbajo.shift()
-      // console.log(shiffted)
-       
     }
     else{
       
-      console.log('esperando turno extra')
+      
     }
     return this.Proceso,this.turnoAbajo
   }

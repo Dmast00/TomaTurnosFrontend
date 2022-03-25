@@ -21,6 +21,8 @@ import { AuthGuard } from "./Guards/auth.guard";
 import { AccountInfoComponent } from './Componentes/Usuario/account-info/account-info.component';
 import { UsuariosComponent } from './Componentes/Catalogos/Usuarios/usuarios/usuarios.component';
 import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component';
+import { CrearModalComponent } from './Componentes/Catalogos/Tramites/crear-modal/crear-modal.component';
+import { EditarModalComponent } from './Componentes/Catalogos/Tramites/editar-modal/editar-modal.component';
 
 
 
@@ -41,6 +43,8 @@ import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-trami
     AccountInfoComponent,
     UsuariosComponent,
     CatTramitesComponent,
+    CrearModalComponent,
+    EditarModalComponent,
 
 
     
