@@ -29,9 +29,9 @@
                             Opciones
                             </button>
                             <div ngbDropdownMenu>
-                                <a class="dropdown-item">Editar</a>
-                                <a class="dropdown-item">Eliminar</a>
-                                <a class="dropdown-item">Editar Permisos</a>
+                                <a class="dropdown-item edit-tag">Editar</a>
+                                <a class="dropdown-item">Eliminar<app-eliminar-u-modal [IdUsuario]="item.id"></app-eliminar-u-modal></a>
+                                <a class="dropdown-item">Editar Permisos<app-add-role-u-modal [IdUsuario]="item.id"></app-add-role-u-modal></a>
                             </div>
                         </div>
                     </td>

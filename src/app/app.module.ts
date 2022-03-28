@@ -24,6 +24,8 @@ import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-trami
 import { CrearModalComponent } from './Componentes/Catalogos/Tramites/crear-modal/crear-modal.component';
 import { EditarModalComponent } from './Componentes/Catalogos/Tramites/editar-modal/editar-modal.component';
 import { EliminarModalComponent } from './Componentes/Catalogos/Tramites/eliminar-modal/eliminar-modal.component';
+import { EliminarUModalComponent } from './Componentes/Catalogos/Usuarios/eliminar-u-modal/eliminar-u-modal.component';
+import { AddRoleUModalComponent } from './Componentes/Catalogos/Usuarios/add-role-u-modal/add-role-u-modal.component';
 
 
 
@@ -47,6 +49,8 @@ import { EliminarModalComponent } from './Componentes/Catalogos/Tramites/elimina
     CrearModalComponent,
     EditarModalComponent,
     EliminarModalComponent,
+    EliminarUModalComponent,
+    AddRoleUModalComponent,
 
 
     

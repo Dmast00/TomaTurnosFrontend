@@ -50,6 +50,13 @@ export class BackendService {
     return this.http.get<any>(this.apiPath+'Account/GetUsuarios');
   }
 
+  getUsuario(id : any):Observable<any>{
+    return this.http.get<any>(this.apiPath+'User/'+id);
+  }
+  getRoles():Observable<any>{
+    return this.http.get<any>(this.apiPath+'Roles');
+  }
+
   //***************************************POST METHODS***************************************************** */
 
   //Generamos un turno consultando al api y enviando como paramentro el id del tramite que se selecciono
@@ -92,6 +99,10 @@ export class BackendService {
     console.log(form)
     return this.http.put(this.apiPath+`Tramites/${id}`,form);
   }
+
+  editarRol(idUser : any , idRole : any){
+    return this.http.put(this.apiPath+'Role/AddRoleToUser/'+idUser,idRole);
+  }
  
   //*********************************************DELETE METHODS**************************************************** */
 
@@ -99,4 +110,7 @@ export class BackendService {
     return this.http.delete(this.apiPath+`Tramites/${id}`);
   }
 
+  eliminarUsuario(id : any){
+    return this.http.delete(this.apiPath+'User/'+id)
+  }
 }

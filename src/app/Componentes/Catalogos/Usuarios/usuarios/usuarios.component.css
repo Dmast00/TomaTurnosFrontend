@@ -33,3 +33,8 @@
 a{
     cursor: pointer;
 }
+.edit-tag{
+    pointer-events: none;
+    cursor: default;
+    color: rgba(214, 213, 213, 0.664);
+}

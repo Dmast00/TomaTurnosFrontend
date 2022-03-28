@@ -35,7 +35,6 @@ export class EliminarModalComponent implements OnInit {
 
   eliminarTramite(id : number){
     this.service.eliminarTramite(id).subscribe(data =>{
-      console.log(data)
       this.tram.getTramites();
     })
   }
