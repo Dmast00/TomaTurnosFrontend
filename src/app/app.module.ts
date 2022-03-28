@@ -23,6 +23,7 @@ import { UsuariosComponent } from './Componentes/Catalogos/Usuarios/usuarios/usu
 import { CatTramitesComponent } from './Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component';
 import { CrearModalComponent } from './Componentes/Catalogos/Tramites/crear-modal/crear-modal.component';
 import { EditarModalComponent } from './Componentes/Catalogos/Tramites/editar-modal/editar-modal.component';
+import { EliminarModalComponent } from './Componentes/Catalogos/Tramites/eliminar-modal/eliminar-modal.component';
 
 
 
@@ -45,6 +46,7 @@ import { EditarModalComponent } from './Componentes/Catalogos/Tramites/editar-mo
     CatTramitesComponent,
     CrearModalComponent,
     EditarModalComponent,
+    EliminarModalComponent,
 
 
     

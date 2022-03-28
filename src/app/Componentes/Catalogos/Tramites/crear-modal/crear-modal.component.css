@@ -29,3 +29,12 @@ input:focus,input:active,input:visited{
     border: 0.5px var(--main-color);
     box-shadow:0 0 10px var(--main-hover-color);
 }
+
+.btn-modal-save{
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-modal-save:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}

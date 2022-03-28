@@ -34,3 +34,14 @@
 a{
     cursor: pointer;
 }
+.child-modal{
+    /* z-index: 100;
+    width: 100%;
+    background-color: aquamarine;
+    position: absolute;
+    right: 0px; */
+    
+    left: 0px;
+    position: absolute;
+    width: 100%;
+}

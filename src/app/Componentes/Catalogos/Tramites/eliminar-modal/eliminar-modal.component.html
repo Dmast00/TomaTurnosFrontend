@@ -5,26 +5,26 @@
     </div>
     <div class="modal-body configuracion">
         <div class="config-container">
-            <form [formGroup]="form" *ngFor="let item of tramiteList">
+            <form [formGroup]="form" *ngFor="let item of eliminarList">
                 <div class="col-md-12 tram-serie-container" >
                     <div class="col-md-12 tram-serie-container">
                         <input type="hidden" name="" formControlName="idTramite" [ngModel]="item.idTramite" >
                         <div class="col-md-6 form-group">
                             <label for="nombreTramite">Tramite</label>
-                            <input type="text" class="form-control" formControlName="nombreTramite" [ngModel]="item.nombreTramite" >
+                            <input type="text" class="form-control" formControlName="nombreTramite" [ngModel]="item.nombreTramite" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="serie">Serie</label>
-                            <input type="text" class="form-control" formControlName="serieTramite" [ngModel]="item.serieTramite">
+                            <input type="text" class="form-control" formControlName="serieTramite" [ngModel]="item.serieTramite" readonly>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <label for="descripcionTramite">Descripcion</label>
-                    <input type="text" class="form-control descripcion" formControlName="descripcionTramite" [ngModel]="item.descripcionTramite">
+                    <input type="text" class="form-control descripcion" formControlName="descripcionTramite" [ngModel]="item.descripcionTramite" readonly>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" (click)="editarTramite(item.idTramite)" >Guardar</button>
+                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" (click)="eliminarTramite(item.idTramite)" >Eliminar</button>
                 </div>
             </form>
             

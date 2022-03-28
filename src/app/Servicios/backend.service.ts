@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 
 const httpOptionsPlain = {
@@ -19,7 +19,6 @@ export class BackendService {
 
   // Injectamos el modulo de HTTPClient para hacer peticiones http al backend
   constructor(private http : HttpClient) { }
-
 
   //*******************************************GET METHODS************************************************ */
 
@@ -55,7 +54,6 @@ export class BackendService {
 
   //Generamos un turno consultando al api y enviando como paramentro el id del tramite que se selecciono
   genTurno(id : number):Observable<any>{
-    console.log(this.apiPath+'Turnos/GenTurno/'+id)
     return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
   }
 
@@ -75,7 +73,6 @@ export class BackendService {
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
   //en proceso de pasar a ventanilla
   turnoProceso(id : number,numCaja : number){
-    console.log(this.apiPath+'Turnos/TurnoProceso/'+id+'/'+numCaja)
     return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id+'/'+numCaja,id);
   }
 
@@ -92,7 +89,14 @@ export class BackendService {
   }
 
   editarTramite(id : number,form : any){
-    return this.http.put(this.apiPath+'Tramites'+id,form)
+    console.log(form)
+    return this.http.put(this.apiPath+`Tramites/${id}`,form);
+  }
+ 
+  //*********************************************DELETE METHODS**************************************************** */
+
+  eliminarTramite(id : number){
+    return this.http.delete(this.apiPath+`Tramites/${id}`);
   }
 
 }

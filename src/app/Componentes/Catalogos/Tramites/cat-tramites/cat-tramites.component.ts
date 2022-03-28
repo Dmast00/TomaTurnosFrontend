@@ -11,7 +11,7 @@ import { Tramites } from '../tramites.model';
 export class CatTramitesComponent implements OnInit{
   display = false
   constructor(private service : BackendService) { }
-  idTramite : number 
+  
 
   tramitesList : Tramites[] = []
   
@@ -22,7 +22,7 @@ export class CatTramitesComponent implements OnInit{
   getTramites(){
     this.service.getTramites().subscribe(data =>{
       this.tramitesList = data
-      console.log(this.tramitesList)
+      
     })
   }
 }

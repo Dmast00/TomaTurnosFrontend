@@ -31,8 +31,8 @@
                               Opciones
                             </button>
                             <div ngbDropdownMenu>
-                                <a class="dropdown-item" ><app-editar-modal [idTramite]="item.idTramite"></app-editar-modal>></a>
-                                <a class="dropdown-item">Eliminar</a>
+                                <a class="dropdown-item" >Editar<app-editar-modal class="child-modal" [IdTramite]="item.idTramite"></app-editar-modal></a>
+                                <a class="dropdown-item">Eliminar <app-eliminar-modal class="child-modal" [IdTramite]="item.idTramite"></app-eliminar-modal></a>
                             </div>
                         </div>
                     </td>
