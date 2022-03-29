@@ -1,0 +1,31 @@
+.btn-modal{
+    left: 0px;
+    position: absolute;
+    width: 100%;
+}
+
+input:focus,input:active,input:visited{
+    outline: none;
+    border: 0.5px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+}
+.tram-serie-container{
+    display: flex;
+    flex-direction: row;   
+}
+.form-group{
+    margin: 3px;
+    padding: auto;
+}
+.descripcion{
+    height: 70px;
+}
+
+.btn-modal-save{
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-modal-save:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}

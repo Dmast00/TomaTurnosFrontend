@@ -46,9 +46,19 @@ export class CrearModalComponent implements OnInit {
     }
 
     this.service.createTramite(this.form.value).subscribe(data =>{
-      console.log(data)
-      this.tram.getTramites();
-      this.form.reset();
+      if(data.status == 200){
+        this.toastr.success('Tramite Creado')
+        this.tram.getTramites();
+      }
+      else if(data.status == 400){
+        this.toastr.error('Ocurrio un error, intentelo mas tarde')
+        this.form.reset();
+      }
+      else if(data.status == 500 ){
+        this.toastr.info('Ocurrio un error, intentelo mas tarde.')
+        this.form.reset();
+      }
+      
     })
   }
 

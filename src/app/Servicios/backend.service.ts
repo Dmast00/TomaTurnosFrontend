@@ -75,7 +75,7 @@ export class BackendService {
     return this.http.post(this.apiPath+'Account/Login',form);
   }
   createTramite(form : any){
-    return this.http.post(this.apiPath +'Tramites',form);
+    return this.http.post(this.apiPath +'Tramites',form,{observe:'response'});
   }
   //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
@@ -98,22 +98,22 @@ export class BackendService {
 
   editarTramite(id : number,form : any){
     
-    return this.http.put(this.apiPath+`Tramites/${id}`,form);
+    return this.http.put(this.apiPath+`Tramites/${id}`,form,{observe:'response'});
   }
 
   editarRol(idUser : any , idRole : any){
     const params = new HttpParams().set('role',idRole)
     let url = this.apiPath+'Role/AddRoleToUser/'+idUser+'/'+idRole
-    return this.http.put(url,idUser);
+    return this.http.put(url,idUser,{observe:'response'});
   }
  
   //*********************************************DELETE METHODS**************************************************** */
 
   eliminarTramite(id : number){
-    return this.http.delete(this.apiPath+`Tramites/${id}`);
+    return this.http.delete(this.apiPath+`Tramites/${id}`,{observe:'response'});
   }
 
   eliminarUsuario(id : any){
-    return this.http.delete(this.apiPath+'User/'+id)
+    return this.http.delete(this.apiPath+'User/'+id,{observe:'response'})
   }
 }

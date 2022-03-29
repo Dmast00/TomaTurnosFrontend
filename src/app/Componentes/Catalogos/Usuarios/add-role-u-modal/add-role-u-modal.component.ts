@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/Componentes/Usuario/usuario.model';
 import { BackendService } from 'src/app/Servicios/backend.service';
 
@@ -16,7 +17,7 @@ export class AddRoleUModalComponent implements OnInit {
   rolSel : number
   rolesList : any[] = []
   usuarioList : Usuario[] =[]
-  constructor(private modalService : NgbModal, private service : BackendService, public fb:FormBuilder) {
+  constructor(private modalService : NgbModal, private service : BackendService, public fb:FormBuilder,private toastr :ToastrService) {
     this.form = new FormGroup({
       id : new FormControl(),
       userName : new FormControl(),
@@ -45,7 +46,15 @@ export class AddRoleUModalComponent implements OnInit {
   editarRole(){
     console.log(this.IdUsuario,this.rolSel)
     this.service.editarRol(this.IdUsuario, this.rolSel).subscribe(data =>{
-      
+      if(data.status == 200){
+        this.toastr.success('Se modifico el usuario exitosamente')
+      }
+      else if(data.status == 400){
+        this.toastr.error('Ocurrio un error, intentelo mas tarde.')
+      }
+      else if(data.status == 500){
+        this.toastr.info('Ocurrio un error, intentelo mas tarde.')
+      }
     })
   }
 
