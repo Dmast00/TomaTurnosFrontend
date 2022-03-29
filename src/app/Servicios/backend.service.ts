@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -51,10 +51,11 @@ export class BackendService {
   }
 
   getUsuario(id : any):Observable<any>{
+    console.log(id)
     return this.http.get<any>(this.apiPath+'User/'+id);
   }
   getRoles():Observable<any>{
-    return this.http.get<any>(this.apiPath+'Roles');
+    return this.http.get<any>(this.apiPath+'Role');
   }
 
   //***************************************POST METHODS***************************************************** */
@@ -96,12 +97,14 @@ export class BackendService {
   }
 
   editarTramite(id : number,form : any){
-    console.log(form)
+    
     return this.http.put(this.apiPath+`Tramites/${id}`,form);
   }
 
   editarRol(idUser : any , idRole : any){
-    return this.http.put(this.apiPath+'Role/AddRoleToUser/'+idUser,idRole);
+    const params = new HttpParams().set('role',idRole)
+    let url = this.apiPath+'Role/AddRoleToUser/'+idUser+'/'+idRole
+    return this.http.put(url,idUser);
   }
  
   //*********************************************DELETE METHODS**************************************************** */

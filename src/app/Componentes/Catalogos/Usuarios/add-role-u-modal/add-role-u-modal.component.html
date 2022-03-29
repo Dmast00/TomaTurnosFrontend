@@ -9,20 +9,22 @@
             <form [formGroup]="form" >
                 <div class="col-md-12 tram-serie-container"  >
                     <div class="col-md-12 tram-serie-container">
-                        <input type="hidden" name="" formControlName="id" [ngModel]="item.id" >
-                        <div class="col-md-6 form-group">
-                            <label for="nombreTramite">Usuario</label>
-                            <input type="text" class="form-control" formControlName="userName"  [ngModel]="item.userName" readonly>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label for="serie">Correo Electronico</label>
-                            <input type="text" class="form-control" formControlName="email" [ngModel]="item.email" readonly>
+                        <input type="hidden">
+                        <div class="col-md-6 form-group" >
+                            <label for="nombreTramite" >Usuario</label>
+                            <input type="text" class="form-control" formControlName="userName" *ngFor="let item of usuarioList" [ngModel]="item.userName" readonly>
                         </div>
                     </div>
                 </div>
-               
+                
+                <div class="dropdown-container">
+                    <label for="tramite" class="dropdown-label">Tramite</label>
+                    <select id="tramite" class="form-select"  aria-label="Default select example" [(ngModel)]="rolSel" [ngModelOptions]="{standalone: true}" >
+                        <option selected  *ngFor="let item of rolesList"   [ngValue]="item.id">{{item.normalizedName}}</option>
+                    </select>
+                </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')"  >Eliminar</button>
+                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" (click)="editarRole()" >Editar</button>
                 </div>
             </form>
             
@@ -30,4 +32,4 @@
     </div>
 </ng-template>
 
-<button class="btn btn-lg  btn-modal" (click)="open(content)" ></button>
+<button class="btn btn-lg  btn-modal" (click)="open(content)" (click)="getUsuario()" ></button>

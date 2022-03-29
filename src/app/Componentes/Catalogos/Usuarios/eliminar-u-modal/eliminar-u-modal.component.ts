@@ -28,9 +28,10 @@ export class EliminarUModalComponent implements OnInit {
   }
 
   getUsuario(){
+    this.usuarioList = []
     this.service.getUsuario(this.IdUsuario).subscribe(data => {
       this.usuarioList.push(data)
-      console.log(this.usuarioList)
+      
     })
   }
 

@@ -8,7 +8,7 @@
         <h2>Inciar sesion</h2>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electornico" [ngClass]="{'is-invalid':submmited && f['email'].errors , 'is-valid': f['email'].valid}">
+          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electronico" [ngClass]="{'is-invalid':submmited && f['email'].errors , 'is-valid': f['email'].valid}">
           <div *ngIf="f['email'].errors" class="invalid-feedback">
             <div *ngIf="f['email'].errors?.['required']">El correo electronico es obligatorio</div>
             <div *ngIf="f['email'].errors?.['pattern']">Ingrese un correo electronico valido</div>
