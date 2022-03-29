@@ -1,0 +1,33 @@
+
+<ng-template #content let-c="close" let-d="dismiss" class="modal-container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Eliminar Usuario</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body configuracion">
+        <div class="config-container">
+            <form >
+                <div class="col-md-12 tram-serie-container"  >
+                    <div class="col-md-12 tram-serie-container">
+                        <input type="hidden" name="">
+                        <div class="col-md-6 form-group">
+                            <label for="nombreTramite">Id del Usuario</label>
+                            <input type="text" class="form-control"  [(ngModel)]="IdUsuario" [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="serie">Nueva Contraseña</label>
+                            <input type="text" class="form-control"  [(ngModel)]="pswd" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" (click)="restablecer()" >Restablecer</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</ng-template>
+
+<button class="btn btn-lg  btn-modal" (click)="open(content)" ></button>

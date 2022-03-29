@@ -17,6 +17,12 @@ export class BackendService {
   //Creamos una variable la cual guardara el path del API
   readonly apiPath = 'https://localhost:44352/api/';
 
+  headers = {
+    headers : new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
   // Injectamos el modulo de HTTPClient para hacer peticiones http al backend
   constructor(private http : HttpClient) { }
 
@@ -105,6 +111,12 @@ export class BackendService {
     const params = new HttpParams().set('role',idRole)
     let url = this.apiPath+'Role/AddRoleToUser/'+idUser+'/'+idRole
     return this.http.put(url,idUser,{observe:'response'});
+  }
+
+  restablecerContrasena(idUser:any,pswd : any){
+    var pass = JSON.stringify(pswd)
+    
+    return this.http.put(this.apiPath+'Account/Restablecer/'+idUser,pass,this.headers)
   }
  
   //*********************************************DELETE METHODS**************************************************** */

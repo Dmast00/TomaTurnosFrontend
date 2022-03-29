@@ -6,7 +6,7 @@
                 <h3>Lista de Usuarios</h3>
             </div>
             <div class="pwsd-container">
-                <button class="btn btn-restablecer">Restablecer contraseña</button>                
+                <button class="btn btn-restablecer">Restablecer contraseña<app-restablecer></app-restablecer></button>                
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
                 <th>Usuario</th>
                 <th>Correo Electronico</th>
                 <th>Rol</th>
-                <th>Opciones</th>
+                
             </thead>
             <tbody *ngIf="usuariosList != null">
                 <tr *ngFor="let item of usuariosList">

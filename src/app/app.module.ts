@@ -26,6 +26,7 @@ import { EditarModalComponent } from './Componentes/Catalogos/Tramites/editar-mo
 import { EliminarModalComponent } from './Componentes/Catalogos/Tramites/eliminar-modal/eliminar-modal.component';
 import { EliminarUModalComponent } from './Componentes/Catalogos/Usuarios/eliminar-u-modal/eliminar-u-modal.component';
 import { AddRoleUModalComponent } from './Componentes/Catalogos/Usuarios/add-role-u-modal/add-role-u-modal.component';
+import { RestablecerComponent } from './Componentes/Catalogos/Usuarios/restablecer/restablecer.component';
 
 
 
@@ -51,6 +52,7 @@ import { AddRoleUModalComponent } from './Componentes/Catalogos/Usuarios/add-rol
     EliminarModalComponent,
     EliminarUModalComponent,
     AddRoleUModalComponent,
+    RestablecerComponent,
 
 
     
