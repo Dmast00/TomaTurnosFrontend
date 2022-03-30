@@ -11,17 +11,29 @@
                         <input type="hidden" name="" formControlName="idTramite" [ngModel]="item.idTramite" >
                         <div class="col-md-6 form-group">
                             <label for="nombreTramite">Tramite</label>
-                            <input type="text" class="form-control" formControlName="nombreTramite" [ngModel]="item.nombreTramite" >
+                            <input type="text" class="form-control" formControlName="nombreTramite" [ngModel]="item.nombreTramite" [ngClass]="{'is-invalid': submmited && f['nombreTramite'].errors, 'is-valid': f['nombreTramite'].valid}" >
+                                <div *ngIf="f['nombreTramite'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['nombreTramite'].errors?.['required']">El nombre del tramite es obligatorio</div>
+                                    <div *ngIf="f['nombreTramite'].errors?.['pattern']">Ingrese un nombre valido</div>
+                                </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="serie">Serie</label>
-                            <input type="text" class="form-control" formControlName="serieTramite" [ngModel]="item.serieTramite">
+                            <input type="text" class="form-control" formControlName="serieTramite" [ngModel]="item.serieTramite"  [ngClass]="{'is-invalid': submmited && f['serieTramite'].errors, 'is-valid': f['serieTramite'].valid}">
+                                <div *ngIf="f['serieTramite'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['serieTramite'].errors?.['required']">La serie del tramite es obligatorio</div>
+                                    <div *ngIf="f['serieTramite'].errors?.['pattern']">Ingrese una serie valida</div>
+                                </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <label for="descripcionTramite">Descripcion</label>
-                    <input type="text" class="form-control descripcion" formControlName="descripcionTramite" [ngModel]="item.descripcionTramite">
+                    <input type="text" class="form-control descripcion" formControlName="descripcionTramite" [ngModel]="item.descripcionTramite" [ngClass]="{'is-invalid': submmited && f['descripcionTramite'].errors, 'is-valid': f['descripcionTramite'].valid}">
+                        <div *ngIf="f['descripcionTramite'].errors" class="invalid-feedback">
+                            <div *ngIf="f['descripcionTramite'].errors?.['required']">La descripcion del tramite es obligatorio</div>
+                            <div *ngIf="f['descripcionTramite'].errors?.['pattern']">Ingrese una descripcion valida</div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-modal-save" (click)="c('Save click')" (click)="editarTramite(item.idTramite)" >Guardar</button>

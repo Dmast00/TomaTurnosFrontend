@@ -15,21 +15,23 @@ import { Tramites } from '../tramites.model';
 })
 export class CrearModalComponent implements OnInit {
   form : FormGroup;
-  submitted = false;
+  submmited = false;
   tramite : any
 
   constructor(private modalService : NgbModal,public fb : FormBuilder,private service:BackendService,private router : Router,
     private toastr : ToastrService,private tram : CatTramitesComponent) {
     this.form = new FormGroup({
       nombreTramite : new FormControl('',[
-        
+        Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]*$")
       ]),
       descripcionTramite : new FormControl('',[
-        // Validators.required,
-        // Validators.pattern("^[a-zA-Z_ ]*$")
+        Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]*$")
       ]),
       serieTramite : new FormControl('',[
-        // Validators.required
+        Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]*$")
         
       ])
     })
@@ -38,9 +40,12 @@ export class CrearModalComponent implements OnInit {
   ngOnInit(): void {
    
   }
+  get f(){
+    return this.form.controls;
+  }
 
   submitForm(){
-    this.submitted = true;
+    this.submmited = true;
     if(this.form.invalid){
       return;
     }

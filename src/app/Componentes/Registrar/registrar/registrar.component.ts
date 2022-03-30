@@ -64,7 +64,6 @@ export class RegistrarComponent implements OnInit {
   //muestra un mensaje al usuario con el error y limpiar e formulrio
   submitForm(){
     this.submmited = true;
-    console.log(this.form.value)
     if(this.form.invalid){
       return;
     }

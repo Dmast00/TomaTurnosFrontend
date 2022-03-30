@@ -6,7 +6,7 @@
     </div>
     <div class="modal-body configuracion">
         <div class="config-container">
-            <form >
+            <form [formGroup]="form">
                 <div class="col-md-12 tram-serie-container"  >
                     <div class="col-md-12 tram-serie-container">
                         <input type="hidden" name="">
@@ -16,7 +16,12 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="serie">Nueva Contraseña</label>
-                            <input type="text" class="form-control"  [(ngModel)]="pswd" [ngModelOptions]="{standalone: true}">
+                            <input type="text" class="form-control" formControlName="password"  [(ngModel)]="pswd"  [ngClass]="{'is-invalid': submmited && f['password'].errors, 'is-valid': f['password'].valid}">
+                                <div *ngIf="f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['password'].errors?.['minlength']">La contraseña debe de tener un minimo de 6 carcateres</div>
+                                    <div *ngIf="f['password'].errors?.['required']">La contraseña es obligatoria</div>
+                                    <small *ngIf="f['password'].errors?.['pattern']">Se requiere un caracter especial(@#$%^&+=), mayuscula y minuscula.</small>
+                                </div>
                         </div>
                     </div>
                 </div>
