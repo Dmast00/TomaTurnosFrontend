@@ -63,7 +63,10 @@ export class CrearModalComponent implements OnInit {
         this.toastr.info('Ocurrio un error, intentelo mas tarde.')
         this.form.reset();
       }
-      
+      else if(data.status == 600){
+        this.toastr.info('El tramite ya existe')
+        this.form.reset();
+      }
     })
   }
 
