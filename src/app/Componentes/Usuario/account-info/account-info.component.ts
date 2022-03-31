@@ -10,7 +10,14 @@ import { Usuario } from '../usuario.model';
 })
 export class AccountInfoComponent implements OnInit {
 
-  userInfo : any[] = []
+  userInfo : Usuario[] = []
+  isShownProfile = false;
+  isShownEmail = false;
+  isShownConfirmEmail = false;
+  isShownPassword = false;
+
+  
+  
   constructor(private service : BackendService) { }
 
 
@@ -18,6 +25,32 @@ export class AccountInfoComponent implements OnInit {
   ngOnInit(): void {
     this.getPersonalInfo();
   }
+
+  toggleisShown(show : string){
+    this.hideisShown();
+    if(show == 'profile'){
+      this.isShownProfile = true;
+    }
+    else if(show == 'email'){
+      this.isShownEmail = true;
+    }
+    else if(show == 'confirmEmail'){
+      this.isShownConfirmEmail = true;
+    }
+    else if(show == 'password'){
+      this.isShownPassword = true;
+    }
+    
+  }
+
+  hideisShown(){
+    this.isShownEmail = false;
+    this.isShownConfirmEmail = false;
+    this.isShownProfile = false;
+    this.isShownPassword = false;
+    
+  }
+  
 
   getPersonalInfo(){
     this.userName = localStorage.getItem('userName');

@@ -1,53 +1,47 @@
-label{
-    font-weight: bold;
-}
-
-.container{
-    background-color: whitesmoke;
-    width: 75vw;
-    height: 65vh;
+.title{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.title>p{
+    font-size: 40px;
+    font-family: var(--main-fontFamily);
+}
+.solid{
+    width: 100%;
+    background-color: black;
+    height: 2px;
+}
+.settings-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.display-container{
+    display: flex;
+    justify-content: center;
+}
+.options-container{
+    display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-    -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    gap: 15px;
+}
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    
     
 }
-.form-header{
-    display: flex;
-    justify-content: center;
+.btn:hover{
+    background-color: var(--main-hover-color);
+    color: black;
 }
 
-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn:focus,.btn:active,.btn:visited{
+    outline: none;
+    border: 0.5px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+    background-color: var(--main-color);
+    color: white;
 }
-
-.nombre-group{
-    display: flex;
-    flex-direction: row;
-    width: 40vw;
-}
-
-.info{
-    width: 18vw;    
-}
-.user-phone{
-    display: flex;
-    flex-direction: row;
-    width: 40vw;
-}
-
-
-.correo-group{
-    display: flex;
-    flex-direction: column;
-    width: 38vw;
-    justify-content: center;
-}
-
-

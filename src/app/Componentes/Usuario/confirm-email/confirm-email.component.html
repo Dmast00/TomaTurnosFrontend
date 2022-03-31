@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="email-container">
+        <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <input type="text" class="form-control" id="email" *ngFor="let item of userList" [ngModel]="item.email"  [ngModelOptions]="{standalone: true}"readonly>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn">Confirmar Correo</button>
+            </div>
+        </div>
+    </div>
+</div>

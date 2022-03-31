@@ -1,0 +1,23 @@
+input{
+    width: 20vw;
+}
+
+.btn{
+    width: 214%;
+    display: flex;
+    background-color: var(--main-color);
+    color: white;
+    justify-content: center;
+    margin-top: 50px;
+}
+.btn:hover{
+    background-color: var(--main-hover-color);
+    color: black;
+}
+
+.btn:focus,.btn:active,.btn:visited{
+    outline: none;
+    border: 0.5px var(--main-color);
+    box-shadow:0 0 10px var(--main-hover-color);
+    
+}

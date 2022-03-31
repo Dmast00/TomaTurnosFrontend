@@ -3,6 +3,7 @@
 @import '~ngx-toastr/toastr';
 :root{
     /* Guindo, Azul marino, Morado, Verde */
+    /* 339 */
     --hsl-main-color : 339;
     --hsl-scnd-color : 190;
     --hsl-trd-color : 244;

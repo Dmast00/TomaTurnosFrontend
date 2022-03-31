@@ -27,6 +27,10 @@ import { EliminarModalComponent } from './Componentes/Catalogos/Tramites/elimina
 import { EliminarUModalComponent } from './Componentes/Catalogos/Usuarios/eliminar-u-modal/eliminar-u-modal.component';
 import { AddRoleUModalComponent } from './Componentes/Catalogos/Usuarios/add-role-u-modal/add-role-u-modal.component';
 import { RestablecerComponent } from './Componentes/Catalogos/Usuarios/restablecer/restablecer.component';
+import { PerfilComponent } from './Componentes/Usuario/perfil/perfil.component';
+import { ChangeEmailComponent } from './Componentes/Usuario/change-email/change-email.component';
+import { ConfirmEmailComponent } from './Componentes/Usuario/confirm-email/confirm-email.component';
+import { ChangePasswordComponent } from './Componentes/Usuario/change-password/change-password.component';
 
 
 
@@ -53,6 +57,10 @@ import { RestablecerComponent } from './Componentes/Catalogos/Usuarios/restablec
     EliminarUModalComponent,
     AddRoleUModalComponent,
     RestablecerComponent,
+    PerfilComponent,
+    ChangeEmailComponent,
+    ConfirmEmailComponent,
+    ChangePasswordComponent,
 
 
     

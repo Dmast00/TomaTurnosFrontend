@@ -1,48 +1,46 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="form-header">
-        <h2>Informacion personal</h2>
+    <div class="row">
+        <div class="title-container">
+            <div class="col-md-12 title">
+                <p>Administrar Cuenta</p>
+            </div>
+        </div>
+        <div class="divider-container"><hr class="solid"></div>
     </div>
-    <div class="form-container">
-        <form >
-            <div class="form-control-container" *ngFor="let item of userInfo">
-                <div class="nombre-group">
-                    <div class="col-md-6">
-                        <div class="form-group info">
-                            <label for="prueba">Nombre</label>
-                            <input type="text" id="prueba" [ngModel]="item.userName" [ngModelOptions]="{standalone:true}" class="form-control">
-                        </div>
+    <div class="container">
+        <div class="col-lg-12 settings-container">
+            <div class="col-md-2">
+                <div class="options-container">
+                    <div class="btn-profile">
+                        <button class="btn" (click)="toggleisShown('profile')"><a>Perfil</a></button>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group info">
-                            <label for="prueba">Apellidos</label>
-                            <input type="text" id="prueba" [ngModel]="" [ngModelOptions]="{standalone:true}" class="form-control">
-                        </div>
+                    <div class="btn-email">
+                        <button class="btn" (click)="toggleisShown('email')"><a>Cambiar Correo</a></button>
                     </div>
-                </div>
-                <div class="user-phone">
-                    <div class="col-md-6">
-                        <div class="form-group info">
-                            <label for="username">Usuario</label>
-                            <input type="text" id="username" [ngModel]="item.userName" [ngModelOptions]="{standalone:true}" class="form-control">
-                        </div>
+                    <div class="btn-email">
+                        <button class="btn" (click)="toggleisShown('confirmEmail')"><a>Confirmar Correo</a></button>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group info">
-                            <label for="phone">Telefono</label>
-                            <input type="text" id="phone" [ngModel]="item.phoneNumber" [ngModelOptions]="{standalone:true}" class="form-control">
-                        </div>
+                    <div class="btn-password">
+                        <button class="btn" (click)="toggleisShown('password')"><a>Cambiar Contraseña</a></button>
                     </div>
-                </div>
-                <div class="correo-group">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="correo">Correo Eletronico</label>
-                            <input type="text" id="correo" [ngModel]="item.email" [ngModelOptions]="{standalone:true}" class="form-control" class="form-control">
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-        </form>
+            <div class="col-md-10">
+                <div class="display-container" *ngIf="isShownProfile">
+                    <app-perfil [user]="userInfo"></app-perfil>
+                </div>
+                <div class="display-container" *ngIf="isShownEmail">
+                    <app-change-email [user]="userInfo"></app-change-email>
+                </div>
+                <div class="display-container" *ngIf="isShownConfirmEmail">
+                    <app-confirm-email [user]="userInfo"></app-confirm-email>
+                </div>
+                <div class="display-container" *ngIf="isShownPassword">
+                    <app-change-password></app-change-password>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="info-container">
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="userName">Usuario</label>
+                        <input type="text" class="form-control" id="userName" *ngFor="let item of userList" [ngModel]="item.userName" [ngModelOptions]="{standalone: true}" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Telefono</label>
+                        <input type="text" class="form-control" id="phoneNumber" *ngFor="let item of userList" [ngModel]="item.phoneNumber" [ngModelOptions]="{standalone: true}" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn" disabled >Guardar Cambios</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
