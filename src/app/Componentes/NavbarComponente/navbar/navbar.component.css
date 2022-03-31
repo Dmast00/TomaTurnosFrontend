@@ -27,9 +27,15 @@ a:hover{
 .btn:focus,.btn:active,.btn:target {
     outline: none !important;
     box-shadow: none;
+    
 }
 
 .dropdown-item.active, .dropdown-item:active{
     background-color: var(--main-color);
 
+}
+a:focus,a:active,a:target {
+    outline: none !important;
+    box-shadow: none;
+    color: var(--main-color);
 }
