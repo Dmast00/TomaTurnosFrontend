@@ -118,7 +118,13 @@ export class BackendService {
     
     return this.http.put(this.apiPath+'Account/Restablecer/'+idUser,pass,this.headers)
   }
- 
+  
+  cambiarCorreo(currentEmail:any,newEmail:any){
+    var Nemail = JSON.stringify(newEmail);
+    
+    return this.http.put(this.apiPath+'Account/ChangeEmail/'+currentEmail,Nemail,this.headers);
+  }
+  
   //*********************************************DELETE METHODS**************************************************** */
 
   eliminarTramite(id : number){
