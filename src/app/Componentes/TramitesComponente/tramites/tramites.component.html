@@ -8,9 +8,12 @@
              </div>
             <div class="tramites">
                 <div class="col-md-4" *ngFor="let item of tramiteList">
-                    <button class=" btn btn-tramite" (click)="genTurno(item)">
+                    <button class=" btn btn-tramite" *ngIf="!printed" (click)="genTurno(item)">
                         {{item.nombreTramite}}
-                    </button>    
+                    </button>
+                    <button class=" btn btn-tramite" *ngIf="printed" disabled (click)="genTurno(item)">
+                        {{item.nombreTramite}}
+                    </button>     
                 </div>
             </div>
         </div>

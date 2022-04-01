@@ -14,7 +14,7 @@ export class TramitesComponent implements OnInit {
   //Se generaron respectivamnte modelos de cada clase para mejorar las buenas practicas.
   tramiteList : Tramites[] =[];
   turnosList : Turnos[] = [];
-
+  printed :boolean = false
   datetime :any
   
 
@@ -42,12 +42,12 @@ export class TramitesComponent implements OnInit {
 
   //Se envia al API el id del tramite seleccionado, para que de este modo se genere,
   //un turno con la serie del tramite
-  genTurno(id : Tramites){
-    this.service.genTurno(id.idTramite).subscribe(data =>{
-      console.log(this.datetime)
+  genTurno(item : Tramites){
+    this.service.genTurno(item.idTramite).subscribe(data =>{
+      console.log(data)
       this.turnosList.push(data)
     });
-    console.log(this.turnosList)
+    this.printed=true
   }
 
   //Se imprime la patanlla, para decorar el  ticket es necesario utilizar css,
@@ -56,5 +56,6 @@ export class TramitesComponent implements OnInit {
     window.print()
     this.turnosList = [];
     this.ngOnInit();
+    this.printed = false
   }
 }
