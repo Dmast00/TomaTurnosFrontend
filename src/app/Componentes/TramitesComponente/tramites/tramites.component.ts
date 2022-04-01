@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Turnos } from '../../Turnos/turnos.model';
 import { Tramites } from '../tramites.model';
@@ -18,7 +19,7 @@ export class TramitesComponent implements OnInit {
   datetime :any
   
 
-  constructor({nativeElement}: ElementRef<HTMLImageElement>, private service : BackendService) {
+  constructor({nativeElement}: ElementRef<HTMLImageElement>, private service : BackendService,private toastr : ToastrService) {
     const supports = 'loading' in HTMLImageElement.prototype;
     if(supports){
       nativeElement.setAttribute('loading','lazy');
@@ -44,15 +45,25 @@ export class TramitesComponent implements OnInit {
   //un turno con la serie del tramite
   genTurno(item : Tramites){
     this.service.genTurno(item.idTramite).subscribe(data =>{
-      console.log(data)
-      this.turnosList.push(data)
+      if(data.status == 200){
+        console.log('success 200')
+        this.turnosList.push(data)
+      }
+      else if(data.status == 400){
+        console.log('intentelo mas tarde. 400')
+      }
+      else if(data.status == 500){
+        console.log('intentelo mas tarde. 500')
+      }
     });
+    
     this.printed=true
   }
 
   //Se imprime la patanlla, para decorar el  ticket es necesario utilizar css,
   //para mostrar y ocultar los elementos
   printTurno(){
+    
     window.print()
     this.turnosList = [];
     this.ngOnInit();

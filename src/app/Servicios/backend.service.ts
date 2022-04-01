@@ -68,7 +68,7 @@ export class BackendService {
 
   //Generamos un turno consultando al api y enviando como paramentro el id del tramite que se selecciono
   genTurno(id : number):Observable<any>{
-    return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id);
+    return this.http.post(this.apiPath+'Turnos/GenTurno/'+id,id,{observe:'response'});
   }
 
   //Registramos al usuario nuevo por medio del api, enviando el form que se lleno. 

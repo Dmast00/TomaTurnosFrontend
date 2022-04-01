@@ -84,11 +84,15 @@
 .print-container{
     display: none;
 }
+.ng-tns-c106-1 .ng-star-inserted .ng-trigger .ng-trigger-flyInOut .ngx-toastr .toast-success{
+    display:none !important;
+}
 
 @media print{
     .main-content,app-navbar{
         display: none;
     }
+    
     .print-container{
         display: block;
         min-width: 100%;
