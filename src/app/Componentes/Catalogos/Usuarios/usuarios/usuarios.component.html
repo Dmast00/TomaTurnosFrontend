@@ -11,12 +11,12 @@
         </div>
     </div>
     <div class="col-md-12">
-        <table class="table">
+        <table class="table" aria-hidden="true">
             <thead class="headers">
-                <th>Id</th>
-                <th>Usuario</th>
-                <th>Correo Electronico</th>
-                <th>Rol</th>
+                <th id="id">Id</th>
+                <th id="usuario">Usuario</th>
+                <th id="correoelectronico">Correo Electronico</th>
+                <th id="rol">Rol</th>
                 
             </thead>
             <tbody *ngIf="usuariosList != null">

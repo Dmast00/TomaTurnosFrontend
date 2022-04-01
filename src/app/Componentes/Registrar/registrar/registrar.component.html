@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col" >
-        <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <i class="ri-arrow-left-fill"></i> Atras</a>
+        <a class="backarrow" routerLinkActive="active" routerLink="/Home"> <em class="ri-arrow-left-fill"></em> Atras</a>
     </div>
 </div>
 <div class="container">
@@ -51,14 +51,6 @@
             <small *ngIf="f['password'].errors?.['pattern']">Se requiere un caracter especial(@#$%^&+=), mayuscula y minuscula.</small>
           </div>
         </div>
-        <!-- <div class="form-group">
-            <label for="confirm">Confirm Password</label>
-            <input formControlName="confirm" type="password" class="form-control" id="confirm" placeholder="Confirmar Contraseña" [ngClass]="{'is-invalid': submmited && f['confirm'].errors, 'is-valid': f['confirm'].valid}" >
-            <div *ngIf="f['confirm'].errors" class="invalid-feedback">
-              <div *ngIf="f['confirm'].errors?.['mustMatch']">Las contraseñas deben de coincidir</div>
-              <div *ngIf="f['confirm'].errors?.['required']">Confirmar la contraseña es obligatorio</div>
-            </div>
-        </div> -->
         <button type="submit" class="btn">Submit</button>
       </form>
 </div>

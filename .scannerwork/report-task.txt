@@ -1,0 +1,6 @@
+projectKey=TomaTurnos
+serverUrl=http://localhost:9000
+serverVersion=8.9.7.52159
+dashboardUrl=http://localhost:9000/dashboard?id=TomaTurnos
+ceTaskId=AX_mnUCVcR8qcVatFcho
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AX_mnUCVcR8qcVatFcho
