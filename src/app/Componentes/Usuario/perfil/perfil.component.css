@@ -9,6 +9,8 @@ input{
     color: white;
     justify-content: center;
     margin-top: 50px;
+
+
 }
 .btn:hover{
     background-color: var(--main-hover-color);
@@ -21,3 +23,4 @@ input{
     box-shadow:0 0 10px var(--main-hover-color);
     
 }
+

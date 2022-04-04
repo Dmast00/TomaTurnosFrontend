@@ -58,40 +58,23 @@ export class TurnosComponent implements OnInit {
     this.service.getTurnos().subscribe(data =>{
       this.Proceso = []
       this.Proceso =  data.filter(x => x.idStatus == 4)
-    })
-    //Se verifica e length de la lista de proceso, si la cantidad de turnos en e array
-    //es mayor a 1 se vacia el array TurnoActivo y se toma el ultimo elemento del array
-    //para que ese turno sea el que aparesca en el div grande. 
-    //Asi mismo, se abre otro condicion, donde se verifica el length del array de 
-    //TurnoAbajo sea mayor a 12, se elimina el primer elemento del array para que el siguiente 
-    //turno aparesca en grande y el turno anterior se agrege a la parte de abajo.
-    //caso de que no se encuentre turno en la lista de array se imprime en la consola, 
-    //queda pendiente que hacer cuando entre al else,
-    //se retornan las dos listas. 
-    if(this.Proceso.length >= 1){
+    });
+    if(this.Proceso.length == 0){
       this.turnoActivo = []
-      
-      //toma el ultimo item del array
-      var popped = this.Proceso.pop()
-
-      //se asigna el array original al array de turnos abajo
-      this.turnoAbajo = this.Proceso
-
-      //Se asigna el ultimo elemento del array original al array turnoActivo  
-      this.turnoActivo.push(popped!) 
-    }else{
-      this.turnoActivo = []
-      
     }
-    if(this.turnoAbajo.length <= 10){
+    if(this.Proceso.length == 1){
+      this.turnoActivo = this.Proceso
+      this.turnoAbajo = []
+      this.getTurnosAbajo()
+    }
+    else if(this.Proceso.length > 1){
+      var popped = this.Proceso.slice(-1)[0]
+      this.turnoActivo.push(popped)
       
+      this.Proceso.pop();
+      this.turnoAbajo = this.Proceso
       this.getTurnosAbajo();
     }
-    else{
-      
-      
-    }
-    return this.Proceso,this.turnoAbajo
   }
 
   getTurnosAbajo(){

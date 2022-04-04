@@ -30,7 +30,7 @@
 .arrow-container{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     
     margin-top: 5rem;
@@ -74,6 +74,7 @@
     gap: 15px 15px; 
     grid-template-areas: 
       "TurnoActivo";  
+    
 }
 .procesos{
     display: flex;
@@ -97,11 +98,10 @@
     height: 25vh;
     border-radius: 10px;
 
-    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    /* box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
     -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
+    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55); */
 
-    
 }
 .turno-abajo-title{
     display: flex;

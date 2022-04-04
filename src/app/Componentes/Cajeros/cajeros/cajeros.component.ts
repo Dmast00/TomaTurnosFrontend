@@ -61,7 +61,6 @@ export class CajerosComponent implements OnInit {
   //al array last
   getLast(){
     this.last=[]
-    console.log(this.Tramite,this.NumCaja)
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
     if(temp != null){
       this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
