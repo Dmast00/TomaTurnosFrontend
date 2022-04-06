@@ -38,15 +38,20 @@
         <div class="config-container">
             <div class="dropdown-container">
                 <label for="tramite" class="dropdown-label">Tramite</label>
-				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite">
+				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite" >
                     <option selected  *ngFor="let item of tramitesList"   [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
 				</select>
             </div>
-            
-            <div class="col-md-12">
-                <label for="NumerodeCaja">Numero de Caja</label>
-                <input name="NumerodeCaja" [(ngModel)]="NumCaja" type="text" class="form-control">
-            </div>
+            <form [formGroup]="form">
+                <div class="col-md-12" >
+                    <label for="NumerodeCaja">Numero de Caja</label>
+                    <input name="NumerodeCaja" formControlName="NumCaja" type="text" class="form-control" [ngClass]="{'is-invalid':submmited && f['NumCaja'].errors , 'is-valid': f['NumCaja'].valid}">
+                </div>
+                <div *ngIf="f['NumCaja'].errors" class="invalid-feedback">
+                    <div *ngIf="f['NumCaja'].errors?.['required']">El numero de Caja es obligatorio</div>
+                    <div *ngIf="f['NumCaja'].errors?.['pattern']">Ingrese solo numeros</div>
+                  </div>
+            </form>
         </div>
     </div>
     <div class="modal-footer">

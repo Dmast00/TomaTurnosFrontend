@@ -3,13 +3,21 @@
         <div class="col-md-6">
             <div class="info-container">
                 <form class="form-container">
+                    <div class="form-group" *ngFor="let item of userList">
+                        <label for="userName">Usuario</label>
+                        <input type="text" class="form-control" id="userName"  [ngModel]="item.userName" [ngModelOptions]="{standalone: true}" readonly >
+                    </div>
                     <div class="form-group">
                         <label for="userName">Usuario</label>
-                        <input type="text" class="form-control" id="userName" *ngFor="let item of userList" [ngModel]="item.userName" [ngModelOptions]="{standalone: true}" readonly >
+                        <input type="text" class="form-control" id="userName" *ngIf="userList.length == 0" readonly >
+                    </div>
+                    <div class="form-group" *ngFor="let item of userList" >
+                        <label for="phoneNumber">Telefono</label>
+                        <input type="text" class="form-control" id="phoneNumber" [ngModel]="item.phoneNumber" [ngModelOptions]="{standalone: true}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">Telefono</label>
-                        <input type="text" class="form-control" id="phoneNumber" *ngFor="let item of userList" [ngModel]="item.phoneNumber" [ngModelOptions]="{standalone: true}" readonly>
+                        <input type="text" class="form-control" id="phoneNumber" *ngIf="userList.length == 0" readonly>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

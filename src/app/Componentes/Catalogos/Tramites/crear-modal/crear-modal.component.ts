@@ -56,11 +56,12 @@ export class CrearModalComponent implements OnInit {
         this.tram.getTramites();
       }
       else if(data.status == 400){
-        this.toastr.error('Ocurrio un error, intentelo mas tarde')
+        console.log('Entro?',data);
+        this.toastr.error('Se produjo un error, vuelve a intentarlo mas tarde.')
         this.form.reset();
       }
       else if(data.status == 500 ){
-        this.toastr.info('Ocurrio un error, intentelo mas tarde.')
+        this.toastr.info('Se produjo un error, vuelve a intentarlo mas tarde.')
         this.form.reset();
       }
       else if(data.status == 600){

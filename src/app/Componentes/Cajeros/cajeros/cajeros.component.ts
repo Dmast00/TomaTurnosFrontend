@@ -6,6 +6,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TurnosService } from 'src/app/Servicios/turnos.service';
 import { Tramites } from '../../TramitesComponente/tramites.model';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,21 +15,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cajeros.component.css']
 })
 export class CajerosComponent implements OnInit {
-  //Se declara la variable tramite la cual se comunica con el input de HTML el cual
-  //asigna un tramite al cajero.
+  form : FormGroup;
+  submmited = false;
   Tramite: number
-  
-  //Se declara una variable la cual se comunica con el input de HTML el cual asigna
-  //un numero de caja al cajero, esto para despues comunicarlo con la pantalla 
-  //y el contribuyente sepa a cual caja acercarse
-  NumCaja : number
-
-  //Se declara una lista de tipo Cajeros Array, este modelo fue creado previamente para
-  //mantener las buenas practicas del codigo
+  // NumCaja : number
   turnosList : Cajeros[]
-
-  //Se declara un array de tipo any, el cual funciona como array temporal para asignarle el
-  //ultimo turno de acuerdo al tramite del cajero
   last : any[] = [];
 
   tramitesList : Tramites[] = []
@@ -37,7 +28,14 @@ export class CajerosComponent implements OnInit {
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
   constructor(private service : BackendService,private turnoService : TurnosService,
-    private modalService : NgbModal,private toastr : ToastrService ) { }
+    private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder ) {
+      this.form = this.fb.group({
+        NumCaja : new FormControl('',[
+          Validators.required,
+          Validators.pattern("^[0-9]{2}$")
+        ])
+      })
+    }
 
   ngOnInit(): void {
     //Inicializamos la variable susbscription para actualizar la lista de turnos 
@@ -46,6 +44,10 @@ export class CajerosComponent implements OnInit {
       (val) => {this.getTurno()}
     )
     this.getTramites()
+  }
+
+  get f(){
+    return this.form.controls
   }
 
   //Creamos un metodo el cual llama al servicio de backend pidiendo los turnos que se 
@@ -60,10 +62,14 @@ export class CajerosComponent implements OnInit {
   //el status del turno y lo guardamos en una variable temporal para despues pushearla 
   //al array last
   getLast(){
+    this.submmited = true;
+    if(this.form.invalid){
+      return;
+    }
     this.last=[]
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
     if(temp != null){
-      this.service.turnoProceso(temp.idTurno,this.NumCaja).subscribe(data =>{
+      this.service.turnoProceso(temp.idTurno,this.form.value['NumCaja']).subscribe(data =>{
         
       },err =>console.log('HTTP Error',err))
       this.last.push(temp)
@@ -72,9 +78,6 @@ export class CajerosComponent implements OnInit {
       console.log('es nullo')
       this.toastr.info(`No se encuentran mas turnos en fila del tramite seleccionado`)
     }
-    
-    
-    
   }
 
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna
