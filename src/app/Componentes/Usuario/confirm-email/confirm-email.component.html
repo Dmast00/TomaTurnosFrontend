@@ -4,9 +4,9 @@
             <label for="email">Correo Electronico</label>
             <input type="text" class="form-control" id="email" [ngModel]="item.email"  [ngModelOptions]="{standalone: true}"readonly>
         </div>
-        <div class="form-group">
+        <div class="form-group"  *ngIf="userList.length == 0">
             <label for="email">Correo Electronico</label>
-            <input type="text" class="form-control" id="email"  *ngIf="userList.length == 0" readonly>
+            <input type="text" class="form-control" id="email" readonly>
         </div>
         <div class="row">
             <div class="col-md-12">

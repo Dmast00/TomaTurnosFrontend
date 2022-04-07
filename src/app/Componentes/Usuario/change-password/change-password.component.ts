@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/Servicios/backend.service';
 import { Usuario } from '../usuario.model';
 
 @Component({
@@ -10,10 +11,17 @@ export class ChangePasswordComponent implements OnInit {
 
   @Input() user : Usuario[]
   userList : Usuario[] = []
-  constructor() { }
+  constructor(private service : BackendService) { }
 
   ngOnInit(): void {
     this.userList = this.user
   }
+
+
+  // changePassword(){
+  //   this.service.cambiarContrasena().subscribe(data =>{
+      
+  //   })
+  // }
 
 }

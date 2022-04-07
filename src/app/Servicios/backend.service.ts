@@ -124,6 +124,10 @@ export class BackendService {
     
     return this.http.put(this.apiPath+'Account/ChangeEmail/'+currentEmail,Nemail,this.headers);
   }
+
+  cambiarContrasena(idUser : any,currentPassword : any, newPassword : any){
+    return this.http.put(this.apiPath+'Account/ChangePassword/'+idUser+'/'+currentPassword,newPassword,this.headers)
+  }
   
   //*********************************************DELETE METHODS**************************************************** */
 
