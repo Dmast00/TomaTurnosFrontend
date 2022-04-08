@@ -126,7 +126,8 @@ export class BackendService {
   }
 
   cambiarContrasena(idUser : any,currentPassword : any, newPassword : any){
-    return this.http.put(this.apiPath+'Account/ChangePassword/'+idUser+'/'+currentPassword,newPassword,this.headers)
+    var nPassword = JSON.stringify(newPassword)
+    return this.http.put(this.apiPath+'Account/ChangePassword/'+idUser+'/'+currentPassword,nPassword,this.headers)
   }
   
   //*********************************************DELETE METHODS**************************************************** */

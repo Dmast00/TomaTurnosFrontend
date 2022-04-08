@@ -38,7 +38,7 @@
                     <app-confirm-email [user]="userInfo"></app-confirm-email>
                 </div>
                 <div class="display-container" id="button" *ngIf="isShownPassword">
-                    <app-change-password></app-change-password>
+                    <app-change-password [user]="userInfo"></app-change-password>
                 </div>
             </div>
         </div>

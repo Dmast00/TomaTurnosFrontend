@@ -54,11 +54,8 @@ export class AccountInfoComponent implements OnInit {
 
   getPersonalInfo(){
     this.userName = localStorage.getItem('userName');
-    console.log(this.userName)
     this.service.getUserinfo(this.userName).subscribe(data =>{
-      console.log('data',data)
       this.userInfo.push(data)
     })
-    console.log('lista',this.userInfo)
   }
 }
