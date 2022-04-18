@@ -36,10 +36,16 @@
     </div>
     <div class="modal-body configuracion">
         <div class="config-container">
-            <div class="dropdown-container">
+            <div class="dropdown-container" *ngIf="tramitesList.length >= 1">
                 <label for="tramite" class="dropdown-label">Tramite</label>
 				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite" >
                     <option selected  *ngFor="let item of tramitesList"   [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
+				</select>
+            </div>
+            <div class="dropdown-container" *ngIf="tramitesList.length == 0">
+                <label for="tramite" class="dropdown-label">Tramite</label>
+				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite" >
+                    <option selected>No hay Tramites en memoria.</option>
 				</select>
             </div>
             <form [formGroup]="form">

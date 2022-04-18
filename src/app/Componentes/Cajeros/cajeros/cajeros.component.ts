@@ -7,6 +7,7 @@ import { TurnosService } from 'src/app/Servicios/turnos.service';
 import { Tramites } from '../../TramitesComponente/tramites.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class CajerosComponent implements OnInit {
   last : any[] = [];
 
   tramitesList : Tramites[] = []
+  temp : Tramites[] = []
 
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
@@ -44,6 +46,7 @@ export class CajerosComponent implements OnInit {
       (val) => {this.getTurno()}
     )
     this.getTramites()
+   
   }
 
   get f(){
@@ -83,7 +86,6 @@ export class CajerosComponent implements OnInit {
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna
   //a vencido y se asigna otro turno a ventanilla llamando a la funcion getLast()
   turnoVencido(id : number){
-    console.log(id)
     this.service.turnoVencido(id).subscribe(data =>{
       this.getLast();
     })
@@ -111,7 +113,15 @@ export class CajerosComponent implements OnInit {
   
   getTramites(){
     this.service.getTramites().subscribe(data =>{
-      this.tramitesList = data
+      this.temp = data
+    },(err : HttpErrorResponse) =>{
+      if(err.status == 0){
+        this.tramitesList = []
+        console.log(this.tramitesList)
+      }
+      else if(err.status == 200){
+        this.tramitesList = this.temp
+      }
     })
   }
   // //Metodo para abrir el modal que se encuentra en el HTML
