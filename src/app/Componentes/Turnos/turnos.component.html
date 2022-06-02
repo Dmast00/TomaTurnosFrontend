@@ -1,0 +1,67 @@
+<!-- <div class="container">
+    <div class="turnos__container">
+        <div class="class__temp" *ngFor="let item of temp">
+            Turnos en Ventanilla: {{item.turno}}
+            <span>{{item.caja}}</span>
+       </div>
+        <div class="class__temp" *ngFor="let item of turnoActivo">
+            Turno Activo: {{item.turno}}
+            <span>{{item.caja}}</span>
+       </div>
+       <div class="class__temp" *ngFor="let item of Turnos">
+            <span>{{item.turno}}</span>
+        </div>
+    </div>
+    
+</div> -->
+
+<!-- <div class="container">
+    <div class="turnos__container">
+        <p>Turnos Pendientes</p>
+        <div class="turno" *ngFor="let item of Turnos">
+            <span>{{item.turno}}</span>
+        </div>
+        <p>Turnos Proceso</p>
+        <div class="turno" *ngFor="let item of Proceso">
+            <span>{{item.turno}}</span>
+            <br>
+            <span>Caja: {{item.caja}}</span>
+        </div>
+        <p>Turno Activo</p>
+        <div class="turno__activo" *ngFor="let item of turnoActivo">
+            <span>{{item.turno}}</span>
+            <br>
+            <span>Caja: {{item.caja}}</span>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="turnosproceso__container">
+                <div class="turnos__proceso" *ngFor="let item of Proceso">
+                    <span>Turno: {{item.turno}}</span>
+                    <br>
+                    <span>Caja: {{item.caja}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="turnoactivo__container">
+                <div class="turno__activo" *ngFor="let item of turnoActivo">
+                    <span>Turno: {{item.turno}}</span>
+                    <br>
+                    <span>Caja: {{item.caja}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="turnospedientes__container">
+                <div class="turno__pendiente" *ngFor="let item of Turnos">
+                    <span>{{item.turno}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

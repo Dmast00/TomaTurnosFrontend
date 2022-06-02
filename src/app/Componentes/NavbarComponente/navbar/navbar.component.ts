@@ -18,12 +18,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.id = localStorage.getItem('token') as string;
     this.userName = localStorage.getItem('userName') as string;
-    console.log('es este '+ this.id)
+    
     
   }
 
   logOut(){
-    console.log('logout')
+    
     this.authService.logout()
     this.router.navigate(['/Home']);
   }

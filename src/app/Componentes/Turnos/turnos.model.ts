@@ -3,5 +3,7 @@ export interface Turnos {
     turno:string,
     idStatus:number,
     idTramite:number,
-    caja : number
+    caja : number,
+    fechaFinal : Date,
+    fechaInicial : Date
 }

@@ -1,0 +1,46 @@
+
+.turnos{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.container{
+    background-color: bisque;
+    font-size: 35px;
+}
+
+.row{
+    position: absolute;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+.turnosproceso__container{
+    
+    height: 35vh;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.turnoactivo__container{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.turnospedientes__container{
+    
+    height: 35vh;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

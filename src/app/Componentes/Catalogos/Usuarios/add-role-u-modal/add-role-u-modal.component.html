@@ -18,7 +18,7 @@
                 </div>
                 
                 <div class="dropdown-container">
-                    <label for="tramite" class="dropdown-label">Tramite</label>
+                    <label for="tramite" class="dropdown-label">Rol</label>
                     <select id="tramite" class="form-select"  aria-label="Default select example" [(ngModel)]="rolSel" [ngModelOptions]="{standalone: true}" >
                         <option selected  *ngFor="let item of rolesList"   [ngValue]="item.id">{{item.normalizedName}}</option>
                     </select>

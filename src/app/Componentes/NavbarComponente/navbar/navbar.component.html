@@ -5,6 +5,7 @@
     <a class="nav-link" routerLinkActive="active" routerLink="/Tramites">Tramites</a>
     <a class="nav-link" routerLinkActive="active" routerLink="/Turnos">Turnos</a>
     <a class="nav-link" routerLinkActive="active" routerLink="/Cajeros">Cajeros</a>
+    
     <div ngbDropdown class="d-inline-block">
       <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Catalogos</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -15,7 +16,7 @@
     </div>
     <a class="nav-link" routerLinkActive="active" routerLink="/Graficas">Graficas</a>
     <div class="leftside">
-      <a class="nav-item nav-link px-3 loggedin" routerLinkActive="active" href="/Informacion">{{userName}}</a>
+      <a class="nav-item nav-link px-3 loggedin" routerLinkActive="active" routerLink="/Informacion">{{userName}}</a>
       <a class="nav-item nav-link px-3 loggedin" href="#" (click)="logOut()">Cerrar Sesion</a>
     </div>
     
@@ -25,8 +26,8 @@
   <div class="container">
     <a class="navbar-brand" routerLinkActive="active" routerLink="/Home">TT</a>
     <a class="nav-link" routerLinkActive="active" routerLink="/Tramites" href="#">Tramites</a>
-    <a class="nav-link" routerLinkActive="active"  href="/Turnos">Turnos</a>
-    <a class="nav-link" routerLinkActive="active"  href="/Cajeros">Cajeros</a>
+    <a class="nav-link" routerLinkActive="active"  routerLink="/Turnos">Turnos</a>
+    <a class="nav-link" routerLinkActive="active"  routerLink="/Cajeros">Cajeros</a>
     
     <a class="nav-item nav-link px-3" routerLinkActive="active" routerLink="/Login">Iniciar Sesion</a>
   </div>

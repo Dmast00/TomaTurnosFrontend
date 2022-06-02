@@ -65,6 +65,16 @@
 }
 
 
+.ng-dropdown-panel .ng-select-multiple .ng-select-bottom{
+    background-color: violet;
+    z-index: 100;
+}
 
-
-
+#ad28c4a18841{
+    background-color: black;
+}
+.turnos{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

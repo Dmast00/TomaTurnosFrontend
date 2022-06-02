@@ -16,6 +16,7 @@ const httpOptionsPlain = {
 export class BackendService {
   //Creamos una variable la cual guardara el path del API
   readonly apiPath = 'https://localhost:44352/api/';
+  // readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
 
   headers = {
     headers : new HttpHeaders({
@@ -63,6 +64,7 @@ export class BackendService {
   getRoles():Observable<any>{
     return this.http.get<any>(this.apiPath+'Role');
   }
+  
 
   //***************************************POST METHODS***************************************************** */
 
@@ -82,6 +84,10 @@ export class BackendService {
   }
   createTramite(form : any){
     return this.http.post(this.apiPath +'Tramites',form,{observe:'response'});
+  }
+
+  getTramitesById(ids:any):Observable<any>{
+    return this.http.post<any>(this.apiPath+'Turnos/TurnosbyTramite',ids)
   }
   //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra

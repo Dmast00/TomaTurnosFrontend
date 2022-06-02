@@ -1,19 +1,20 @@
-import { Component, OnInit,Input, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit,Input, ComponentFactoryResolver, Inject, forwardRef } from '@angular/core';
 import { interval, isEmpty, Observable, Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
-import { Cajeros } from '../../Cajeros/cajeros.model';
+import { Cajeros } from './cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TurnosService } from 'src/app/Servicios/turnos.service';
-import { Tramites } from '../../TramitesComponente/tramites.model';
+import { Tramites } from '../TramitesComponente/tramites.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import { DataServiceService } from 'src/app/data-service.service';
+
 
 
 @Component({
   selector: 'app-cajeros',
   templateUrl: './cajeros.component.html',
-  styleUrls: ['./cajeros.component.css']
+  styleUrls: ['./cajeros.component.css'],
+  
 })
 export class CajerosComponent implements OnInit {
   form : FormGroup;
@@ -25,11 +26,15 @@ export class CajerosComponent implements OnInit {
 
   tramitesList : Tramites[] = []
   temp : Tramites[] = []
+  selected = []
+  
+  data = ''
+  
 
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
-  constructor(private service : BackendService,private turnoService : TurnosService,
+  constructor(private service : BackendService,private dataService : DataServiceService,
     private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder ) {
       this.form = this.fb.group({
         NumCaja : new FormControl('',[
@@ -37,8 +42,10 @@ export class CajerosComponent implements OnInit {
           Validators.pattern("^[0-9]{2}$")
         ])
       })
+      
     }
 
+  
   ngOnInit(): void {
     //Inicializamos la variable susbscription para actualizar la lista de turnos 
     //en intervalos de 5 segundos
@@ -59,6 +66,7 @@ export class CajerosComponent implements OnInit {
     this.service.getTurnos().subscribe(data =>{
       this.turnosList = data 
     })
+    
   }
 
   //Creamos un metodo el cual tomara el ultimo turno de acuerdo al tramite del cajero y
@@ -72,23 +80,30 @@ export class CajerosComponent implements OnInit {
     this.last=[]
     var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
     if(temp != null){
-      this.service.turnoProceso(temp.idTurno,this.form.value['NumCaja']).subscribe(data =>{
-        
-      },err =>console.log('HTTP Error',err))
-      this.last.push(temp)
+      this.turnoProceso(temp) 
     }
     else{
-      console.log('es nullo')
       this.toastr.info(`No se encuentran mas turnos en fila del tramite seleccionado`)
     }
   }
 
+
+  turnoProceso(turno : any){
+    this.service.turnoProceso(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
+        
+    },err =>console.log('HTTP Error',err))
+    this.last.push(turno)
+    
+  }
+  
+
+  
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna
   //a vencido y se asigna otro turno a ventanilla llamando a la funcion getLast()
   turnoVencido(id : number){
     this.service.turnoVencido(id).subscribe(data =>{
-      this.getLast();
     })
+    this.getLast();
     this.toastr.info('Se asigno como turno vencido')
     
   }
@@ -99,8 +114,8 @@ export class CajerosComponent implements OnInit {
   //a la funcion getLast() la cual permite recuperar el ultimo turno asignado al array
   turnoFinalizado(id :number){
     this.service.turnoFinalizado(id).subscribe(data =>{
-      this.getLast();
     });
+    this.getLast();
     this.toastr.success('Se finalizo el turno')
   }
 
@@ -112,16 +127,9 @@ export class CajerosComponent implements OnInit {
   }
   
   getTramites(){
+    
     this.service.getTramites().subscribe(data =>{
-      this.temp = data
-    },(err : HttpErrorResponse) =>{
-      if(err.status == 0){
-        this.tramitesList = []
-        console.log(this.tramitesList)
-      }
-      else if(err.status == 200){
-        this.tramitesList = this.temp
-      }
+      this.tramitesList = data
     })
   }
   // //Metodo para abrir el modal que se encuentra en el HTML

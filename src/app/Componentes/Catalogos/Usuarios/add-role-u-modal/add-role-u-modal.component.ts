@@ -40,6 +40,7 @@ export class AddRoleUModalComponent implements OnInit {
     this.usuarioList = []
     this.service.getUsuario(this.IdUsuario).subscribe(data => { 
       this.usuarioList.push(data)
+      console.log(this.usuarioList)
     })
   }
 

@@ -10,10 +10,10 @@ import { NavbarComponent } from './Componentes/NavbarComponente/navbar/navbar.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './Componentes/Login/login/login.component';
 import { RegistrarComponent } from './Componentes/Registrar/registrar/registrar.component';
-import { TurnosComponent } from './Componentes/Turnos/turnos/turnos.component';
-import { CajerosComponent } from './Componentes/Cajeros/cajeros/cajeros.component';
+import { TurnosComponent } from './Componentes/Turnos/turnos.component';
+import { CajerosComponent } from './Componentes/Cajeros/cajeros.component';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
-
+import { NgSelectModule } from "@ng-select/ng-select";
 
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -31,6 +31,10 @@ import { PerfilComponent } from './Componentes/Usuario/perfil/perfil.component';
 import { ChangeEmailComponent } from './Componentes/Usuario/change-email/change-email.component';
 import { ConfirmEmailComponent } from './Componentes/Usuario/confirm-email/confirm-email.component';
 import { ChangePasswordComponent } from './Componentes/Usuario/change-password/change-password.component';
+import { DataServiceService } from './data-service.service';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 
@@ -61,9 +65,6 @@ import { ChangePasswordComponent } from './Componentes/Usuario/change-password/c
     ChangeEmailComponent,
     ConfirmEmailComponent,
     ChangePasswordComponent,
-
-
-    
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,9 @@ import { ChangePasswordComponent } from './Componentes/Usuario/change-password/c
     NgbModule,FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgSelectModule,
+    MatSelectModule
   ],
   providers: [
     AuthGuard
