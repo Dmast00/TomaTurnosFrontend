@@ -6,7 +6,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tramites } from '../TramitesComponente/tramites.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataServiceService } from 'src/app/data-service.service';
+
 
 
 
@@ -34,7 +34,7 @@ export class CajerosComponent implements OnInit {
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
-  constructor(private service : BackendService,private dataService : DataServiceService,
+  constructor(private service : BackendService,
     private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder ) {
       this.form = this.fb.group({
         NumCaja : new FormControl('',[
@@ -130,6 +130,12 @@ export class CajerosComponent implements OnInit {
     
     this.service.getTramites().subscribe(data =>{
       this.tramitesList = data
+    })
+  }
+
+  callTurn(turno : string){
+    this.service.callTurn(turno).subscribe(data =>{
+      console.log(data)
     })
   }
   // //Metodo para abrir el modal que se encuentra en el HTML

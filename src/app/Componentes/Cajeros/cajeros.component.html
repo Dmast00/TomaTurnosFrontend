@@ -22,6 +22,9 @@
                     <div class="btn-finalizado">
                         <button class="btn" *ngFor="let item of last" (click)="turnoFinalizado(item.idTurno);$event.preventDefault();" >Finalizado</button>
                     </div>
+                    <div class="btn-finalizado">
+                        <button class="btn" *ngFor="let item of last" (click)="callTurn(item.turno)" >LLamar</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,8 +15,8 @@ const httpOptionsPlain = {
 })
 export class BackendService {
   //Creamos una variable la cual guardara el path del API
-  readonly apiPath = 'https://localhost:44352/api/';
-  // readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
+  // readonly apiPath = 'https://localhost:44352/api/';
+  readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
 
   headers = {
     headers : new HttpHeaders({
@@ -63,6 +63,10 @@ export class BackendService {
   }
   getRoles():Observable<any>{
     return this.http.get<any>(this.apiPath+'Role');
+  }
+
+  callTurn(item : string) : Observable<any>{
+    return this.http.get<any>(this.apiPath+'Turnos/llamarturno/'+item)
   }
   
 

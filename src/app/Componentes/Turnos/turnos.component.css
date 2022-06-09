@@ -6,7 +6,7 @@
 }
 
 .container{
-    background-color: bisque;
+    
     font-size: 35px;
 }
 
@@ -44,3 +44,30 @@
     justify-content: center;
     align-items: center;
 }
+.row__container{
+    height: 100vh ;
+}
+.row__video{
+    position: absolute; 
+    right: 0; 
+    bottom: 0;
+    max-width: 75%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+    margin: 0px;
+    padding: 0px;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.calling__turn{
+    animation: blinker 1s linear infinite;
+    animation-iteration-count: 5;
+    background-color: aquamarine;
+}
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }

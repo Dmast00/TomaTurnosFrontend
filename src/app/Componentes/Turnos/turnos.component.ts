@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { interval, Observable,Subscription } from 'rxjs';
-import { DataServiceService } from 'src/app/data-service.service';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Turnos } from './turnos.model';
 import * as signalr from "@microsoft/signalr";
@@ -24,18 +23,17 @@ export class TurnosComponent implements OnInit{
   temp : Turnos[] = [];
 
   tempList : any[] =[]
+  calling : boolean = true;
 
+  // baseURL : 'https://localhost:44352/'
+  baseURL : 'https://192.168.4.207:80/'
   private updateSubscription : Subscription;
 
-  constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService, private dataService : DataServiceService) {
+  constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService) {
     const supports = 'loading' in HTMLImageElement.prototype;
     if(supports){
       nativeElement.setAttribute('loading','lazy');
     }
-    this.dataService.addingTramite.subscribe(t =>{
-      
-      console.log(t)
-    })
   }
   
   
@@ -45,7 +43,7 @@ export class TurnosComponent implements OnInit{
     
     const connection = new signalr.HubConnectionBuilder()
     .configureLogging(signalr.LogLevel.Information)
-    .withUrl(environment.baseUrl+'tt',{
+    .withUrl(this.baseURL+'tt',{
       skipNegotiation: true,
       transport: signalr.HttpTransportType.WebSockets
     })
@@ -64,6 +62,9 @@ export class TurnosComponent implements OnInit{
     connection.on("BroadcastCajero",()=>{
       this.getTurnos();
       
+    })
+    connection.on("LlamarTurno",()=>{
+      this.callTurn();
     })
   }
   
@@ -86,22 +87,29 @@ export class TurnosComponent implements OnInit{
       this.Proceso = data.filter(x => x.idStatus == 4)
       var popped = this.Proceso.pop();
       this.turnoActivo.push(popped!)
-      console.log('Turno Activo',this.turnoActivo)
+      this.playAudio();
     })
     
   }
+
+
   
-  getTurnoActivo(){
-    console.log('Turno Activo',JSON.stringify(this.Proceso))
-    // var popped = this.Proceso.pop();
-    // this.turnoActivo.push(popped!);
+  callTurn(){
+    this.calling = true
+    if(this.calling == true){
+      this.calling = false
+    }
+    else{
+      this.calling = true
+    }
+    
   }
 
-  getTurnosAbajo(){
-    var slice = this.turnoAbajo.length - 10
-    
-    this.temp = this.turnoAbajo.slice(slice)
-    
-    return this.turnoAbajo
+  
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "/assets/turn.wav";
+    audio.load();
+    audio.play();
   }
 }

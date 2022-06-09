@@ -31,7 +31,6 @@ import { PerfilComponent } from './Componentes/Usuario/perfil/perfil.component';
 import { ChangeEmailComponent } from './Componentes/Usuario/change-email/change-email.component';
 import { ConfirmEmailComponent } from './Componentes/Usuario/confirm-email/confirm-email.component';
 import { ChangePasswordComponent } from './Componentes/Usuario/change-password/change-password.component';
-import { DataServiceService } from './data-service.service';
 import {MatSelectModule} from '@angular/material/select';
 
 
