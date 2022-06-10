@@ -11,33 +11,30 @@
         </div>
     </div>
     <div class="col-md-12">
-        <table class="table" aria-hidden="true">
-            <thead>
-                <tr>
-                    <th id="nombre">Nombre</th>
-                    <th id="descripcion">Descripcion</th>
-                    <th id="serie">Serie</th>
-                    <th id="opciones">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of tramitesList">
-                    <td>{{item.nombreTramite}}</td>
-                    <td>{{item.descripcionTramite}}</td>
-                    <td>{{item.serieTramite}}</td>
-                    <td>
-                        <div ngbDropdown>
-                            <button type="button" class="btn btn-opciones" ngbDropdownToggle>
-                              Opciones
-                            </button>
-                            <div ngbDropdownMenu>
-                                <a class="dropdown-item" >Editar<app-editar-modal class="child-modal" [IdTramite]="item.idTramite"></app-editar-modal></a>
-                                <a class="dropdown-item">Eliminar <app-eliminar-modal class="child-modal" [IdTramite]="item.idTramite"></app-eliminar-modal></a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <table mat-table [dataSource]="tramitesList" class="mat-elevation-z8">
+                <ng-container matColumnDef="idTramite">
+                    <th mat-header-cell *matHeaderCellDef>Id</th>
+                    <td mat-cell *matCellDef="let item">{{item.idTramite}}</td>
+                </ng-container>
+                <ng-container matColumnDef="nombreTramite">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let item">{{item.nombreTramite}}</td>
+                </ng-container>
+                <ng-container matColumnDef="descripcionTramite">
+                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                    <td mat-cell *matCellDef="let item">{{item.descripcionTramite}}</td>
+                </ng-container>
+                <ng-container matColumnDef="serieTramite">
+                    <th mat-header-cell *matHeaderCellDef>Serie Tramite</th>
+                    <td mat-cell *matCellDef="let item">{{item.serieTramite}}</td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns : displayedColumns"></tr>
+            </table>
+            
+        </div>
+        <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[2,4,6]" showFirstLastButtons >
+
+        </mat-paginator>
 </div>

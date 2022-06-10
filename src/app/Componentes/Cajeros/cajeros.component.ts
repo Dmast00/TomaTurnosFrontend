@@ -35,8 +35,8 @@ export class CajerosComponent implements OnInit {
   data = ''
   tramites = new FormControl('');
 
-  baseURL = 'https://localhost:44352/'
-  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  // baseURL = 'https://localhost:44352/'
+  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo

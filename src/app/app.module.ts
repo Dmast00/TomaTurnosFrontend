@@ -33,6 +33,8 @@ import { ConfirmEmailComponent } from './Componentes/Usuario/confirm-email/confi
 import { ChangePasswordComponent } from './Componentes/Usuario/change-password/change-password.component';
 import {MatSelectModule} from '@angular/material/select';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 
 
@@ -78,7 +80,8 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
     BrowserAnimationsModule,
     NgSelectModule,
     MatSelectModule,
-
+    MatTableModule,
+    MatPaginatorModule
    
   ],
   providers: [

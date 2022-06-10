@@ -30,8 +30,8 @@ export class TurnosComponent implements OnInit{
   tempList : any[] =[]
   calling : boolean = true;
   
-  baseURL = 'https://localhost:44352/'
-  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  // baseURL = 'https://localhost:44352/'
+  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
   private updateSubscription : Subscription;
   
   speech :any
@@ -105,19 +105,26 @@ export class TurnosComponent implements OnInit{
         console.log('Vacio')
       }
       else{
-        this.speech.speak({
-          text :'Turno:'+popped?.turno+',Caja:'+popped?.caja
-        }).then(()=>{
-          console.log('Succes')
-        }).catch(e =>{
-          console.error("Error",e)
-        })
+        this.TTSCallTurn(popped);
       }
     })
   }
 
+  TTSCallTurn(popped : any){
+    let splitted = popped.turno.split('');
+    let folio = splitted.slice(0,2).join();
+    let turno = splitted.slice(2).join().split('');
+    console.log(folio)
+    this.speech.speak({
+      text :'Turno:'+folio+','+turno+',Caja:'+popped?.caja
+    }).then(()=>{
+      console.log('Success')
+    }).catch(e =>{
+      console.error("Error",e)
+    })
+  }
 
-  
+
   callTurn(){
     this.calling = true
     if(this.calling == true){
