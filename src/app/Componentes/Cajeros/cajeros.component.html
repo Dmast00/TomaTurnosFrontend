@@ -40,12 +40,24 @@
     </div>
     <div class="modal-body configuracion">
         <div class="config-container">
-            <div class="dropdown-container" *ngIf="tramitesList.length > 0">
+            <!-- <div class="dropdown-container" *ngIf="tramitesList.length > 0">
                 <label for="tramite" class="dropdown-label">Tramite</label>
 				<select id="tramite" class="form-select" aria-label="Default select example" [(ngModel)]="Tramite" >
                     <option selected  *ngFor="let item of tramitesList"   [ngValue]="item.idTramite">{{item.nombreTramite}}</option>
 				</select>
-            </div>
+            </div> -->
+            <mat-form-field appearance="fill">
+                <mat-label>Tramites</mat-label>
+                <mat-select [formControl]="tramites" [(ngModel)]="tramite" multiple>
+                  <mat-select-trigger >
+                    {{tramites.value?.[0] || ''}}
+                    <span *ngIf="(tramites.value?.length || 0) > 1" class="example-additional-selection">
+                        (+{{(tramites.value?.length || 0) - 1}} {{tramites.value?.length === 2 ? 'mas' : 'mas'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let item of tramitesList" [value]="item.idTramite">{{item.nombreTramite}}</mat-option>
+                </mat-select>
+              </mat-form-field>
             <!-- <div class="dropdown-container" *ngIf="tramitesList.length > 0">
                 <label for="tramite" class="dropdown-label">Tramite</label>
                 <ng-select [multiple]="true" [(ngModel)]="selected" >

@@ -32,6 +32,7 @@ import { ChangeEmailComponent } from './Componentes/Usuario/change-email/change-
 import { ConfirmEmailComponent } from './Componentes/Usuario/confirm-email/confirm-email.component';
 import { ChangePasswordComponent } from './Componentes/Usuario/change-password/change-password.component';
 import {MatSelectModule} from '@angular/material/select';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 
 
@@ -64,6 +65,8 @@ import {MatSelectModule} from '@angular/material/select';
     ChangeEmailComponent,
     ConfirmEmailComponent,
     ChangePasswordComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -74,10 +77,13 @@ import {MatSelectModule} from '@angular/material/select';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgSelectModule,
-    MatSelectModule
+    MatSelectModule,
+
+   
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

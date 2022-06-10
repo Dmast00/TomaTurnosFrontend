@@ -3,7 +3,12 @@ import { interval, Observable,Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Turnos } from './turnos.model';
 import * as signalr from "@microsoft/signalr";
-import { environment } from 'src/environments/environment';
+import Speech from "speak-tts";
+
+
+
+
+
 
 @Component({
   selector: 'app-turnos',
@@ -24,16 +29,22 @@ export class TurnosComponent implements OnInit{
 
   tempList : any[] =[]
   calling : boolean = true;
-
-  // baseURL : 'https://localhost:44352/'
-  baseURL : 'https://192.168.4.207:80/'
+  
+  baseURL = 'https://localhost:44352/'
+  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
   private updateSubscription : Subscription;
-
+  
+  speech :any
+  turno : string
+  
   constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService) {
+    
     const supports = 'loading' in HTMLImageElement.prototype;
     if(supports){
       nativeElement.setAttribute('loading','lazy');
     }
+    this.speech = new Speech() // will throw an exception if not browser supported
+    
   }
   
   
@@ -66,6 +77,8 @@ export class TurnosComponent implements OnInit{
     connection.on("LlamarTurno",()=>{
       this.callTurn();
     })
+    
+    
   }
   
 
@@ -76,7 +89,6 @@ export class TurnosComponent implements OnInit{
     this.service.getTurnos().subscribe(data =>{
       var temp = data.filter(x => x.idStatus == 1)
       this.Turnos = temp
-      console.log('Turnos',this.Turnos)
     })
   }
   
@@ -88,8 +100,20 @@ export class TurnosComponent implements OnInit{
       var popped = this.Proceso.pop();
       this.turnoActivo.push(popped!)
       this.playAudio();
+      this.speech.setLanguage('es-MX');
+      if(popped == undefined){
+        console.log('Vacio')
+      }
+      else{
+        this.speech.speak({
+          text :'Turno:'+popped?.turno+',Caja:'+popped?.caja
+        }).then(()=>{
+          console.log('Succes')
+        }).catch(e =>{
+          console.error("Error",e)
+        })
+      }
     })
-    
   }
 
 

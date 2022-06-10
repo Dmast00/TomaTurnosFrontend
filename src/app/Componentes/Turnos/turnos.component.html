@@ -50,7 +50,7 @@
         <div class="col">
             <div class="turnoactivo__container">
                 <div [ngClass]="calling ? 'calling__turn' : ''" *ngFor="let item of turnoActivo">
-                    <span>Turno: {{item.turno}}</span>
+                    <span >Turno: {{item.turno}}</span>
                     <br>
                     <span>Caja: {{item.caja}}</span>
                 </div>
@@ -66,8 +66,8 @@
     </div>
     <div class="row__container">
         <div class="row__video">
-            <video   class="col__video" autoplay loop muted >
-                <source src="/assets/Pexels Videos 1826904.mp4" type="video/mp4">
+            <video   class="col__video" autoplay loop >
+                <source src="assets/Pexels Videos 1826904.mp4" type="video/mp4">
             </video>
         </div>
     </div>
