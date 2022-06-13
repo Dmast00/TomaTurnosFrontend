@@ -4,6 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: 70px;
 }
 .container-options{
     display: flex;
@@ -24,6 +26,7 @@
     background-color: var(--main-color);
     color: white; 
     border-radius: 10px;
+
 }
 /* .btn-detener{
     background-color: var(--main-color);
@@ -77,4 +80,33 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.btn__optcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn__opt{
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+}
+
+.turn__options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.turn__actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ri-information-line{
+   font-size: 40px;
 }

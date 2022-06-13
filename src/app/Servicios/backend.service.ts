@@ -15,8 +15,8 @@ const httpOptionsPlain = {
 })
 export class BackendService {
   //Creamos una variable la cual guardara el path del API
-  // readonly apiPath = 'https://localhost:44352/api/';
-  readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
+  readonly apiPath = 'https://localhost:44352/api/';
+  // readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
 
   headers = {
     headers : new HttpHeaders({
@@ -98,6 +98,10 @@ export class BackendService {
   //en proceso de pasar a ventanilla
   turnoProceso(id : number,numCaja : number){
     return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id+'/'+numCaja,id);
+  }
+  
+  turnoLlamado(id : number,numCaja : number){
+    return this.http.put(this.apiPath+'Turnos/TurnoLlamado/'+id+'/'+numCaja,id);
   }
 
   //Solicitamos al Web API cambial el estatus del turno a vencido debido a que el turno no se 

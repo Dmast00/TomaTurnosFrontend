@@ -11,20 +11,27 @@ import { Tramites } from '../tramites.model';
   templateUrl: './cat-tramites.component.html',
   styleUrls: ['./cat-tramites.component.css']
 })
-export class CatTramitesComponent implements OnInit,AfterViewInit{
+export class CatTramitesComponent implements OnInit{
   display = false
-  displayedColumns = ['idTramite', 'nombreTramite', 'descripcionTramite', 'serieTramite'];
-  @ViewChild(MatPaginator) paginator : MatPaginator
-  @ViewChild(MatSort) sort : MatSort;
   tramitesList : Tramites[] = []
-  dataSource = new MatTableDataSource<Tramites>(this.tramitesList)
-  constructor(private service : BackendService) { }
-
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator
-  }
   
+  displayedColumns = ['idTramite', 'nombreTramite', 'descripcionTramite', 'serieTramite','Acciones'];
+  dataSource : any = new MatTableDataSource([])
+  paginator : MatPaginator;
+  sort : MatSort
+  @ViewChild(MatPaginator, { static: true }) set matPginator(mp :MatPaginator){
+    this.paginator = mp
+    this.dataSource.sort = this.sort;
+  }
+  @ViewChild(MatSort, { static: true }) set matSort(ms : MatSort){
+    this.sort = ms;
+    this.dataSource.sort = this.sort;
+  }
+
+
+  constructor(private service : BackendService) { }
+  
+
 
   ngOnInit(): void {
     this.getTramites();
@@ -32,9 +39,12 @@ export class CatTramitesComponent implements OnInit,AfterViewInit{
 
   getTramites(){
     this.service.getTramites().subscribe(data =>{
-      this.tramitesList = data
-      this.dataSource.data = data
+      // this.tramitesList = data
+
+      this.dataSource = new MatTableDataSource(data)
       this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort
+      console.log(this.dataSource)
     })
   }
 }

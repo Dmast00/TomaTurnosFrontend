@@ -5,12 +5,13 @@
         <div class="row turno-row">
             <div class="col-md-12">
                 <div class="turno-actual" *ngFor="let item of last" >
-                    <h3>Turno Actual</h3>
-                    <h4 >{{item.turno}}</h4>
+                    <span><i class="ri-information-line"></i></span>
+                    <h4>Turno Actual</h4>
+                    <h3>{{item.turno}}</h3>
                 </div>
             </div>
         </div>
-        <div class="row config-row">
+        <!-- <div class="row config-row">
             <div class="options-container">
                 <div class="col-md-4 btn-container" >
                     <div class="btn-vencido">
@@ -27,9 +28,29 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <div class="turn__options">
+            <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
+                <span><i class="ri-mic-line"></i></span> Volver a Llamar
+            </button>
+            <button mat-stroked-button color="primary" class="btn__opt atender" *ngFor="let item of last" (click)="turnoProceso(item.idTurno)">
+                <span><i class="ri-chat-check-line"></i></span> Atender
+            </button>
+        </div>
+        <div class="btn__optcontainer">
+            <div class="turn__actions">
+                <button mat-raised-button color="basic" class="btn__opt vencido" *ngFor="let item of last" (click)="turnoVencido(item.idTurno)"> 
+                    <span><i class="ri-alert-line"></i></span> Vencido
+                </button>
+                <button mat-raised-button color="basic" class="btn__opt detener" *ngFor="let item of last" (click)="turnoDetenido(item.idTurno)">
+                    <span><i class="ri-stop-circle-line"></i></span> Detener
+                </button>
+                <button mat-raised-button color="basic" class="btn__opt detener" *ngFor="let item of last" (click)="turnoFinalizado(item.idTurno)">
+                    <span><i class="ri-check-line"></i></span> Finalizado
+                </button>
+            </div>
         </div>
     </div>
-    
 </div>
 
 
@@ -83,11 +104,11 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark btn-modal-save" (click)="c('Save click')" (click)="getLast()" >Guardar</button>
+        <button type="button" class="btn btn-outline-dark btn-modal-save" (click)="c('Save click')" (click)="getLast()" ><span><i class="ri-save-line"></i></span> Guardar</button>
     </div>
 </ng-template>
 
-<button class="btn btn-lg  btn-modal" (click)="open(content)">Configurar Caja</button>
+<button class="btn btn-lg  btn-modal" (click)="open(content)"><span><i class="ri-tools-line"></i></span> Configurar Caja</button>
 
 
 

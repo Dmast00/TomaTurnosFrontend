@@ -16,8 +16,8 @@
     </div>
     <a class="nav-link" routerLinkActive="active" routerLink="/Graficas">Graficas</a>
     <div class="leftside">
-      <a class="nav-item nav-link px-3 loggedin" routerLinkActive="active" routerLink="/Informacion">{{userName}}</a>
-      <a class="nav-item nav-link px-3 loggedin" href="#" (click)="logOut()">Cerrar Sesion</a>
+      <a class="nav-item nav-link px-3 loggedin" routerLinkActive="active" routerLink="/Informacion"><span><i class="ri-user-line"></i></span> {{userName}}</a>
+      <a class="nav-item nav-link px-3 loggedin" href="#" (click)="logOut()"><span><i class="ri-logout-box-line"></i></span> Cerrar Sesion</a>
     </div>
     
   </div>
@@ -29,7 +29,7 @@
     <a class="nav-link" routerLinkActive="active"  routerLink="/Turnos">Turnos</a>
     <a class="nav-link" routerLinkActive="active"  routerLink="/Cajeros">Cajeros</a>
     
-    <a class="nav-item nav-link px-3" routerLinkActive="active" routerLink="/Login">Iniciar Sesion</a>
+    <a class="nav-item nav-link px-3" routerLinkActive="active" routerLink="/Login"><span><i class="ri-login-box-line"></i></span> Iniciar Sesion</a>
   </div>
 </nav>
 

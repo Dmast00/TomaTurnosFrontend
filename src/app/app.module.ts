@@ -35,6 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
+import { MatButtonModule } from "@angular/material/button";
 
 
 
@@ -81,7 +83,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     NgSelectModule,
     MatSelectModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule
    
   ],
   providers: [

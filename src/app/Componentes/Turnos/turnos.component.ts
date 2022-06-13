@@ -29,9 +29,10 @@ export class TurnosComponent implements OnInit{
 
   tempList : any[] =[]
   calling : boolean = true;
+  callturn : any
   
-  // baseURL = 'https://localhost:44352/'
-  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  baseURL = 'https://localhost:44352/'
+  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
   private updateSubscription : Subscription;
   
   speech :any
@@ -74,8 +75,8 @@ export class TurnosComponent implements OnInit{
       this.getTurnos();
       
     })
-    connection.on("LlamarTurno",()=>{
-      this.callTurn();
+    connection.on("LlamarTurno",(data)=>{
+      this.callTurn(data);
     })
     
     
@@ -96,12 +97,16 @@ export class TurnosComponent implements OnInit{
   getTurnosByStatus(){
     this.service.getTurnos().subscribe(data =>{
       this.turnoActivo = []
-      this.Proceso = data.filter(x => x.idStatus == 4)
+      this.Proceso = data.filter(x => x.idStatus == 5)
       var popped = this.Proceso.pop();
       this.turnoActivo.push(popped!)
       this.playAudio();
       this.speech.setLanguage('es-MX');
+      
       if(popped == undefined){
+        this.speech.speak({
+          Text:'prueba'
+        })
         console.log('Vacio')
       }
       else{
@@ -111,12 +116,10 @@ export class TurnosComponent implements OnInit{
   }
 
   TTSCallTurn(popped : any){
-    let splitted = popped.turno.split('');
-    let folio = splitted.slice(0,2).join();
-    let turno = splitted.slice(2).join().split('');
-    console.log(folio)
+
     this.speech.speak({
-      text :'Turno:'+folio+','+turno+',Caja:'+popped?.caja
+      
+      text :'Turno: '+popped?.turno+',Caja: '+popped?.caja
     }).then(()=>{
       console.log('Success')
     }).catch(e =>{
@@ -125,15 +128,17 @@ export class TurnosComponent implements OnInit{
   }
 
 
-  callTurn(){
-    this.calling = true
-    if(this.calling == true){
-      this.calling = false
-    }
-    else{
-      this.calling = true
-    }
-    
+  callTurn(turn : any){
+    console.log(turn)
+    this.speech.setLanguage('es-MX');
+    this.speech.speak({
+      text :'Turno: '+ turn
+    }).then(()=>{
+      console.log('Success')
+    }).catch(e =>{
+      console.log('error?')
+      console.error("Error",e)
+    })
   }
 
   

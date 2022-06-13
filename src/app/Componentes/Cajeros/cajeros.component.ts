@@ -35,8 +35,8 @@ export class CajerosComponent implements OnInit {
   data = ''
   tramites = new FormControl('');
 
-  // baseURL = 'https://localhost:44352/'
-  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  baseURL = 'https://localhost:44352/'
+  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
   //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
   //actualizar la lista de turno en intervalos de tiempo
@@ -109,7 +109,8 @@ export class CajerosComponent implements OnInit {
     }
     else{
       this.last.push(this.turnosById[0])
-      this.turnoProceso(this.last[0])
+      // this.turnoProceso(this.last[0])
+      this.turnoLlamado(this.turnosById[0])
     }
     // var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
     // if(temp != null){
@@ -147,6 +148,14 @@ export class CajerosComponent implements OnInit {
 
   turnoProceso(turno : any){
     this.service.turnoProceso(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
+
+    },err =>console.log('HTTP Error',err))
+    // this.last.push(turno)
+
+  }
+  turnoLlamado(turno : any){
+    console.log(turno)
+    this.service.turnoLlamado(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
 
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
@@ -191,11 +200,12 @@ export class CajerosComponent implements OnInit {
     })
   }
 
-  callTurn(turno : string){
+  callTurn(turno : any){
     this.service.callTurn(turno).subscribe(data =>{
       console.log(data)
     })
   }
+
   // //Metodo para abrir el modal que se encuentra en el HTML
   open(content:any) {
     this.modalService.open(content);
