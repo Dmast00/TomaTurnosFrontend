@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Turnos } from '../Componentes/Turnos/turnos.model';
 
 
 const httpOptionsPlain = {
@@ -65,8 +66,9 @@ export class BackendService {
     return this.http.get<any>(this.apiPath+'Role');
   }
 
-  callTurn(item : string) : Observable<any>{
-    return this.http.get<any>(this.apiPath+'Turnos/llamarturno/'+item)
+  callTurn(item : any , caja : any) : Observable<any>{
+    console.log('Backend',item,caja)
+    return this.http.get<any>(this.apiPath+'Turnos/llamarturno/'+item+'/'+caja,item)
   }
   
 

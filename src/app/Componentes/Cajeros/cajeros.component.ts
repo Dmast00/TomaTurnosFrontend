@@ -203,8 +203,8 @@ export class CajerosComponent implements OnInit {
   }
 
   callTurn(turno : any){
-    this.service.callTurn(turno).subscribe(data =>{
-      console.log(data)
+    this.service.callTurn(turno,this.form.value['NumCaja']).subscribe(data =>{
+      
     })
   }
 

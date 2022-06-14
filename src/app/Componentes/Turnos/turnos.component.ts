@@ -76,6 +76,8 @@ export class TurnosComponent implements OnInit{
       
     })
     connection.on("LlamarTurno",(data)=>{
+      console.log(data)
+      console.log('Entro al  hub',data.Turno,data.Caja)
       this.callTurn(data);
     })
   }
@@ -130,7 +132,7 @@ export class TurnosComponent implements OnInit{
     console.log(turn)
     this.speech.setLanguage('es-MX');
     this.speech.speak({
-      text :'Turno: '+ turn
+      text :'Turno: '+ turn.turno + 'Caja:'+turn.caja
     }).then(()=>{
       console.log('Success')
     }).catch(e =>{
