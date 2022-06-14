@@ -47,7 +47,7 @@ export class TurnosComponent implements OnInit{
     this.speech = new Speech() // will throw an exception if not browser supported
     
   }
-  
+ 
   
   ngOnInit(): void {
     this.getTurnos()
@@ -78,8 +78,6 @@ export class TurnosComponent implements OnInit{
     connection.on("LlamarTurno",(data)=>{
       this.callTurn(data);
     })
-    
-    
   }
   
 

@@ -11,24 +11,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row config-row">
-            <div class="options-container">
-                <div class="col-md-4 btn-container" >
-                    <div class="btn-vencido">
-                        <button class="btn" *ngFor="let item of last" (click)="turnoVencido(item.idTurno);$event.preventDefault();">Vencido</button>
-                    </div>
-                    <div class="btn-detener">
-                        <button class="btn" *ngFor="let item of last" (click)="turnoDetenido(item.idTurno);$event.preventDefault();">Detener</button>
-                    </div>
-                    <div class="btn-finalizado">
-                        <button class="btn" *ngFor="let item of last" (click)="turnoFinalizado(item.idTurno);$event.preventDefault();" >Finalizado</button>
-                    </div>
-                    <div class="btn-finalizado">
-                        <button class="btn" *ngFor="let item of last" (click)="callTurn(item.turno)" >LLamar</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="turn__options">
             <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
                 <span><i class="ri-mic-line"></i></span> Volver a Llamar

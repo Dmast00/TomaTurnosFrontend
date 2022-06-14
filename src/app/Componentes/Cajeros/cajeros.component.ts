@@ -78,6 +78,7 @@ export class CajerosComponent implements OnInit {
       this.getTurno();
       
     })
+    
   }
 
   get f(){
@@ -147,7 +148,8 @@ export class CajerosComponent implements OnInit {
     }
 
   turnoProceso(turno : any){
-    this.service.turnoProceso(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
+    console.log(turno);
+    this.service.turnoProceso(turno,this.form.value['NumCaja']).subscribe(data =>{
 
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
