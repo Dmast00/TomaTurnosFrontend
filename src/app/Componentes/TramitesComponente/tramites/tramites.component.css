@@ -1,45 +1,11 @@
-.tramites{
-    display: grid; 
-    grid-auto-columns: 1fr; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    gap: 15px 15px; 
-    grid-template-areas: 
-      ". . ."
-      ". . ."; 
 
-    margin-top: 15vh;
-
-    align-items: center;
-}
-
-.btn-tramite{
-    background-color: var(--main-color);
-    color: white;
-
-    box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-    -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-    -moz-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
-}
-
-.btn-tramite:hover{
-    background-color: var(--main-hover-color);
-    color: black;
-}
-
-.main-content{
-    height: 100%;
-}
-
-.container{
-    min-height: 100%;
-    position: relative;
-}
 
 .waves-container{
     position: absolute;
     bottom: 0px;
     width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .tramiteswaves{
@@ -52,13 +18,13 @@
     background-color: var(--main-color);
     color: white;
 
-    border-radius: 10px ;
+    border-radius: 20px ;
 
     position: absolute;
     z-index: 100;
     width: 8vw;
     height: 8vh;
-    transform: translateX(54em);
+    transform: translateX(100em);
 
     box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
     -webkit-box-shadow: -2px 14px 24px -1px rgba(0,0,0,0.55);
@@ -67,12 +33,30 @@
     animation-name: print-turno;
     animation-duration: 0.8s;
 }
+.tramites__container{
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 15px 15px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."; 
+    
+    justify-items: center;
+    position: relative;
+    top: 150px;
+}
+.tramite__btn{
+    height: 110px;
+    width: 160px;
+}
 @keyframes print-turno {
     from{
         transform: translateX(0em);
     }
     to{
-        transform: translateX(55em);
+        transform: translateX(100em);
     }
 }
 

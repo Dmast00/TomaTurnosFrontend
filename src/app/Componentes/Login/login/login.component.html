@@ -7,7 +7,7 @@
     <form [formGroup]="form" (ngSubmit)="loginUsuario()">
         <h2>Inciar sesion</h2>
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Correo Electronico</label>
           <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electronico" [ngClass]="{'is-invalid':submmited && f['email'].errors , 'is-valid': f['email'].valid}">
           <div *ngIf="f['email'].errors" class="invalid-feedback">
             <div *ngIf="f['email'].errors?.['required']">El correo electronico es obligatorio</div>
@@ -16,7 +16,7 @@
         </div>
         <a href=""><small>Olvide mi contraseña</small></a>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Contraseña</label>
           <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" [ngClass]="{'is-invalid':submmited && f['password'].errors , 'is-valid': f['password'].valid}">
           <div  *ngIf="f['password'].errors" class="invalid-feedback">
             <div *ngIf="f['password'].errors?.['required']">La contraseña es obligatoria</div>
@@ -25,6 +25,6 @@
               <a routerLinkActive="active" routerLink="/Registrar" href="#">No tienes cuenta?</a>
           </small>
         </div>
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" class="btn"><span><i class="ri-checkbox-circle-line"></i></span> Submit</button>
       </form>
 </div>

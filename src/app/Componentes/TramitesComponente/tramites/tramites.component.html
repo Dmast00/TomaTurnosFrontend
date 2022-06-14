@@ -1,27 +1,17 @@
 <app-navbar></app-navbar>
 
 <div class="main-content">
-    <div class="container" >
-        <div class="row tramites-container">
-            <div class="col-md-3 btnprint" *ngFor="let item of turnosList" (click)="printTurno()">
-                <button class="btn">Imprimir turno</button>
-             </div>
-            <div class="tramites" *ngIf="tramiteList.length >= 1">
-                <div class="col-md-4" *ngFor="let item of tramiteList">
-                    <button class=" btn btn-tramite" *ngIf="!printed" (click)="genTurno(item)">
-                        {{item.nombreTramite}}
-                    </button>
-                    <button class=" btn btn-tramite" *ngIf="printed" disabled (click)="genTurno(item)">
-                        {{item.nombreTramite}}
-                    </button>     
-                       
-                </div>
-            </div>
-            <div class="tramites" *ngIf="tramiteList.length == 0" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-                <div class="col-md-4"  >
-                   <h3>No hay tramites en memoria.</h3>
-                </div>
-            </div>
+    <div class="col-md-3 btnprint" *ngFor="let item of turnosList" (click)="printTurno()">
+        <button mat-fab class="btn">
+            <mat-icon>local_printshop</mat-icon>
+            Imprimir turno
+        </button>
+     </div>
+    <div class="tramites__container" >
+        <div class="col-md-4" *ngFor="let item of tramiteList">
+            <button class="tramite__btn" mat-raised-button  (click)="genTurno(item)">
+                {{item.nombreTramite}}
+            </button>
         </div>
     </div>
     <div class="waves-container">

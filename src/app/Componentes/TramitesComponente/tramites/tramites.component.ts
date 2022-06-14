@@ -50,7 +50,6 @@ export class TramitesComponent implements OnInit {
       if(data.status == 200){
         console.log('success 200')
         this.turnosList.push(data.body)
-        
       }
       else if(data.status == 400){
         console.log('intentelo mas tarde. 400')
@@ -59,6 +58,7 @@ export class TramitesComponent implements OnInit {
         console.log('intentelo mas tarde. 500')
       }
     });
+    
     this.printed=true
   }
 
