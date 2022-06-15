@@ -11,6 +11,8 @@ import { AccountInfoComponent } from "./Componentes/Usuario/account-info/account
 import { CatTramitesComponent } from "./Componentes/Catalogos/Tramites/cat-tramites/cat-tramites.component";
 import { RoleGuard } from './Guards/role.guard';
 import { UsuariosComponent } from "./Componentes/Catalogos/Usuarios/usuarios/usuarios.component";
+import { ListaTurnosComponent } from "./Componentes/Catalogos/lista-turnos/lista-turnos.component";
+
 
 
 
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path:'Informacion',component:AccountInfoComponent,canActivate:[AuthGuard]},
   {path:'CatTramites',component:CatTramitesComponent,canActivate:[RoleGuard]},
   {path:'Usuarios',component:UsuariosComponent,canActivate:[RoleGuard]},
+  {path:'Listaturnos',component:ListaTurnosComponent,canActivate:[RoleGuard]}
 ];
 
 @NgModule({

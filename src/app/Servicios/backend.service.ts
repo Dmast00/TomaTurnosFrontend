@@ -67,7 +67,6 @@ export class BackendService {
   }
 
   callTurn(item : any , caja : any) : Observable<any>{
-    console.log('Backend',item,caja)
     return this.http.get<any>(this.apiPath+'Turnos/llamarturno/'+item+'/'+caja,item)
   }
   

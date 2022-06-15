@@ -40,8 +40,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
-
-
+import { ListaTurnosComponent } from './Componentes/Catalogos/lista-turnos/lista-turnos.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 
 
@@ -73,6 +75,7 @@ import { MatIconModule } from "@angular/material/icon";
     ChangeEmailComponent,
     ConfirmEmailComponent,
     ChangePasswordComponent,
+    ListaTurnosComponent,
     
     
   ],
@@ -92,7 +95,10 @@ import { MatIconModule } from "@angular/material/icon";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule
    
   ],
   providers: [

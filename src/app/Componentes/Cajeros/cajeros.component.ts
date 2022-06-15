@@ -34,6 +34,7 @@ export class CajerosComponent implements OnInit {
 
   data = ''
   tramites = new FormControl('');
+  status = ''
 
   baseURL = 'https://localhost:44352/'
   // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
@@ -112,6 +113,7 @@ export class CajerosComponent implements OnInit {
       this.last.push(this.turnosById[0])
       // this.turnoProceso(this.last[0])
       this.turnoLlamado(this.turnosById[0])
+      this.llamandoVariable();
     }
     // var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
     // if(temp != null){
@@ -150,7 +152,7 @@ export class CajerosComponent implements OnInit {
   turnoProceso(turno : any){
     console.log(turno);
     this.service.turnoProceso(turno,this.form.value['NumCaja']).subscribe(data =>{
-
+      this.atendiendoVariable();
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
 
@@ -181,11 +183,16 @@ export class CajerosComponent implements OnInit {
   //de backend para asignarle el status de finalizado al turno, asi mismo se llama
   //a la funcion getLast() la cual permite recuperar el ultimo turno asignado al array
   turnoFinalizado(id :number){
-    this.service.turnoFinalizado(id).subscribe(data =>{
-      console.log('entro a finalizado')
-    });
-    this.getLast();
-    this.toastr.success('Se finalizo el turno')
+    if(this.status == 'Llamando'){
+      console.log('Esta atendiendo')
+    }
+    else{
+      this.service.turnoFinalizado(id).subscribe(data =>{
+        console.log('entro a finalizado')
+      });
+      this.getLast();
+      this.toastr.success('Se finalizo el turno')
+    }
   }
 
   turnoDetenido(id:number){
@@ -206,6 +213,13 @@ export class CajerosComponent implements OnInit {
     this.service.callTurn(turno,this.form.value['NumCaja']).subscribe(data =>{
       
     })
+  }
+
+  llamandoVariable(){
+    this.status = 'Llamando'
+  }
+  atendiendoVariable(){
+    this.status = 'Atendiendo'
   }
 
   // //Metodo para abrir el modal que se encuentra en el HTML

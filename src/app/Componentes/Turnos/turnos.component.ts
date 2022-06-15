@@ -25,6 +25,7 @@ export class TurnosComponent implements OnInit{
   Proceso : Turnos[] = [];
   turnoAbajo : Turnos[] = [];
   turnoActivo : Turnos[] = [];
+  turnoLlamado : Turnos[] = [];
   temp : Turnos[] = [];
 
   tempList : any[] =[]
@@ -68,18 +69,22 @@ export class TurnosComponent implements OnInit{
       return console.error(err.toString());
     });
     connection.on("BroadcastMessage",()=>{
-      this.getTurnos();
       this.getTurnosByStatus();
+      this.getTurnos();
     })
     connection.on("BroadcastCajero",()=>{
       this.getTurnos();
       
     })
     connection.on("LlamarTurno",(data)=>{
-      console.log(data)
-      console.log('Entro al  hub',data.Turno,data.Caja)
       this.callTurn(data);
     })
+    this.speech.init({
+      'lang': 'es-MX',
+      
+
+    })
+    console.log(this.speech.speaking())
   }
   
 
@@ -98,25 +103,24 @@ export class TurnosComponent implements OnInit{
     this.service.getTurnos().subscribe(data =>{
       this.turnoActivo = []
       this.Proceso = data.filter(x => x.idStatus == 5)
+      this.turnoLlamado = data.filter(x => x.idStatus == 5)
+      console.log('Proceso',this.Proceso)
       var popped = this.Proceso.pop();
       this.turnoActivo.push(popped!)
-      this.playAudio();
-      this.speech.setLanguage('es-MX');
       
       if(popped == undefined){
-        this.speech.speak({
-          Text:'prueba'
-        })
         console.log('Vacio')
       }
       else{
         this.TTSCallTurn(popped);
+        this.playAudio();
       }
     })
   }
 
   TTSCallTurn(popped : any){
-
+    
+    console.log(this.speech)
     this.speech.speak({
       
       text :'Turno: '+popped?.turno+',Caja: '+popped?.caja
@@ -132,7 +136,7 @@ export class TurnosComponent implements OnInit{
     console.log(turn)
     this.speech.setLanguage('es-MX');
     this.speech.speak({
-      text :'Turno: '+ turn.turno + 'Caja:'+turn.caja
+      text :'Turno: '+ turn.turno + ',Caja:'+turn.caja
     }).then(()=>{
       console.log('Success')
     }).catch(e =>{
