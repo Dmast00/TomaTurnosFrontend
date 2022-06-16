@@ -73,7 +73,7 @@ export class TurnosComponent implements OnInit{
     })
     connection.on("BroadcastCajero",()=>{
       this.getTurnos();
-      
+      this.UpdateturnoLlamado();
     })
     connection.on("LlamarTurno",(data)=>{
       this.callTurn(data);
@@ -115,6 +115,11 @@ export class TurnosComponent implements OnInit{
   }
 
 
+  UpdateturnoLlamado(){
+    this.service.getTurnos().subscribe(data =>{
+      this.turnoLlamado = data.filter(x => x.idStatus == 5)
+    })
+  }
 
   TTSCallTurn(popped : any){
     
