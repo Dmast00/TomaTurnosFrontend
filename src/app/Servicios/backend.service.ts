@@ -100,6 +100,9 @@ export class BackendService {
   turnoProceso(id : number,numCaja : number){
     return this.http.put(this.apiPath+'Turnos/TurnoProceso/'+id+'/'+numCaja,id);
   }
+  turnoAtencion(id : number,numCaja : number){
+    return this.http.put(this.apiPath+'Turnos/TurnoAtencion/'+id+'/'+numCaja,id);
+  }
   
   turnoLlamado(id : number,numCaja : number){
     return this.http.put(this.apiPath+'Turnos/TurnoLlamado/'+id+'/'+numCaja,id);

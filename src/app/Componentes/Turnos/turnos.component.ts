@@ -14,7 +14,6 @@ import Speech from "speak-tts";
   selector: 'app-turnos',
   templateUrl: './turnos.component.html',
   styleUrls: ['./turnos.component.css'],
-  providers: []
   
 })
 export class TurnosComponent implements OnInit{
@@ -102,7 +101,6 @@ export class TurnosComponent implements OnInit{
       this.turnoActivo = []
       this.Proceso = data.filter(x => x.idStatus == 5)
       this.turnoLlamado = data.filter(x => x.idStatus == 5)
-      console.log('Proceso',this.Proceso)
       var popped = this.Proceso.pop();
       this.turnoActivo.push(popped!)
       
@@ -115,6 +113,8 @@ export class TurnosComponent implements OnInit{
       }
     })
   }
+
+
 
   TTSCallTurn(popped : any){
     

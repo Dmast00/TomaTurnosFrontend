@@ -1,11 +1,41 @@
-<div class="container">
+
+<div class="col turnos__pendientes">
+    <div class="turnos__title">
+        <p class="title">Pendientes</p>
+    </div>
+    <div class="turnos__container">
+        <div class="turnos">
+            <p *ngFor="let item of Turnos | slice:0:7" class="turno">{{item.turno}}</p>
+        </div>
+    </div>
+</div>
+<div class="col llamados__container">
+    <div class="turnos__llamadostitle">
+        <p class="title">Llamados</p>
+    </div>
+    <div class="llamado__container">
+        <div *ngFor="let item of turnoLlamado" class="llamado">
+            Turno: {{item.turno}}
+            Caja: {{item.caja}}
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-3">
             <div class="turnos__container">
-                <span class="pendientes">Pendientes</span>
-                <div class="turno" *ngFor="let item of Turnos | slice:0:15;">
-                    {{item.turno}}
-                </div>  
+                <mat-card>
+                    <mat-card-title>
+                        <span class="pendientes">Pendientes</span>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="turno" *ngFor="let item of Turnos | slice:0:15;">
+                            {{item.turno}}
+                        </div>  
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
         <div class="col-md-6 llamando__container" >
@@ -18,75 +48,16 @@
             </div>
         </div>
     </div>
+</div> -->
+<div class="waves-container">
+    <div class="footer">
+        <div class="wave-container">
+            <div class="wave">
+                <img class="turnoswaves" src="assets/TurnosWaves.png" alt="" loading="lazy">
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-<!-- <div class="container">
-    <div class="turnos__container">
-        <div class="class__temp" *ngFor="let item of temp">
-            Turnos en Ventanilla: {{item.turno}}
-            <span>{{item.caja}}</span>
-       </div>
-        <div class="class__temp" *ngFor="let item of turnoActivo">
-            Turno Activo: {{item.turno}}
-            <span>{{item.caja}}</span>
-       </div>
-       <div class="class__temp" *ngFor="let item of Turnos">
-            <span>{{item.turno}}</span>
-        </div>
-    </div>
-    
-</div> --> 
-
-<!-- <div class="container">
-    <div class="turnos__container">
-        <p>Turnos Pendientes</p>
-        <div class="turno" *ngFor="let item of Turnos">
-            <span>{{item.turno}}</span>
-        </div>
-        <p>Turnos Proceso</p>
-        <div class="turno" *ngFor="let item of Proceso">
-            <span>{{item.turno}}</span>
-            <br>
-            <span>Caja: {{item.caja}}</span>
-        </div>
-        <p>Turno Activo</p>
-        <div class="turno__activo" *ngFor="let item of turnoActivo">
-            <span>{{item.turno}}</span>
-            <br>
-            <span>Caja: {{item.caja}}</span>
-        </div>
-    </div>
-</div> -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="turnosproceso__container">
-                <div class="turnos__proceso" *ngFor="let item of Proceso">
-                    <span>Turno: {{item.turno}}</span>
-                    <br>
-                    <span>Caja: {{item.caja}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="turnoactivo__container">
-                <div [ngClass]="calling ? 'calling__turn' : ''" *ngFor="let item of turnoActivo">
-                    <span >Turno: {{item.turno}}</span>
-                    <br>
-                    <span>Caja: {{item.caja}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="turnospedientes__container">
-                <div class="turno__pendiente" *ngFor="let item of Turnos">
-                    <span>{{item.turno}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-</div> -->

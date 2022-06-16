@@ -18,7 +18,7 @@
             <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
                 <span><i class="ri-mic-line"></i></span> Volver a Llamar
             </button>
-            <button mat-stroked-button color="primary" class="btn__opt atender" *ngFor="let item of last" (click)="turnoProceso(item.idTurno)">
+            <button mat-stroked-button color="primary" class="btn__opt atender" *ngFor="let item of last" (click)="turnoEnAtencion(item.idTurno)">
                 <span><i class="ri-chat-check-line"></i></span> Atender
             </button>
         </div>

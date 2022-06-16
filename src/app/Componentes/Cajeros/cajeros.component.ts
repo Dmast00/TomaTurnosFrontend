@@ -154,7 +154,7 @@ export class CajerosComponent implements OnInit {
   turnoProceso(turno : any){
     console.log(turno);
     this.service.turnoProceso(turno,this.form.value['NumCaja']).subscribe(data =>{
-      this.atendiendoVariable();
+      
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
 
@@ -168,7 +168,11 @@ export class CajerosComponent implements OnInit {
 
   }
 
-
+  turnoEnAtencion(turno : any){
+    this.service.turnoAtencion(turno,this.form.value['NumCaja']).subscribe(data =>{
+      this.atendiendoVariable();
+    })
+  }
 
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna
   //a vencido y se asigna otro turno a ventanilla llamando a la funcion getLast()

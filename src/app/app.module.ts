@@ -44,6 +44,7 @@ import { ListaTurnosComponent } from './Componentes/Catalogos/lista-turnos/lista
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
 
 
 
@@ -98,8 +99,8 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressBarModule
-   
+    MatProgressBarModule,
+    MatCardModule
   ],
   providers: [
     AuthGuard,
