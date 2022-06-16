@@ -1,13 +1,14 @@
 import { Component, OnInit,Input, ComponentFactoryResolver, Inject, forwardRef } from '@angular/core';
-import { interval, isEmpty, Observable, Subscription } from 'rxjs';
+import { interval, isEmpty, Observable, Subscription, timeout } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Cajeros } from './cajeros.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tramites } from '../TramitesComponente/tramites.model';
-import { ToastrService } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as signalr from "@microsoft/signalr";
 import { Turnos } from "../Turnos/turnos.model";
+
 
 
 
@@ -79,6 +80,7 @@ export class CajerosComponent implements OnInit {
       this.getTurno();
       
     })
+    
     
   }
 
@@ -174,8 +176,10 @@ export class CajerosComponent implements OnInit {
     this.service.turnoVencido(id).subscribe(data =>{
     })
     this.getLast();
-    this.toastr.info('Se asigno como turno vencido')
-
+    this.toastr.info('Se asigno como turno vencido','Turno info',{
+      progressBar:true,
+      progressAnimation:'increasing',
+    })
   }
 
 
@@ -185,21 +189,42 @@ export class CajerosComponent implements OnInit {
   turnoFinalizado(id :number){
     if(this.status == 'Llamando'){
       console.log('Esta atendiendo')
+      this.toastr.info('No se puede finalizar un turno que aun no se atiende.','Turno Info',{
+        progressBar:true,
+        progressAnimation:'increasing', 
+      })
     }
     else{
       this.service.turnoFinalizado(id).subscribe(data =>{
         console.log('entro a finalizado')
       });
       this.getLast();
-      this.toastr.success('Se finalizo el turno')
+      this.toastr.success('Se finalizo el turno.','Turno Finalizado',{
+        progressBar:true,
+        progressAnimation:'increasing',
+      })
     }
   }
 
   turnoDetenido(id:number){
-    this.service.turnoFinalizado(id).subscribe(data =>{
+    if(this.status == 'Llamando'){
+      this.service.turnoVencido(id).subscribe(data =>{
+      })
       this.last = []
-    });
-    this.toastr.info('Se detuvo la asignacion de turnos')
+      this.toastr.info('Se detuvo la asignacion de turnos','Asignacion de turnos',{
+        progressBar:true,
+        progressAnimation:'increasing',
+      })
+    }
+    else{
+      this.service.turnoFinalizado(id).subscribe(data =>{
+        this.last = []
+      });
+      this.toastr.info('Se detuvo la asignacion de turnos','Asignacion de turnos',{
+        progressBar:true,
+        progressAnimation:'increasing',
+      })
+    }
   }
 
   getTramites(){

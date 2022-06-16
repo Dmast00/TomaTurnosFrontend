@@ -81,10 +81,8 @@ export class TurnosComponent implements OnInit{
     })
     this.speech.init({
       'lang': 'es-MX',
-      
-
     })
-    console.log(this.speech.speaking())
+    
   }
   
 

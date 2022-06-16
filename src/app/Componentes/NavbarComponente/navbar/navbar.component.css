@@ -39,3 +39,9 @@ a:focus,a:active,a:target {
     box-shadow: none;
     color: var(--main-color);
 }
+
+
+
+@media screen and (max-width:1200px) {
+    
+}

@@ -119,3 +119,17 @@
 .no__caja{
     width: 100%;
 }
+.status{
+    color: var(--main-color);
+}
+
+@media screen and (max-width:992px) {
+    .turno-actual{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 15px;
+    }
+}
