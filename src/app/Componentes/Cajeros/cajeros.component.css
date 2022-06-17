@@ -122,6 +122,14 @@
 .status{
     color: var(--main-color);
 }
+.not__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: fixed;
+    top: 75px;
+    right: 350px;
+}
 
 @media screen and (max-width:992px) {
     .turno-actual{
@@ -132,4 +140,9 @@
         position: relative;
         top: 15px;
     }
+}
+
+.mat__bottomsheet{
+    outline:none;
+    box-shadow: none;
 }

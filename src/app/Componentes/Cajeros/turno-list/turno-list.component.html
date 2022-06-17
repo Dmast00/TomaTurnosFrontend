@@ -1,0 +1,10 @@
+<mat-nav-list *ngFor="let item of dataSource">
+    <a mat-list-item>
+        <span mat-list-icon>
+            <mat-icon>receipt</mat-icon>
+        </span>
+        <span mat-line>Turno: {{item.turno}}</span>
+        <span mat-line>Fecha Creacion: <b>{{item.fechaInicial | date:'short'}}</b></span>
+    </a>
+    
+</mat-nav-list>

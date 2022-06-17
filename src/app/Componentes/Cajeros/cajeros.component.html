@@ -12,8 +12,16 @@
                         <h4 class="status"><span><i class="ri-broadcast-line"></i></span> Status : {{status}}</h4>
                     </div>
                 </div>
+                <div class="not__container">
+                    <button class="mat__bottomsheet" (click)="openBottomSheet()">
+                        <mat-icon matTooltip="Turnos Pendientes" matBadge={{lengthList}} matBadgeColor="warn" >
+                            notifications_active
+                        </mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
+
         <div class="turn__options">
             <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
                 <span><i class="ri-mic-line"></i></span> Volver a Llamar

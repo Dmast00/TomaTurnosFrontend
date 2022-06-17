@@ -8,6 +8,9 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as signalr from "@microsoft/signalr";
 import { Turnos } from "../Turnos/turnos.model";
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { ListaTurnosComponent } from '../Catalogos/lista-turnos/lista-turnos.component';
+import { TurnoListComponent } from './turno-list/turno-list.component';
 
 
 
@@ -22,7 +25,7 @@ export class CajerosComponent implements OnInit {
   form : FormGroup;
   submmited = false;
   Tramite: number
-  tramite : [] = []
+  @Input() tramite : [] = []
   // NumCaja : number
   turnosList : Cajeros[]
   turnosById : Turnos[] =[]
@@ -36,6 +39,7 @@ export class CajerosComponent implements OnInit {
   data = ''
   tramites = new FormControl('');
   status = ''
+  lengthList : any = 0
 
   baseURL = 'https://localhost:44352/'
   // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
@@ -44,7 +48,7 @@ export class CajerosComponent implements OnInit {
   //actualizar la lista de turno en intervalos de tiempo
   private updateSubscription : Subscription;
   constructor(private service : BackendService,
-    private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder ) {
+    private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder,private _bottomSheet : MatBottomSheet ) {
       this.form = this.fb.group({
         NumCaja : new FormControl('',[
           Validators.required,
@@ -76,14 +80,21 @@ export class CajerosComponent implements OnInit {
     }).catch(function(err){
       return console.error(err.toString());
     });
+    
     connection.on("BroadcastMessage",()=>{
       this.getTurno();
-      
     })
-    
-    
+    connection.on("BroadcastCajero",()=>{
+      this.countTurnos();
+    })
+
   }
 
+  openBottomSheet(){
+    this._bottomSheet.open(TurnoListComponent,{
+      data:this.turnosById
+    })
+  }
   get f(){
     return this.form.controls
   }
@@ -150,6 +161,21 @@ export class CajerosComponent implements OnInit {
         return +new Date(b.fechaInicial) - +new Date(a.fechaInicial);
       });
     }
+
+  countTurnos(){
+    var temp : any[] = []
+    var temp2 : any[] = []
+    var count = 0
+    this.getTurno();
+    for(let i =0; i < this.tramite.length; i++){
+      temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
+      temp2 = temp2.concat(temp)
+      console.log('Service Count Turnos:',temp2)
+      count++
+    }
+    this.lengthList = temp2.length
+    console.log(this.lengthList)
+  }
 
   turnoProceso(turno : any){
     console.log(turno);

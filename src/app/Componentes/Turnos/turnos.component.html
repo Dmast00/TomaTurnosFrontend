@@ -4,8 +4,11 @@
         <p class="title">Pendientes</p>
     </div>
     <div class="turnos__container">
-        <div class="turnos">
-            <p *ngFor="let item of Turnos | slice:0:7" class="turno">{{item.turno}}</p>
+        <div class="turnos"  *ngFor="let item of Turnos | slice:0:7">
+            <mat-nav-list>
+                <span mat-line class="turno">{{item.turno}}</span>
+            </mat-nav-list>
+            <!-- <p *ngFor="let item of Turnos | slice:0:7" class="turno">{{item.turno}}</p> -->
         </div>
     </div>
 </div>
@@ -14,10 +17,14 @@
         <p class="title">Llamados</p>
     </div>
     <div class="llamado__container">
-        <div *ngFor="let item of turnoLlamado" class="llamado">
+        <mat-nav-list *ngFor="let item of turnoLlamado" class="llamado">
+            <span mat-line>Turno: {{item.turno}}</span>
+            <span mat-line>Caja: {{item.caja}}</span>
+        </mat-nav-list>
+        <!-- <div *ngFor="let item of turnoLlamado" class="llamado">
             Turno: {{item.turno}}
             Caja: {{item.caja}}
-        </div>
+        </div> -->
     </div>
 </div>
 

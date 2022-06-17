@@ -45,8 +45,11 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
-
-
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatListModule } from "@angular/material/list";
+import { TurnoListComponent } from './Componentes/Cajeros/turno-list/turno-list.component';
 
 
 
@@ -77,6 +80,7 @@ import { MatCardModule } from "@angular/material/card";
     ConfirmEmailComponent,
     ChangePasswordComponent,
     ListaTurnosComponent,
+    TurnoListComponent,
     
     
   ],
@@ -100,7 +104,11 @@ import { MatCardModule } from "@angular/material/card";
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatBadgeModule,
+    MatTooltipModule,
+    MatBottomSheetModule,
+    MatListModule
   ],
   providers: [
     AuthGuard,
