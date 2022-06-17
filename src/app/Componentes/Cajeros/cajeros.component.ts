@@ -25,7 +25,7 @@ export class CajerosComponent implements OnInit {
   form : FormGroup;
   submmited = false;
   Tramite: number
-  @Input() tramite : [] = []
+  tramite : [] = []
   // NumCaja : number
   turnosList : Cajeros[]
   turnosById : Turnos[] =[]
@@ -86,6 +86,7 @@ export class CajerosComponent implements OnInit {
     })
     connection.on("BroadcastCajero",()=>{
       this.countTurnos();
+      this.filterTurns();
     })
 
   }
