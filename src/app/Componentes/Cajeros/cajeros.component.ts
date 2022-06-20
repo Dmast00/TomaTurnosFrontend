@@ -147,18 +147,20 @@ export class CajerosComponent implements OnInit {
     }
 
   countTurnos(){
-    this.getTurno();
-    var temp : any[] = []
-    var temp2 : any[] = []
-    var count = 0
-    this.getTurno();
-    for(let i =0; i < this.tramite.length; i++){
-      temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
-      temp2 = temp2.concat(temp)
-      
-      count++
-    }
-    this.lengthList = temp2.length
+    this.service.getTurnos().subscribe(data =>{
+      this.turnosList = data
+      var temp : any[] = []
+      var temp2 : any[] = []
+      var count = 0
+      this.getTurno();
+      for(let i =0; i < this.tramite.length; i++){
+        temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
+        temp2 = temp2.concat(temp)
+        
+        count++
+      }
+      this.lengthList = temp2.length
+    })
     
   }
 
