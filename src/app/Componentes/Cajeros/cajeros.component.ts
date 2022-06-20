@@ -82,6 +82,7 @@ export class CajerosComponent implements OnInit {
   }
 
   openBottomSheet(){
+    this.filterTurns();
     this._bottomSheet.open(TurnoListComponent,{
       data:this.turnosById
     })

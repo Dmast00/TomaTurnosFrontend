@@ -31,7 +31,7 @@ export class TurnoListComponent implements OnInit {
     }).catch(function(err){
       return console.error(err.toString());
     });
-    connection.on("BroadcastCajero",()=>{
+    connection.on("BroadCastMessage",()=>{
       this.dataSource = this.data
     })
   }
