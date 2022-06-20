@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="not__container" (click)="openBottomSheet()">
-                    <span matBadge="{{lengthList}}" matBadgeColor="warn"  ></span>
+                    <span *ngIf="lengthList" matBadge="{{lengthList}}" matBadgeColor="warn"  ></span>
                     <mat-icon matTooltip="Turnos Pendientes">
                         notifications_active
                     </mat-icon>
