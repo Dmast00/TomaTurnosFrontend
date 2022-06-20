@@ -12,12 +12,11 @@
                         <h4 class="status"><span><i class="ri-broadcast-line"></i></span> Status : {{status}}</h4>
                     </div>
                 </div>
-                <div class="not__container">
-                    <button class="mat__bottomsheet" (click)="openBottomSheet()">
-                        <mat-icon matTooltip="Turnos Pendientes" matBadge={{lengthList}} matBadgeColor="warn" >
-                            notifications_active
-                        </mat-icon>
-                    </button>
+                <div class="not__container" (click)="openBottomSheet()">
+                    <span matBadge="{{lengthList}}" matBadgeColor="warn"  ></span>
+                    <mat-icon matTooltip="Turnos Pendientes">
+                        notifications_active
+                    </mat-icon>
                 </div>
             </div>
         </div>

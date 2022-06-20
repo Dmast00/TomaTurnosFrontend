@@ -44,9 +44,6 @@ export class CajerosComponent implements OnInit {
   baseURL = 'https://localhost:44352/'
   // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
-  //Se declara una variable privada de tipo Subscription, la cual permite suscribirse para
-  //actualizar la lista de turno en intervalos de tiempo
-  private updateSubscription : Subscription;
   constructor(private service : BackendService,
     private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder,private _bottomSheet : MatBottomSheet ) {
       this.form = this.fb.group({
@@ -55,16 +52,10 @@ export class CajerosComponent implements OnInit {
           Validators.pattern("^[0-9]{2}$")
         ])
       })
-
     }
 
 
   ngOnInit(): void {
-    //Inicializamos la variable susbscription para actualizar la lista de turnos
-    //en intervalos de 5 segundos
-    // this.updateSubscription = interval(1500).subscribe(
-    //   (val) => {this.getTurno()}
-    // )
     this.getTurno();
     this.getTramites();
     const connection = new signalr.HubConnectionBuilder()
@@ -81,14 +72,13 @@ export class CajerosComponent implements OnInit {
       return console.error(err.toString());
     });
     
-    connection.on("BroadcastMessage",()=>{
+    connection.on("BroadCastMessage",()=>{
       this.getTurno();
-    })
-    connection.on("BroadcastCajero",()=>{
       this.countTurnos();
-      this.filterTurns();
     })
-
+    connection.on("CountTurnos",()=>{
+      
+    })
   }
 
   openBottomSheet(){
@@ -129,14 +119,7 @@ export class CajerosComponent implements OnInit {
       this.turnoLlamado(this.turnosById[0])
       this.llamandoVariable();
     }
-    // var temp = this.turnosList.filter(x => x.idTramite == this.Tramite && x.idStatus == 1)[0]
-    // if(temp != null){
-    //     this.turnoProceso(temp)
-    //   }
-    //   else{
-    //       this.toastr.info(`No se encuentran mas turnos en fila del tramite seleccionado`)
-    //   }
-    }
+  }
     
     filterTurns(){
       this.getTurno();
@@ -164,6 +147,7 @@ export class CajerosComponent implements OnInit {
     }
 
   countTurnos(){
+    this.getTurno();
     var temp : any[] = []
     var temp2 : any[] = []
     var count = 0
@@ -171,11 +155,11 @@ export class CajerosComponent implements OnInit {
     for(let i =0; i < this.tramite.length; i++){
       temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
       temp2 = temp2.concat(temp)
-      console.log('Service Count Turnos:',temp2)
+      
       count++
     }
     this.lengthList = temp2.length
-    console.log(this.lengthList)
+    
   }
 
   turnoProceso(turno : any){

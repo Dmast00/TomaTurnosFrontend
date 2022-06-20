@@ -129,6 +129,7 @@
     position: fixed;
     top: 75px;
     right: 350px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:992px) {
@@ -142,7 +143,3 @@
     }
 }
 
-.mat__bottomsheet{
-    outline:none;
-    box-shadow: none;
-}

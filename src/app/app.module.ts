@@ -50,6 +50,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatListModule } from "@angular/material/list";
 import { TurnoListComponent } from './Componentes/Cajeros/turno-list/turno-list.component';
+import { GraficasComponent } from './Componentes/graficas/graficas.component';
+import { NgChartsModule } from "ng2-charts";
 
 
 
@@ -81,6 +83,7 @@ import { TurnoListComponent } from './Componentes/Cajeros/turno-list/turno-list.
     ChangePasswordComponent,
     ListaTurnosComponent,
     TurnoListComponent,
+    GraficasComponent,
     
     
   ],
@@ -108,7 +111,8 @@ import { TurnoListComponent } from './Componentes/Cajeros/turno-list/turno-list.
     MatBadgeModule,
     MatTooltipModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    NgChartsModule
   ],
   providers: [
     AuthGuard,

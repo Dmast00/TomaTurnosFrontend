@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Turnos } from '../../Turnos/turnos.model';
@@ -27,7 +27,7 @@ export class TurnoListComponent implements OnInit {
     .build();
     connection.start().then(function (){
       console.log('Signal R connected!');
-
+      
     }).catch(function(err){
       return console.error(err.toString());
     });
@@ -35,5 +35,6 @@ export class TurnoListComponent implements OnInit {
       this.dataSource = this.data
     })
   }
-
+  
+  
 }
