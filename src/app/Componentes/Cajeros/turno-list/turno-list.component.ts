@@ -11,8 +11,8 @@ import * as signalr from "@microsoft/signalr";
 })
 export class TurnoListComponent implements OnInit {
 
-  baseURL = 'https://localhost:44352/'
-  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  // baseURL = 'https://localhost:44352/'
+  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
   constructor(private service : BackendService, @Inject(MAT_BOTTOM_SHEET_DATA) public data : any, private bottomSheetRef: MatBottomSheetRef<TurnoListComponent>) { }
   dataSource = this.data

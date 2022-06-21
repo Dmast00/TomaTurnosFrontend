@@ -32,7 +32,6 @@
     "chart.js": "^3.8.0",
     "ng2-charts": "^3.0.11",
     "ngx-toastr": "^14.2.1",
-    "remixicon": "^2.5.0",
     "rxjs": "~7.5.0",
     "speak-tts": "^2.0.4",
     "tslib": "^2.3.0",

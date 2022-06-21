@@ -44,8 +44,8 @@ export class CajerosComponent implements OnInit {
   saveTurno : any = []
   saveCaja : any = ''
 
-  baseURL = 'https://localhost:44352/'
-  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  // baseURL = 'https://localhost:44352/'
+  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
   constructor(private service : BackendService,
     private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder,private _bottomSheet : MatBottomSheet ) {
@@ -219,7 +219,7 @@ export class CajerosComponent implements OnInit {
   //a vencido y se asigna otro turno a ventanilla llamando a la funcion getLast()
   turnoVencido(id : number){
     this.service.turnoVencido(id).subscribe(data =>{
-      this.last = []
+      
       localStorage.removeItem('lastTurno');
       localStorage.removeItem('caja')
     })
@@ -247,7 +247,7 @@ export class CajerosComponent implements OnInit {
         console.log('entro a finalizado')
         localStorage.removeItem('lastTurno');
         localStorage.removeItem('caja')
-        this.last = []
+       
       });
       this.getLast();
       this.toastr.success('Se finalizo el turno.','Turno Finalizado',{

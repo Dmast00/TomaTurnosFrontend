@@ -31,8 +31,8 @@ export class TurnosComponent implements OnInit{
   calling : boolean = true;
   callturn : any
   
-  baseURL = 'https://localhost:44352/'
-  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  // baseURL = 'https://localhost:44352/'
+  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
   private updateSubscription : Subscription;
   
   speech :any
