@@ -23,22 +23,22 @@
 
         <div class="turn__options">
             <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
-                <span><i class="ri-mic-line"></i></span> Volver a Llamar
+                <mat-icon>mic</mat-icon><span>Volver a Llamar</span> 
             </button>
             <button mat-stroked-button color="primary" class="btn__opt atender" *ngFor="let item of last" (click)="turnoEnAtencion(item.idTurno)">
-                <span><i class="ri-chat-check-line"></i></span> Atender
+                <mat-icon>how_to_reg</mat-icon><span>Atender</span>
             </button>
         </div>
         <div class="btn__optcontainer">
             <div class="turn__actions">
                 <button mat-raised-button color="basic" class="btn__opt vencido" *ngFor="let item of last" (click)="turnoVencido(item.idTurno)"> 
-                    <span><i class="ri-alert-line"></i></span> Vencido
+                    <mat-icon>warning</mat-icon><span>Vencido</span>
                 </button>
                 <button mat-raised-button color="basic" class="btn__opt detener" *ngFor="let item of last" (click)="turnoDetenido(item.idTurno)">
-                    <span><i class="ri-stop-circle-line"></i></span> Detener
+                    <mat-icon>front_hand</mat-icon><span>Detener</span>
                 </button>
                 <button mat-raised-button color="basic" class="btn__opt detener" *ngFor="let item of last" (click)="turnoFinalizado(item.idTurno)">
-                    <span><i class="ri-check-line"></i></span> Finalizado
+                    <mat-icon>done</mat-icon><span>Finalizado</span>
                 </button>
             </div>
         </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark btn-modal-save" (click)="c('Save click')" (click)="getLast()" ><span><i class="ri-save-line"></i></span> Guardar</button>
+        <button type="button" class="btn btn-outline-dark btn-modal-save" (click)="c('Save click')" (click)="getLast()" >Guardar</button>
     </div>
 </ng-template>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ComponentFactoryResolver, Inject, forwardRef } from '@angular/core';
+import { Component, OnInit,Input, ComponentFactoryResolver, Inject, forwardRef, OnDestroy } from '@angular/core';
 import { interval, isEmpty, Observable, Subscription, timeout } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Cajeros } from './cajeros.model';
@@ -41,6 +41,8 @@ export class CajerosComponent implements OnInit {
   status = ''
   lengthList : any = 0
 
+  saveTurno : any = []
+
   baseURL = 'https://localhost:44352/'
   // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
@@ -53,7 +55,6 @@ export class CajerosComponent implements OnInit {
         ])
       })
     }
-
 
   ngOnInit(): void {
     this.getTurno();
@@ -79,6 +80,13 @@ export class CajerosComponent implements OnInit {
     connection.on("CountTurnos",()=>{
       
     })
+    this.saveTurno = JSON.parse(localStorage.getItem('lastTurno') || '[]')
+    if(this.saveTurno.idStatus == 4 || 5){
+      console.log('Entro al NgOnInit',this.saveTurno)
+      this.last.push(this.saveTurno)
+      console.log('last',this.last)
+      
+    }
   }
 
   openBottomSheet(){
@@ -103,7 +111,7 @@ export class CajerosComponent implements OnInit {
   //el status del turno y lo guardamos en una variable temporal para despues pushearla
   //al array last
   getLast(){
-    
+    this.lengthList = 0
     this.submmited = true;
     if(this.form.invalid){
       return;
@@ -117,8 +125,20 @@ export class CajerosComponent implements OnInit {
     else{
       this.last.push(this.turnosById[0])
       // this.turnoProceso(this.last[0])
+
       this.turnoLlamado(this.turnosById[0])
       this.llamandoVariable();
+
+      localStorage.setItem('lastTurno',JSON.stringify({
+        'idTurno' : this.turnosById[0]['idTurno'],
+        'turno' : this.turnosById[0]['turno'],
+        'caja' : this.form.value['NumCaja'],
+        'idstatus' : this.turnosById[0]['idStatus'],
+        'idtramite' : this.turnosById[0]['idTramite'],
+        'fechainicial' : this.turnosById[0]['fechaInicial'],
+        'fechafinal' : this.turnosById[0]['fechaFinal'],
+      }))
+      
     }
   }
     
@@ -174,9 +194,8 @@ export class CajerosComponent implements OnInit {
 
   }
   turnoLlamado(turno : any){
-    console.log(turno)
     this.service.turnoLlamado(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
-
+      
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
 
