@@ -42,6 +42,7 @@ export class CajerosComponent implements OnInit {
   lengthList : any = 0
 
   saveTurno : any = []
+  saveCaja : any = ''
 
   baseURL = 'https://localhost:44352/'
   // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
@@ -138,7 +139,7 @@ export class CajerosComponent implements OnInit {
         'fechainicial' : this.turnosById[0]['fechaInicial'],
         'fechafinal' : this.turnosById[0]['fechaFinal'],
       }))
-      
+      localStorage.setItem('caja',this.form.value['NumCaja'])
     }
   }
     
@@ -186,13 +187,11 @@ export class CajerosComponent implements OnInit {
   }
 
   turnoProceso(turno : any){
-    console.log(turno);
-    this.service.turnoProceso(turno,this.form.value['NumCaja']).subscribe(data =>{
-      
+    this.service.turnoProceso(turno,this.saveCaja).subscribe(data =>{
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
-
   }
+  
   turnoLlamado(turno : any){
     this.service.turnoLlamado(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
       
@@ -202,15 +201,27 @@ export class CajerosComponent implements OnInit {
   }
 
   turnoEnAtencion(turno : any){
-    this.service.turnoAtencion(turno,this.form.value['NumCaja']).subscribe(data =>{
-      this.atendiendoVariable();
-    })
+    this.saveCaja = localStorage.getItem('caja')
+    if(this.form.value['NumCaja'] == ''){
+      console.log('Caja Undefined')
+      this.service.turnoAtencion(turno,this.saveCaja).subscribe(data =>{
+        this.atendiendoVariable();
+      })  
+    }
+    else{
+      this.service.turnoAtencion(turno,this.form.value['NumCaja']).subscribe(data =>{
+        this.atendiendoVariable();
+      })
+    }
   }
 
   //Creamos una funcion la cual al presionar el boton de vencido el estatus del turno torna
   //a vencido y se asigna otro turno a ventanilla llamando a la funcion getLast()
   turnoVencido(id : number){
     this.service.turnoVencido(id).subscribe(data =>{
+      this.last = []
+      localStorage.removeItem('lastTurno');
+      localStorage.removeItem('caja')
     })
     this.getLast();
     this.toastr.info('Se asigno como turno vencido','Turno info',{
@@ -234,6 +245,9 @@ export class CajerosComponent implements OnInit {
     else{
       this.service.turnoFinalizado(id).subscribe(data =>{
         console.log('entro a finalizado')
+        localStorage.removeItem('lastTurno');
+        localStorage.removeItem('caja')
+        this.last = []
       });
       this.getLast();
       this.toastr.success('Se finalizo el turno.','Turno Finalizado',{
@@ -246,6 +260,8 @@ export class CajerosComponent implements OnInit {
   turnoDetenido(id:number){
     if(this.status == 'Llamando'){
       this.service.turnoVencido(id).subscribe(data =>{
+        localStorage.removeItem('lastTurno');
+        localStorage.removeItem('caja')
       })
       this.last = []
       this.toastr.info('Se detuvo la asignacion de turnos','Asignacion de turnos',{
