@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container">
+<div class="container" *ngIf="last.length >= 1">
     <div class="container-options">
         <div class="row turno-row">
             <div class="col-md-12">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="turn__options">
-            <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="callTurn(item.turno)">
+            <button mat-stroked-button color="primary" class="btn__opt volver__llamada" *ngFor="let item of last" (click)="turnoLlamado(item)">
                 <mat-icon>mic</mat-icon><span>Volver a Llamar</span> 
             </button>
             <button mat-stroked-button color="primary" class="btn__opt atender" *ngFor="let item of last" (click)="turnoEnAtencion(item.idTurno)">

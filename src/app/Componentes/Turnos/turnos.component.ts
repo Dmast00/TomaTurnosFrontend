@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { interval, Observable,Subscription } from 'rxjs';
+import { async, interval, Observable,Subscription } from 'rxjs';
 import { BackendService } from 'src/app/Servicios/backend.service';
 import { Turnos } from './turnos.model';
 import * as signalr from "@microsoft/signalr";
@@ -30,13 +30,17 @@ export class TurnosComponent implements OnInit{
   tempList : any[] =[]
   calling : boolean = true;
   callturn : any
+  turnosporLlamar : any [] = [] 
   
-  // baseURL = 'https://localhost:44352/'
-  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  baseURL = 'https://localhost:44352/'
+  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
   private updateSubscription : Subscription;
   
   speech :any
-  turno : string
+  flag : boolean = true
+
+  
+ 
   
   constructor({nativeElement}: ElementRef<HTMLElement>,private service : BackendService) {
     
@@ -76,13 +80,35 @@ export class TurnosComponent implements OnInit{
       this.UpdateturnoLlamado();
     })
     connection.on("LlamarTurno",(data)=>{
-      this.callTurn(data);
+      // this.callTurn(data);
     })
-    this.speech.init({
-      'lang': 'es-MX',
+    connection.on("TurnoLlamado",()=>{
+      console.log('Signal R Turno Llamado')
+      this.TTSCallTurn();
     })
-    
+    if(this.speech.hasBrowserSupport()){
+      console.log('Browser supported')
+      this.speech.init({
+        'lang': 'es-MX',
+        'rate': 1,
+		    'pitch': 1,
+        'splitSentences': true,
+        'volume': 1,
+        'listeners': {
+          'onvoicechanged': (voices) =>{
+            console.log('EventChanged',voices)
+          }
+        }
+      }).then((data)=>{
+        console.log('Available voices ',data)
+      }).catch((err) =>{
+        console.error('An error occured ',err)
+      })
+    }else{
+      console.log('Browser not supported.')
+    }
   }
+  
   
 
   //Se solicita al servidor la lista de turnos creados que contengan el IdStatus 1 que equivale 
@@ -108,8 +134,7 @@ export class TurnosComponent implements OnInit{
         console.log('Vacio')
       }
       else{
-        this.TTSCallTurn(popped);
-        this.playAudio();
+
       }
     })
   }
@@ -121,34 +146,58 @@ export class TurnosComponent implements OnInit{
     })
   }
 
-  TTSCallTurn(popped : any){
-    
-    console.log(this.speech)
-    this.speech.speak({
-      
-      text :'Turno: '+popped?.turno+',Caja: '+popped?.caja
-    }).then(()=>{
-      console.log('Success')
-    }).catch(e =>{
-      console.error("Error",e)
+  async TTSCallTurn (){
+    await this.service.getLlamados().subscribe(data =>{
+      this.turnosporLlamar = data.filter(x => x.llamado == 0)
+      console.log('Turnos por llamar ',this.turnosporLlamar)
+      this.CallingTTS();
     })
   }
 
-
-  callTurn(turn : any){
-    console.log(turn)
-    this.speech.setLanguage('es-MX');
-    this.speech.speak({
-      text :'Turno: '+ turn.turno + ',Caja:'+turn.caja
-    }).then(()=>{
-      console.log('Success')
-    }).catch(e =>{
-      console.log('error?')
-      console.error("Error",e)
-    })
+  async CallingTTS(){
+    if(this.flag){
+      this.flag = false
+      for(let i = 0; i < this.turnosporLlamar.length; i++){
+          if(this.turnosporLlamar[i].llamado == 1){
+            break;
+          }
+          else{
+            var turno = this.turnosporLlamar[i]
+            this.playAudio();
+            await this.speech.speak({
+              text : 'Turno: '+ turno.turno + ' Caja: ' + turno.caja,
+              queue : true,
+              listeners: {
+                onstart:() =>{
+                  console.log('Start Utterance')
+                },
+                onend: () =>{
+                  console.log('End Utterance')
+                },
+                onresume: () =>{
+                  console.log('Resume Utterance')
+                },
+                onBoundary: (event) =>{
+                  console.log(event.name +'boundary reached after ' +event.elapsedTime + 'milliseconds.')
+                }
+              }
+            }).then(
+            await this.service.UpdateLlamado(turno.idLlamado).subscribe(data =>{
+              
+            }),
+            console.log('Success'),
+            ).catch(e =>{
+              console.error('An error occurred: ',e)
+            })
+          }
+        }
+        this.flag = true
+    }
+    else{
+      this.CallingTTS();
+    }
   }
 
-  
   playAudio(){
     let audio = new Audio();
     audio.src = "/assets/turn.wav";

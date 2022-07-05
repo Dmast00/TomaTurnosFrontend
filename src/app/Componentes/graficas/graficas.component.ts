@@ -26,8 +26,6 @@ export class GraficasComponent implements OnInit {
       {
         data: [5,2,3,4,5,6,7,8],
         label: 'caja 01',
-
-
       },
       {
         data: [5,2,3,4,5,6,7,8],

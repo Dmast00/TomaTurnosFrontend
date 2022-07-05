@@ -16,8 +16,8 @@ const httpOptionsPlain = {
 })
 export class BackendService {
   //Creamos una variable la cual guardara el path del API
-  // readonly apiPath = 'https://localhost:44352/api/';
-  readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
+  readonly apiPath = 'https://localhost:44352/api/';
+  // readonly apiPath = 'https://192.168.4.207:80/TomaTurnosBack/api/';
 
   headers = {
     headers : new HttpHeaders({
@@ -69,7 +69,9 @@ export class BackendService {
   callTurn(item : any , caja : any) : Observable<any>{
     return this.http.get<any>(this.apiPath+'Turnos/llamarturno/'+item+'/'+caja,item)
   }
-  
+  getLlamados() : Observable<any>{
+    return this.http.get(this.apiPath+'LlamarTurno')
+  }
 
   //***************************************POST METHODS***************************************************** */
 
@@ -93,6 +95,11 @@ export class BackendService {
 
   getTramitesById(ids:any):Observable<any>{
     return this.http.post<any>(this.apiPath+'Turnos/TurnosbyTramite',ids)
+  }
+
+  LlamarTurno(turno : any,caja :any){
+    console.log(turno)
+    return this.http.post(this.apiPath+'LlamarTurno/LlamandoTurno/'+caja,turno)
   }
   //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
@@ -148,6 +155,9 @@ export class BackendService {
     return this.http.put(this.apiPath+'Account/ChangePassword/'+idUser+'/'+currentPassword,nPassword,this.headers)
   }
   
+  UpdateLlamado(id : any){
+    return this.http.put(this.apiPath+'LlamarTurno/UpdateLlamado/'+id,id);
+  }
   //*********************************************DELETE METHODS**************************************************** */
 
   eliminarTramite(id : number){

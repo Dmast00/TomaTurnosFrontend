@@ -44,8 +44,8 @@ export class CajerosComponent implements OnInit {
   saveTurno : any = []
   saveCaja : any = ''
 
-  // baseURL = 'https://localhost:44352/'
-  baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
+  baseURL = 'https://localhost:44352/'
+  // baseURL = 'https://192.168.4.207:80/TomaTurnosBack/'
 
   constructor(private service : BackendService,
     private modalService : NgbModal,private toastr : ToastrService, public fb : FormBuilder,private _bottomSheet : MatBottomSheet ) {
@@ -128,6 +128,7 @@ export class CajerosComponent implements OnInit {
       // this.turnoProceso(this.last[0])
 
       this.turnoLlamado(this.turnosById[0])
+     
       this.llamandoVariable();
 
       localStorage.setItem('lastTurno',JSON.stringify({
@@ -143,30 +144,30 @@ export class CajerosComponent implements OnInit {
     }
   }
     
-    filterTurns(){
-      this.getTurno();
-      var count = 0
-      var temp : any[] = []
-      var temp2 : any[] = []
-      for(let i = 0; i < this.tramite.length; i++){
-        temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
-        temp2 = temp2.concat(temp)
-        count ++
-      }
-      this.turnosById = []
-      this.TempturnosById = []
-      for(let j = 0; j < temp2.length; j++){
-        this.TempturnosById.push(temp2[j])
-      }
-      
-      return this.turnosById = this.TempturnosById
+  filterTurns(){
+    this.getTurno();
+    var count = 0
+    var temp : any[] = []
+    var temp2 : any[] = []
+    for(let i = 0; i < this.tramite.length; i++){
+      temp = this.turnosList.filter(x => x.idTramite == this.tramite[count] && x.idStatus == 1)
+      temp2 = temp2.concat(temp)
+      count ++
     }
+    this.turnosById = []
+    this.TempturnosById = []
+    for(let j = 0; j < temp2.length; j++){
+      this.TempturnosById.push(temp2[j])
+    }
+    
+    return this.turnosById = this.TempturnosById
+  }
 
-    sortByDate(){
-      this.turnosById.sort((b : Turnos, a : Turnos)=>{
-        return +new Date(b.fechaInicial) - +new Date(a.fechaInicial);
-      });
-    }
+  sortByDate(){
+    this.turnosById.sort((b : Turnos, a : Turnos)=>{
+      return +new Date(b.fechaInicial) - +new Date(a.fechaInicial);
+    });
+  }
 
   countTurnos(){
     this.service.getTurnos().subscribe(data =>{
@@ -194,9 +195,11 @@ export class CajerosComponent implements OnInit {
   
   turnoLlamado(turno : any){
     this.service.turnoLlamado(turno.idTurno,this.form.value['NumCaja']).subscribe(data =>{
-      
     },err =>console.log('HTTP Error',err))
     // this.last.push(turno)
+    this.service.LlamarTurno(this.turnosById[0],this.form.value['NumCaja']).subscribe(data =>{
+      
+    })
 
   }
 
@@ -287,11 +290,11 @@ export class CajerosComponent implements OnInit {
     })
   }
 
-  callTurn(turno : any){
-    this.service.callTurn(turno,this.form.value['NumCaja']).subscribe(data =>{
+  // callTurn(turno : any){
+  //   this.service.callTurn(turno,this.form.value['NumCaja']).subscribe(data =>{
       
-    })
-  }
+  //   })
+  // }
 
   llamandoVariable(){
     this.status = 'Llamando'
