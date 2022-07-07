@@ -83,10 +83,15 @@ export class CajerosComponent implements OnInit {
     })
     this.saveTurno = JSON.parse(localStorage.getItem('lastTurno') || '[]')
     if(this.saveTurno.idStatus == 4 || 5){
-      console.log('Entro al NgOnInit',this.saveTurno)
-      this.last.push(this.saveTurno)
-      console.log('last',this.last)
-      
+      if(this.saveTurno.length != 0){
+        this.toastr.info('Turno Guardado','Turno info',{
+          progressBar:true,
+          progressAnimation:'increasing',
+        })
+        console.log('Entro al NgOnInit',this.saveTurno)
+        this.last.push(this.saveTurno)
+        console.log('last',this.last)
+      }
     }
   }
 
@@ -225,6 +230,7 @@ export class CajerosComponent implements OnInit {
       
       localStorage.removeItem('lastTurno');
       localStorage.removeItem('caja')
+      this.last = []
     })
     this.getLast();
     this.toastr.info('Se asigno como turno vencido','Turno info',{
@@ -250,7 +256,7 @@ export class CajerosComponent implements OnInit {
         console.log('entro a finalizado')
         localStorage.removeItem('lastTurno');
         localStorage.removeItem('caja')
-       
+        this.last = []
       });
       this.getLast();
       this.toastr.success('Se finalizo el turno.','Turno Finalizado',{
@@ -265,6 +271,7 @@ export class CajerosComponent implements OnInit {
       this.service.turnoVencido(id).subscribe(data =>{
         localStorage.removeItem('lastTurno');
         localStorage.removeItem('caja')
+        this.last = []
       })
       this.last = []
       this.toastr.info('Se detuvo la asignacion de turnos','Asignacion de turnos',{

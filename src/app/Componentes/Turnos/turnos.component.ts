@@ -192,12 +192,16 @@ export class TurnosComponent implements OnInit{
           }
         }
         this.flag = true
-    }
-    else{
-      this.CallingTTS();
+      }
+      else{
+        this.delay(2000)
+        this.TTSCallTurn();
     }
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
   playAudio(){
     let audio = new Audio();
     audio.src = "/assets/turn.wav";
