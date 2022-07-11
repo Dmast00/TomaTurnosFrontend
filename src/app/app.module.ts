@@ -52,6 +52,8 @@ import { MatListModule } from "@angular/material/list";
 import { TurnoListComponent } from './Componentes/Cajeros/turno-list/turno-list.component';
 import { GraficasComponent } from './Componentes/graficas/graficas.component';
 import { NgChartsModule } from "ng2-charts";
+import { SugerenciasComponent } from './Componentes/sugerencias/sugerencias.component';
+import { MatExpansionModule } from "@angular/material/expansion";
 
 
 
@@ -84,6 +86,8 @@ import { NgChartsModule } from "ng2-charts";
     ListaTurnosComponent,
     TurnoListComponent,
     GraficasComponent,
+    SugerenciasComponent,
+
     
     
   ],
@@ -112,7 +116,8 @@ import { NgChartsModule } from "ng2-charts";
     MatTooltipModule,
     MatBottomSheetModule,
     MatListModule,
-    NgChartsModule
+    NgChartsModule,
+    MatExpansionModule
   ],
   providers: [
     AuthGuard,

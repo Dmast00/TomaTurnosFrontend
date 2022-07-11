@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <h3 class="tittle"><p>Enviar Correo</p></h3>
+        <div class="containerform">
+            <mat-accordion class="example-headers-align" [formGroup]="form">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Email Subject
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Type the email Subject
+                      <mat-icon>title</mat-icon>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <mat-form-field appearance="fill">
+                    <mat-label >Email Subject</mat-label>
+                    <input matInput formControlName="subjectEmail">
+                  </mat-form-field>
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Email Content
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Type the email Content
+                      <mat-icon>subject</mat-icon>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <mat-form-field class="textarea" appearance="fill">
+                    <mat-label>Add Email Content</mat-label>
+                    <textarea matInput placeholder="Ex. Good Morning..." formControlName="HtmlContent"></textarea>
+                  </mat-form-field>
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()" (click)="SendEmail()">send</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+      </div>
+    </div>
+  </div>

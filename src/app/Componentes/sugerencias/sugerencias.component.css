@@ -1,0 +1,35 @@
+.containerform{
+    /* width: 60vw; */
+    height: 50vh;
+    top: 5vh;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+}
+mat-icon{
+    margin-left: 2px;
+}
+.textarea{
+    width: 100%;
+}
+mat-accordion{
+    width: 65%;
+}
+
+.emaillistcontainer{
+    width: 25vw;
+    height: 44vh;
+    margin-left: 1%;
+}
+mat-form-field{
+    width: 100%;
+}.tittle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+mat-label{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}

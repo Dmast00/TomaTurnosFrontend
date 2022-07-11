@@ -13,6 +13,7 @@ import { RoleGuard } from './Guards/role.guard';
 import { UsuariosComponent } from "./Componentes/Catalogos/Usuarios/usuarios/usuarios.component";
 import { ListaTurnosComponent } from "./Componentes/Catalogos/lista-turnos/lista-turnos.component";
 import { GraficasComponent } from "./Componentes/graficas/graficas.component";
+import { SugerenciasComponent } from "./Componentes/sugerencias/sugerencias.component";
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:'CatTramites',component:CatTramitesComponent,canActivate:[RoleGuard]},
   {path:'Usuarios',component:UsuariosComponent,canActivate:[RoleGuard]},
   {path:'Listaturnos',component:ListaTurnosComponent,canActivate:[RoleGuard]},
-  {path:'Graficas',component:GraficasComponent,canActivate:[RoleGuard]}
+  {path:'Graficas',component:GraficasComponent,canActivate:[RoleGuard]},
+  {path:'Sugerencias',component:SugerenciasComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
