@@ -11,11 +11,10 @@ export class SugerenciasComponent implements OnInit {
   form : FormGroup
   constructor(private toastr : ToastrService) {
     this.form = new FormGroup({
-      fromEmail : new FormControl(),
-      toEmail : new FormControl(),
+
       subjectEmail : new FormControl(),
       PlainTextContent : new FormControl(),
-      HtmlContent : new FormControl()
+
     })
    }
 
