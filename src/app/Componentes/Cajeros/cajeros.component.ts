@@ -15,6 +15,7 @@ import { TurnoListComponent } from './turno-list/turno-list.component';
 
 
 
+
 @Component({
   selector: 'app-cajeros',
   templateUrl: './cajeros.component.html',
@@ -82,7 +83,10 @@ export class CajerosComponent implements OnInit {
       
     })
     this.saveTurno = JSON.parse(localStorage.getItem('lastTurno') || '[]')
-    if(this.saveTurno.idStatus == 4 || 5){
+  
+
+    console.log(this.turnosList)
+    if(this.saveTurno.idStatus == 4 || 5 || 3){
       if(this.saveTurno.length != 0){
         this.toastr.info('Turno Guardado','Turno info',{
           progressBar:true,
@@ -94,6 +98,8 @@ export class CajerosComponent implements OnInit {
       }
     }
   }
+
+  
 
   openBottomSheet(){
     this.filterTurns();
@@ -107,8 +113,8 @@ export class CajerosComponent implements OnInit {
 
   //Creamos un metodo el cual llama al servicio de backend pidiendo los turnos que se
   //encuentran en la base de datos, estos turnos los guardamos en un array de tipo Cajeros
-  getTurno(){
-    this.service.getTurnos().subscribe(data =>{
+   getTurno(){
+     this.service.getTurnos().subscribe(data =>{
       this.turnosList = data
     })
   }
