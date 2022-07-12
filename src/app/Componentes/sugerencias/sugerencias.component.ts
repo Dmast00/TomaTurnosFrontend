@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { BackendService } from 'src/app/Servicios/backend.service';
 
 @Component({
   selector: 'app-sugerencias',
@@ -9,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SugerenciasComponent implements OnInit {
   form : FormGroup
-  constructor(private toastr : ToastrService) {
+  constructor(private toastr : ToastrService, private service : BackendService) {
     this.form = new FormGroup({
 
       subjectEmail : new FormControl(),
@@ -21,9 +23,12 @@ export class SugerenciasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  SendEmail(){
+   async SendEmail(){
+    await this.service.SendEmail(this.form.value).subscribe(data =>{
+
+    })
     this.toastr.success('Email Sent')
-    console.log('sending email')
+    
   }
   get f(){
     return this.form.controls

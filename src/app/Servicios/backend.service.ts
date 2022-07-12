@@ -101,6 +101,10 @@ export class BackendService {
     console.log(turno)
     return this.http.post(this.apiPath+'LlamarTurno/LlamandoTurno/'+caja,turno)
   }
+
+  SendEmail(form : any){
+    return this.http.post(this.apiPath+'Emails',form)
+  }
   //***************************************PUT METHODS********************************************************* */
   //Se llama al Web API para cambiar el estatus del turno a en proceso, debido a que se encuntra
   //en proceso de pasar a ventanilla
