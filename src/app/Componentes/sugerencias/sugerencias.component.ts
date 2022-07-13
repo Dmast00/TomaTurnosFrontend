@@ -28,6 +28,8 @@ export class SugerenciasComponent implements OnInit {
 
     })
     this.toastr.success('Email Sent')
+    this.form.reset();
+    
     
   }
   get f(){
