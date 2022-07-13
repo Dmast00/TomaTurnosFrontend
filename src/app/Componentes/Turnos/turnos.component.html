@@ -1,61 +1,35 @@
 
 <div class="col turnos__pendientes">
-    <div class="turnos__title">
-        <p class="title">Pendientes</p>
-    </div>
-    <div class="turnos__container">
-        <div class="turnos"  *ngFor="let item of Turnos | slice:0:7">
-            <mat-nav-list>
-                <span mat-line class="turno">{{item.turno}}</span>
-            </mat-nav-list>
-            <!-- <p *ngFor="let item of Turnos | slice:0:7" class="turno">{{item.turno}}</p> -->
+    <mat-card class="mat-elevation-z8">
+        <div class="turnos__title">
+            <p class="title">Pendientes</p>
         </div>
-    </div>
+        <div class="turnos__container">
+            <div class="turnos"  *ngFor="let item of Turnos | slice:0:7">
+                <mat-nav-list>
+                    <span mat-line class="turno">{{item.turno}}</span>
+                </mat-nav-list>
+                <!-- <p *ngFor="let item of Turnos | slice:0:7" class="turno">{{item.turno}}</p> -->
+            </div>
+        </div>
+    </mat-card>
 </div>
+
 <div class="col llamados__container">
     <div class="turnos__llamadostitle">
         <p class="title">Llamados</p>
     </div>
     <div class="llamado__container">
         <mat-nav-list *ngFor="let item of turnoLlamado" class="llamado">
-            <span mat-line>Turno: {{item.turno}}</span>
-            <span mat-line>Caja: {{item.caja}}</span>
+            <mat-card class="mat-elevation-z8">
+                <mat-nav-list class="navlist">
+                    <span mat-line><h3>Turno: <b>{{item.turno}}</b><br></h3></span>
+                    <span mat-line><h3>Caja: <b>{{item.caja}}</b></h3></span>    
+                </mat-nav-list>
+            </mat-card>
         </mat-nav-list>
-        <!-- <div *ngFor="let item of turnoLlamado" class="llamado">
-            Turno: {{item.turno}}
-            Caja: {{item.caja}}
-        </div> -->
     </div>
 </div>
-
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="turnos__container">
-                <mat-card>
-                    <mat-card-title>
-                        <span class="pendientes">Pendientes</span>
-                    </mat-card-title>
-                    <mat-card-content>
-                        <div class="turno" *ngFor="let item of Turnos | slice:0:15;">
-                            {{item.turno}}
-                        </div>  
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-        <div class="col-md-6 llamando__container" >
-            <p class="llamando">Llamando</p>
-            <div class="llamado__turno" >
-                <div class="llamada" *ngFor="let item of turnoLlamado" >
-                    <p>Turno : {{item.turno}}</p><br>
-                    <p>Caja : {{item.caja}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="waves-container">
     <div class="footer">
         <div class="wave-container">

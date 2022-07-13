@@ -262,7 +262,7 @@ export class CajerosComponent implements OnInit {
         console.log('entro a finalizado')
         localStorage.removeItem('lastTurno');
         localStorage.removeItem('caja')
-        this.last = []
+        // this.last = []
       });
       this.getLast();
       this.toastr.success('Se finalizo el turno.','Turno Finalizado',{
