@@ -49,24 +49,29 @@
     position: absolute;
     width: 13vw;
     top: 125px;
-    left: 950px;
+    left: 600px;
     border-radius: 15px;
 }
 .llamado__container{
-    display: grid; 
+    /* display: grid; 
     grid-auto-columns: 1fr; 
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr; 
     gap: 15px 15px; 
     grid-template-areas: 
         ". . ."
-        ". . ."; 
+        ". . .";  */
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
     
 }
 .llamado{
-    width: 170%;
-    display: flex;
+    width: 100%;
+    box-sizing: border-box;
     justify-content: center;
+    margin-right: 110px;
 }
 .navlist{
     display: flex;

@@ -20,14 +20,12 @@
         <p class="title">Llamados</p>
     </div>
     <div class="llamado__container">
-        <mat-nav-list *ngFor="let item of turnoLlamado" class="llamado">
-            <mat-card class="mat-elevation-z8">
+            <mat-card class="mat-elevation-z8 llamado" *ngFor="let item of turnoLlamado" >
                 <mat-nav-list class="navlist">
                     <span mat-line><h3>Turno: <b>{{item.turno}}</b><br></h3></span>
                     <span mat-line><h3>Caja: <b>{{item.caja}}</b></h3></span>    
                 </mat-nav-list>
-            </mat-card>
-        </mat-nav-list>
+            </mat-card>        
     </div>
 </div>
 <div class="waves-container">
