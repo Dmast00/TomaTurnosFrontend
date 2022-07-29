@@ -52,20 +52,18 @@
     left: 600px;
     border-radius: 15px;
 }
+.turnos__llamadostitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 .llamado__container{
-    /* display: grid; 
-    grid-auto-columns: 1fr; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    gap: 15px 15px; 
-    grid-template-areas: 
-        ". . ."
-        ". . .";  */
+
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 10px;
         grid-row-gap: 10px;
-    
 }
 .llamado{
     width: 100%;
