@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { BackendService } from 'src/app/Servicios/backend.service';
 
 import { Usuario } from '../usuario.model';
@@ -9,7 +10,7 @@ import { Usuario } from '../usuario.model';
   styleUrls: ['./account-info.component.css']
 })
 export class AccountInfoComponent implements OnInit {
-
+  form : FormGroup;
   userInfo : Usuario[] = []
   isShownProfile = false;
   isShownEmail = false;
@@ -18,7 +19,12 @@ export class AccountInfoComponent implements OnInit {
 
   
   
-  constructor(private service : BackendService) { }
+  constructor(private service : BackendService,public fb : FormBuilder) {
+    this.form = new FormGroup({
+      currentEmail : new FormControl('',[]),
+      newEmail : new FormControl('',[])
+    })
+   }
 
 
   userName : any
@@ -56,6 +62,16 @@ export class AccountInfoComponent implements OnInit {
     this.userName = localStorage.getItem('userName');
     this.service.getUserinfo(this.userName).subscribe(data =>{
       this.userInfo.push(data)
+      console.log(this.userInfo)
+    })
+  }
+
+  changeEmail(){
+    console.log(
+      this.form.value['currentEmail'],this.form.value['newEmail']
+    )
+    this.service.cambiarCorreo(this.form.value['currentEmail'],this.form.value['newEmail']).subscribe(data =>{
+      
     })
   }
 }

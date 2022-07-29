@@ -45,21 +45,21 @@
     </div>
 </div> -->
 
-<div class="container">
+<div class="container" *ngFor="let item of userInfo">
     <div class="row">
         <div class="col-md-6">
             <div class="container">
                 <mat-card class="mat-elevation-z8">
-                    <mat-card-title>Personal Information</mat-card-title>
+                    <mat-card-title>Informacion Personal</mat-card-title>
                     <mat-card-content>
                         <form >
                            <mat-form-field appearance="fill">
                                <mat-label>Usuario</mat-label>
-                               <input matInput type="text" id="usuario">
+                               <input value="{{item.userName}}" matInput type="text" id="usuario">
                            </mat-form-field>
                            <mat-form-field appearance="fill">
                                <mat-label>Telefono</mat-label>
-                               <input type="tel" matInput type="text" id="usuario">
+                               <input value="{{item.phoneNumber}}" type="tel" matInput type="text" id="usuario">
                            </mat-form-field>
                            <button mat-stroked-button>Guardar</button>
                         </form>
@@ -72,16 +72,16 @@
                 <mat-card class="mat-elevation-z8">
                     <mat-card-title>Cambiar Correo electronico</mat-card-title>
                     <mat-card-content>
-                        <form >
+                        <form [formGroup]="form" >
                            <mat-form-field appearance="fill">
                                <mat-label>Correo electronico Actual</mat-label>
-                               <input matInput type="text" id="usuario">
+                               <input [ngModel]="item.email" formControlName="currentEmail" matInput type="text">
                            </mat-form-field>
                            <mat-form-field appearance="fill">
-                               <mat-label>Nuevo Correo Electronicos</mat-label>
-                               <input type="tel" matInput type="text" id="usuario">
+                               <mat-label>Nuevo Correo Electronico</mat-label>
+                               <input type="text" matInput formControlName="newEmail" type="text" id="usuario">
                            </mat-form-field>
-                           <button mat-stroked-button>Guardar</button>
+                           <button mat-stroked-button (click)="changeEmail()">Guardar</button>
                         </form>
                     </mat-card-content>
                 </mat-card>
@@ -90,15 +90,15 @@
         <div class="col-md-6">
             <div class="container">
                 <mat-card class="mat-elevation-z8">
-                    <mat-card-title>Cambiar Correo electronico</mat-card-title>
+                    <mat-card-title>Cambiar Contraseña</mat-card-title>
                     <mat-card-content>
                         <form >
                            <mat-form-field appearance="fill">
-                               <mat-label>Correo electronico Actual</mat-label>
+                               <mat-label>Contraseña Actual</mat-label>
                                <input matInput type="text" id="usuario">
                            </mat-form-field>
                            <mat-form-field appearance="fill">
-                               <mat-label>Nuevo Correo Electronicos</mat-label>
+                               <mat-label>Nuevo Contraseña</mat-label>
                                <input type="tel" matInput type="text" id="usuario">
                            </mat-form-field>
                            <button mat-stroked-button>Guardar</button>

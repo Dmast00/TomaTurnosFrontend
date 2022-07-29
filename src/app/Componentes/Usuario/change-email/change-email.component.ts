@@ -12,9 +12,10 @@ export class ChangeEmailComponent implements OnInit {
   form : FormGroup
   @Input() user : Usuario[]
   userList : Usuario[] = []
+ 
   constructor(public fb : FormBuilder,private service : BackendService) {
     this.form = new FormGroup({
-      currentEmail : new FormControl('',[]),
+      currentEmail : new FormControl(this.userList['email'],[]),
       newEmail : new FormControl('',[
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
       ])
