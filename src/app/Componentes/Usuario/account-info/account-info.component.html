@@ -92,16 +92,17 @@
                 <mat-card class="mat-elevation-z8">
                     <mat-card-title>Cambiar Contraseña</mat-card-title>
                     <mat-card-content>
-                        <form >
+                        <form [formGroup]="form">
+                            <input type="text" id="idUser" formControlName="idUser" [ngModel]="item.id"class="form-control" hidden >
                            <mat-form-field appearance="fill">
                                <mat-label>Contraseña Actual</mat-label>
-                               <input matInput type="text" id="usuario">
+                               <input matInput type="text" formControlName="currentPassword" id="usuario">
                            </mat-form-field>
                            <mat-form-field appearance="fill">
                                <mat-label>Nuevo Contraseña</mat-label>
-                               <input type="tel" matInput type="text" id="usuario">
+                               <input type="tel" matInput formControlName="newPassword" type="text" id="usuario">
                            </mat-form-field>
-                           <button mat-stroked-button>Guardar</button>
+                           <button mat-stroked-button (click)="changePassword()">Guardar</button>
                         </form>
                     </mat-card-content>
                 </mat-card>

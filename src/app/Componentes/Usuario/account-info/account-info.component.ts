@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { BackendService } from 'src/app/Servicios/backend.service';
 
 import { Usuario } from '../usuario.model';
@@ -19,10 +21,17 @@ export class AccountInfoComponent implements OnInit {
 
   
   
-  constructor(private service : BackendService,public fb : FormBuilder) {
+  constructor(private service : BackendService,public fb : FormBuilder,private toastr : ToastrService) {
     this.form = new FormGroup({
       currentEmail : new FormControl('',[]),
-      newEmail : new FormControl('',[])
+      newEmail : new FormControl('',[]),
+      idUser : new FormControl('',[]),
+      currentPassword : new FormControl('',[
+        
+      ]),
+      newPassword : new FormControl('',[
+        Validators.pattern("^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")
+      ])
     })
    }
 
@@ -67,11 +76,27 @@ export class AccountInfoComponent implements OnInit {
   }
 
   changeEmail(){
-    console.log(
-      this.form.value['currentEmail'],this.form.value['newEmail']
-    )
     this.service.cambiarCorreo(this.form.value['currentEmail'],this.form.value['newEmail']).subscribe(data =>{
       
+    })
+  }
+
+  async changePassword(){
+    console.log(this.form.value['idUser'],this.form.value['currentPassword'],this.form.value['newPassword'])
+    
+    await this.service.cambiarContrasena(this.form.value['idUser'],this.form.value['currentPassword'],this.form.value['newPassword']).subscribe(data =>{
+      
+    },(err : HttpErrorResponse)=>{
+      console.log('HTTP Error Response')
+      if(err.status == 200){
+        this.toastr.success('Contraseña modificada')
+      }
+      else if(err.status == 400){
+        this.toastr.error('Ocurrio un error, intentelo mas tarde.')
+      }
+      else if(err.status == 500){
+        this.toastr.warning('Ocurrio un error, intentelo mas tarde')
+      }
     })
   }
 }
